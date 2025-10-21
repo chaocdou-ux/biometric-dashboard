@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
+import { Activity, Calendar, TrendingUp, Users, Watch, BookOpen } from 'lucide-react';
 import Overview from './components/Overview';
 import Sessions from './components/Sessions';
 import Metrics from './components/Metrics';
@@ -8,94 +8,84 @@ import DeviceComparison from './components/DeviceComparison';
 import Definitions from './components/Definitions';
 import data from './data/processed-data.json';
 
+const tabs = [
+  { id: 'overview', label: 'Overview', icon: Activity },
+  { id: 'sessions', label: 'Sessions', icon: Calendar },
+  { id: 'metrics', label: 'Metrics', icon: TrendingUp },
+  { id: 'participants', label: 'Participants', icon: Users },
+  { id: 'devices', label: 'Devices', icon: Watch },
+  { id: 'methodology', label: 'Methodology', icon: BookOpen }
+];
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5Q0EzQUYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzMuMzEgMCA2IDIuNjkgNiA2cy0yLjY5IDYtNiA2LTYtMi42OS02LTYgMi42OS02IDYtNk0wIDZjMy4zMSAwIDYgMi42OSA2IDZzLTIuNjkgNi02IDYtNi0yLjY5LTYtNiAyLjY5LTYgNi02bTM2IDMwYzMuMzEgMCA2IDIuNjkgNiA2cy0yLjY5IDYtNiA2LTYtMi42OS02LTYgMi42OS02IDYtNiIvPjwvZz48L2c+PC9zdmc+')] opacity-30"></div>
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <Overview data={data} />;
+      case 'sessions':
+        return <Sessions data={data} />;
+      case 'metrics':
+        return <Metrics data={data} />;
+      case 'participants':
+        return <Participants data={data} />;
+      case 'devices':
+        return <DeviceComparison data={data} />;
+      case 'methodology':
+        return <Definitions />;
+      default:
+        return <Overview data={data} />;
+    }
+  };
 
-      <div className="relative container mx-auto px-4 py-8 max-w-7xl">
-        <header className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                Biometric Study 1: Sound and Breath Study
-              </h1>
-              <div className="text-sm text-slate-600 space-y-1">
-                <p className="font-medium">Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
-                <p>Location: The KINN, Venice</p>
-                <p>Contributors: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
-              </div>
-            </div>
+  return (
+    <div className="min-h-screen pb-32 relative">
+      <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
+        <header className="mb-12 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#333430' }}>
+            Biometric Study 1
+          </h1>
+          <p className="text-xl md:text-2xl mb-6" style={{ color: '#50604F' }}>
+            Sound and Breath Study
+          </p>
+          <div className="glass-panel inline-block px-8 py-4 text-sm" style={{ color: '#333430' }}>
+            <p className="font-medium mb-1">Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
+            <p className="opacity-75">Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
           </div>
         </header>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6 bg-white/80 backdrop-blur-sm border border-slate-200 p-1 rounded-lg shadow-sm">
-            <TabsTrigger
-              value="overview"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
-            >
-              Overview
-            </TabsTrigger>
-            <TabsTrigger
-              value="sessions"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
-            >
-              Sessions
-            </TabsTrigger>
-            <TabsTrigger
-              value="metrics"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
-            >
-              Metrics
-            </TabsTrigger>
-            <TabsTrigger
-              value="participants"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
-            >
-              Participants
-            </TabsTrigger>
-            <TabsTrigger
-              value="devices"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
-            >
-              Devices
-            </TabsTrigger>
-            <TabsTrigger
-              value="definitions"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
-            >
-              Definitions
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview" className="mt-6">
-            <Overview data={data} />
-          </TabsContent>
-
-          <TabsContent value="sessions" className="mt-6">
-            <Sessions data={data} />
-          </TabsContent>
-
-          <TabsContent value="metrics" className="mt-6">
-            <Metrics data={data} />
-          </TabsContent>
-
-          <TabsContent value="participants" className="mt-6">
-            <Participants data={data} />
-          </TabsContent>
-
-          <TabsContent value="devices" className="mt-6">
-            <DeviceComparison data={data} />
-          </TabsContent>
-
-          <TabsContent value="definitions" className="mt-6">
-            <Definitions />
-          </TabsContent>
-        </Tabs>
+        <div className="mb-8">
+          {renderTabContent()}
+        </div>
       </div>
+
+      <nav
+        className="fixed bottom-0 left-0 right-0 z-50 glass-panel mx-4 mb-4 rounded-2xl"
+        style={{ maxWidth: '1400px', marginLeft: 'auto', marginRight: 'auto' }}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <div className="grid grid-cols-6 gap-2 p-2">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`nav-tab ${isActive ? 'active' : ''}`}
+                aria-label={tab.label}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                <Icon size={20} strokeWidth={2} />
+                <span className="text-xs font-medium">{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
     </div>
   );
 }

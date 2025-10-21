@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts';
+import { LineChart, Line, BarChart, Bar, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { colors, metricLabels, calculateImprovement } from '../lib/designSystem';
 
 export default function Metrics({ data }) {
   const calculateMetrics = () => {
@@ -15,10 +15,12 @@ export default function Metrics({ data }) {
       if (validData.length > 0) {
         const preAvg = validData.reduce((sum, s) => sum + s[`pre_${metric}`], 0) / validData.length;
         const postAvg = validData.reduce((sum, s) => sum + s[`post_${metric}`], 0) / validData.length;
+        const improvement = calculateImprovement(preAvg, postAvg, metric);
 
         improvements[metric] = {
           pre: preAvg,
           post: postAvg,
+          change: improvement,
           count: validData.length
         };
       }
@@ -30,29 +32,33 @@ export default function Metrics({ data }) {
   const improvements = calculateMetrics();
 
   const radarData = Object.entries(improvements).map(([metric, values]) => ({
-    metric: metric.charAt(0).toUpperCase() + metric.slice(1),
-    Pre: parseFloat(values.pre.toFixed(2)),
-    Post: parseFloat(values.post.toFixed(2))
-  }));
-
-  const comparisonData = Object.entries(improvements).map(([metric, values]) => ({
-    metric: metric.charAt(0).toUpperCase() + metric.slice(1),
+    metric: metricLabels[metric],
     Pre: parseFloat(values.pre.toFixed(2)),
     Post: parseFloat(values.post.toFixed(2)),
-    Change: parseFloat((values.post - values.pre).toFixed(2))
+    fullMark: 5
+  }));
+
+  const percentChangeData = Object.entries(improvements).map(([metric, values]) => ({
+    name: metricLabels[metric],
+    change: parseFloat(values.change.toFixed(1)),
+    color: colors.metrics[metric],
+    n: values.count
   }));
 
   const sessionTrends = Object.entries(data.sessions).map(([sessionKey, sessionData], idx) => {
     const metrics = {};
     ['emotional', 'energy', 'clarity', 'spiritual'].forEach(metric => {
-      const validData = sessionData.filter(s => s[`post_${metric}`] !== null);
+      const validData = sessionData.filter(s => s[`post_${metric}`] !== null && s[`pre_${metric}`] !== null);
       if (validData.length > 0) {
-        metrics[metric] = validData.reduce((sum, s) => sum + s[`post_${metric}`], 0) / validData.length;
+        const preAvg = validData.reduce((sum, s) => sum + s[`pre_${metric}`], 0) / validData.length;
+        const postAvg = validData.reduce((sum, s) => sum + s[`post_${metric}`], 0) / validData.length;
+        const change = calculateImprovement(preAvg, postAvg, metric);
+        metrics[metric] = change;
       }
     });
 
     return {
-      session: `S${idx + 1}`,
+      session: `Session ${idx + 1}`,
       Emotional: metrics.emotional || 0,
       Energy: metrics.energy || 0,
       Clarity: metrics.clarity || 0,
@@ -60,13 +66,16 @@ export default function Metrics({ data }) {
     };
   });
 
-  const CustomTooltip = ({ active, payload }) => {
+  const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-white p-3 border border-slate-300 rounded-lg shadow-lg">
+        <div className="glass-panel p-4 shadow-xl">
+          <p className="font-semibold mb-2" style={{ color: colors.deepCharcoal }}>
+            {label}
+          </p>
           {payload.map((entry, index) => (
-            <p key={index} style={{ color: entry.color }} className="text-sm font-medium">
-              {entry.name}: {typeof entry.value === 'number' ? entry.value.toFixed(2) : entry.value}
+            <p key={index} className="text-sm" style={{ color: entry.color }}>
+              {entry.name}: {typeof entry.value === 'number' ? `${entry.value.toFixed(1)}${entry.name === 'change' ? '%' : ''}` : entry.value}
             </p>
           ))}
         </div>
@@ -75,136 +84,188 @@ export default function Metrics({ data }) {
     return null;
   };
 
+  const CustomDot = (props) => {
+    const { cx, cy } = props;
+    return (
+      <circle
+        cx={cx}
+        cy={cy}
+        r={4}
+        fill={colors.accentRed}
+        stroke="white"
+        strokeWidth={2}
+        style={{ filter: 'drop-shadow(0 0 4px rgba(245, 59, 87, 0.4))' }}
+      />
+    );
+  };
+
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
-          <CardHeader>
-            <CardTitle className="text-xl text-blue-600">Overall Pre vs Post Comparison</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
-              <RadarChart data={radarData}>
-                <PolarGrid stroke="#cbd5e1" />
-                <PolarAngleAxis
-                  dataKey="metric"
-                  tick={{ fill: '#475569', fontSize: 12, fontWeight: 600 }}
-                />
-                <PolarRadiusAxis angle={90} domain={[0, 5]} tick={{ fill: '#64748b', fontSize: 10 }} />
-                <Radar
-                  name="Pre-Session"
-                  dataKey="Pre"
-                  stroke="#3b82f6"
-                  fill="#3b82f6"
-                  fillOpacity={0.3}
-                  strokeWidth={2}
-                />
-                <Radar
-                  name="Post-Session"
-                  dataKey="Post"
-                  stroke="#8b5cf6"
-                  fill="#8b5cf6"
-                  fillOpacity={0.3}
-                  strokeWidth={2}
-                />
-                <Legend wrapperStyle={{ fontSize: '14px', fontWeight: 600 }} />
-                <Tooltip content={<CustomTooltip />} />
-              </RadarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
+    <div className="space-y-8">
+      <section className="glass-card">
+        <h2 className="section-header">Overall Pre vs Post Comparison</h2>
+        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+          Radial visualization showing average pre-session and post-session values across all metrics.
+        </p>
+        <ResponsiveContainer width="100%" height={400}>
+          <RadarChart data={radarData}>
+            <PolarGrid stroke={colors.cloudGrey} strokeWidth={1} />
+            <PolarAngleAxis
+              dataKey="metric"
+              tick={{ fill: colors.deepCharcoal, fontSize: 14, fontWeight: 500 }}
+            />
+            <PolarRadiusAxis
+              angle={90}
+              domain={[0, 5]}
+              tick={{ fill: colors.forestMoss, fontSize: 11 }}
+            />
+            <Radar
+              name="Pre-Session"
+              dataKey="Pre"
+              stroke={colors.skyBlue}
+              fill={colors.skyBlue}
+              fillOpacity={0.4}
+              strokeWidth={3}
+            />
+            <Radar
+              name="Post-Session"
+              dataKey="Post"
+              stroke={colors.accentRed}
+              fill={colors.accentRed}
+              fillOpacity={0.3}
+              strokeWidth={3}
+            />
+            <Legend
+              wrapperStyle={{ paddingTop: '20px' }}
+              formatter={(value) => (
+                <span style={{ color: colors.deepCharcoal, fontWeight: 500 }}>{value}</span>
+              )}
+            />
+            <Tooltip content={<CustomTooltip />} />
+          </RadarChart>
+        </ResponsiveContainer>
+      </section>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-purple-200">
-          <CardHeader>
-            <CardTitle className="text-xl text-purple-600">Metric Changes</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={350}>
-              <BarChart data={comparisonData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis
-                  dataKey="metric"
-                  tick={{ fill: '#475569', fontSize: 11, fontWeight: 600 }}
-                  angle={-15}
-                  textAnchor="end"
-                  height={80}
+      <section className="glass-card">
+        <h2 className="section-header">Session Progression</h2>
+        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+          Percent change from pre to post across sessions. Flowing lines represent the evolution of each metric.
+        </p>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={sessionTrends} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
+            <XAxis
+              dataKey="session"
+              tick={{ fill: colors.deepCharcoal, fontSize: 12 }}
+              stroke={colors.forestMoss}
+            />
+            <YAxis
+              tick={{ fill: colors.deepCharcoal, fontSize: 12 }}
+              stroke={colors.forestMoss}
+              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend
+              wrapperStyle={{ paddingTop: '10px' }}
+              formatter={(value) => (
+                <span style={{ color: colors.deepCharcoal, fontWeight: 500 }}>{value}</span>
+              )}
+            />
+            <Line
+              type="monotone"
+              dataKey="Emotional"
+              stroke={colors.metrics.emotional}
+              strokeWidth={3}
+              dot={<CustomDot />}
+              activeDot={{ r: 6 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="Energy"
+              stroke={colors.metrics.energy}
+              strokeWidth={3}
+              dot={<CustomDot />}
+              activeDot={{ r: 6 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="Clarity"
+              stroke={colors.metrics.clarity}
+              strokeWidth={3}
+              dot={<CustomDot />}
+              activeDot={{ r: 6 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="Spiritual"
+              stroke={colors.metrics.spiritual}
+              strokeWidth={3}
+              dot={<CustomDot />}
+              activeDot={{ r: 6 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </section>
+
+      <section className="glass-card">
+        <h2 className="section-header">Percent Change by Metric</h2>
+        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+          Average percent improvement (or reduction for tension/stress) across all sessions.
+        </p>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={percentChangeData} margin={{ top: 10, right: 30, left: 0, bottom: 60 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
+            <XAxis
+              dataKey="name"
+              tick={{ fill: colors.deepCharcoal, fontSize: 11 }}
+              angle={-45}
+              textAnchor="end"
+              height={80}
+              stroke={colors.forestMoss}
+            />
+            <YAxis
+              tick={{ fill: colors.deepCharcoal, fontSize: 12 }}
+              stroke={colors.forestMoss}
+              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Bar
+              dataKey="change"
+              radius={[8, 8, 0, 0]}
+            >
+              {percentChangeData.map((entry, index) => (
+                <rect key={`cell-${index}`} fill={entry.color} opacity={0.8} />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </section>
+
+      <section className="glass-card">
+        <h2 className="section-header">Statistical Summary</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Object.entries(improvements).map(([metric, values]) => (
+            <div key={metric} className="p-4 rounded-lg" style={{ backgroundColor: `${colors.metrics[metric]}15` }}>
+              <div className="flex items-center gap-2 mb-2">
+                <div
+                  className="data-point"
+                  style={{ backgroundColor: colors.metrics[metric] }}
                 />
-                <YAxis tick={{ fill: '#64748b', fontSize: 10 }} domain={[0, 5]} />
-                <Tooltip content={<CustomTooltip />} />
-                <Legend wrapperStyle={{ fontSize: '14px', fontWeight: 600 }} />
-                <Bar dataKey="Pre" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="Post" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
-
-      <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
-        <CardHeader>
-          <CardTitle className="text-xl text-blue-600">Session Progression</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={400}>
-            <LineChart data={sessionTrends}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="session" tick={{ fill: '#475569', fontSize: 12, fontWeight: 600 }} />
-              <YAxis tick={{ fill: '#64748b', fontSize: 10 }} domain={[0, 5]} />
-              <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: '14px', fontWeight: 600 }} />
-              <Line type="monotone" dataKey="Emotional" stroke="#3b82f6" strokeWidth={3} dot={{ r: 5 }} />
-              <Line type="monotone" dataKey="Energy" stroke="#8b5cf6" strokeWidth={3} dot={{ r: 5 }} />
-              <Line type="monotone" dataKey="Clarity" stroke="#06b6d4" strokeWidth={3} dot={{ r: 5 }} />
-              <Line type="monotone" dataKey="Spiritual" stroke="#a855f7" strokeWidth={3} dot={{ r: 5 }} />
-            </LineChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card>
-
-      <Card className="bg-white/80 backdrop-blur-sm border-purple-200">
-        <CardHeader>
-          <CardTitle className="text-xl text-purple-600">Detailed Metrics Table</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b-2 border-slate-300 bg-slate-50">
-                  <th className="text-left p-3 font-semibold text-slate-700">Metric</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Pre-Session Avg</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Post-Session Avg</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Change</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Sample Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(improvements).map(([metric, values], idx) => {
-                  const change = values.post - values.pre;
-                  const changePercent = ((change / values.pre) * 100).toFixed(1);
-                  const isPositive = (metric === 'tension' || metric === 'stress') ? change < 0 : change > 0;
-
-                  return (
-                    <tr
-                      key={metric}
-                      className={`border-b border-slate-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}
-                    >
-                      <td className="p-3 font-medium text-slate-800">
-                        {metric.charAt(0).toUpperCase() + metric.slice(1)}
-                      </td>
-                      <td className="text-center p-3 text-slate-700">{values.pre.toFixed(2)}</td>
-                      <td className="text-center p-3 text-slate-700">{values.post.toFixed(2)}</td>
-                      <td className={`text-center p-3 font-semibold ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
-                        {change > 0 ? '+' : ''}{change.toFixed(2)} ({isPositive ? '+' : ''}{changePercent}%)
-                      </td>
-                      <td className="text-center p-3 text-slate-700">{values.count}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
+                <h3 className="font-semibold" style={{ color: colors.deepCharcoal }}>
+                  {metricLabels[metric]}
+                </h3>
+              </div>
+              <div className="space-y-1 text-sm" style={{ color: colors.deepCharcoal }}>
+                <p>Pre-session avg: {values.pre.toFixed(2)}</p>
+                <p>Post-session avg: {values.post.toFixed(2)}</p>
+                <p className="font-semibold" style={{ color: colors.accentRed }}>
+                  Change: {values.change > 0 ? '+' : ''}{values.change.toFixed(1)}%
+                </p>
+                <p className="text-xs opacity-70">n = {values.count} responses</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
