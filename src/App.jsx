@@ -4,6 +4,8 @@ import Overview from './components/Overview';
 import Sessions from './components/Sessions';
 import Metrics from './components/Metrics';
 import Participants from './components/Participants';
+import DeviceComparison from './components/DeviceComparison';
+import Definitions from './components/Definitions';
 import data from './data/processed-data.json';
 
 export default function App() {
@@ -30,30 +32,42 @@ export default function App() {
         </header>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 bg-white/80 backdrop-blur-sm border border-slate-200 p-1 rounded-lg shadow-sm">
+          <TabsList className="grid w-full grid-cols-6 bg-white/80 backdrop-blur-sm border border-slate-200 p-1 rounded-lg shadow-sm">
             <TabsTrigger
               value="overview"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
             >
               Overview
             </TabsTrigger>
             <TabsTrigger
               value="sessions"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
             >
               Sessions
             </TabsTrigger>
             <TabsTrigger
               value="metrics"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
             >
               Metrics
             </TabsTrigger>
             <TabsTrigger
               value="participants"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
             >
               Participants
+            </TabsTrigger>
+            <TabsTrigger
+              value="devices"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
+            >
+              Devices
+            </TabsTrigger>
+            <TabsTrigger
+              value="definitions"
+              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all text-sm"
+            >
+              Definitions
             </TabsTrigger>
           </TabsList>
 
@@ -71,6 +85,14 @@ export default function App() {
 
           <TabsContent value="participants" className="mt-6">
             <Participants data={data} />
+          </TabsContent>
+
+          <TabsContent value="devices" className="mt-6">
+            <DeviceComparison data={data} />
+          </TabsContent>
+
+          <TabsContent value="definitions" className="mt-6">
+            <Definitions />
           </TabsContent>
         </Tabs>
       </div>

@@ -4,10 +4,30 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Badge } from './ui/badge';
 
 const sessionDescriptions = {
-  session_1: { title: 'Session 1', subtitle: 'Baseline with Sound and Breath', date: '8/26/25' },
-  session_2: { title: 'Session 2', subtitle: 'Sound, Breath, and Sound Bowls', date: '9/2/25' },
-  session_3: { title: 'Session 3', subtitle: 'Sound, Breath, and Binaural Beats', date: '9/9/25' },
-  session_4: { title: 'Session 4', subtitle: 'Sound, Breath, and Movement', date: '9/16/25' }
+  session_1: {
+    title: 'Session 1',
+    subtitle: 'Baseline with Sound and Breath',
+    date: '8/26/25',
+    description: 'Initial session establishing baseline measurements. Participants engaged in ancient yogic breathwork (two inhales, one exhale) accompanied by live violin music. This session focused on introducing the breathwork technique and creating a foundation for comparison.'
+  },
+  session_2: {
+    title: 'Session 2',
+    subtitle: 'Sound, Breath, and Sound Bowls',
+    date: '9/2/25',
+    description: 'Building on Session 1, this session added Tibetan singing bowls to the soundscape. The combination of breathwork, violin, and resonant bowl frequencies created a multi-layered sonic environment designed to enhance relaxation and emotional release.'
+  },
+  session_3: {
+    title: 'Session 3',
+    subtitle: 'Sound, Breath, and Binaural Beats',
+    date: '9/9/25',
+    description: 'Introduced binaural beats through headphones to participants. These precisely calibrated audio frequencies were designed to entrain brainwaves and deepen meditative states while maintaining the core breathwork practice.'
+  },
+  session_4: {
+    title: 'Session 4',
+    subtitle: 'Sound, Breath, and Movement',
+    date: '9/16/25',
+    description: 'Final session incorporated gentle movement before breathwork to help participants release physical tension and arrive more fully in their bodies. This preparatory movement enhanced the breathwork experience and emotional processing.'
+  }
 };
 
 const ratingLabels = {
@@ -84,6 +104,9 @@ function SessionView({ sessionKey, sessionData }) {
         </div>
       </CardHeader>
       <CardContent>
+        <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
+          <p className="text-slate-700 leading-relaxed">{desc.description}</p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <h3 className="text-lg font-semibold text-slate-800 mb-4">Aggregate Pre/Post Comparison</h3>

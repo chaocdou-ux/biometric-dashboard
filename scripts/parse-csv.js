@@ -64,20 +64,32 @@ function parseBaseline() {
   }).filter(Boolean);
 }
 
+function categorizeDevice(device) {
+  if (!device) return 'Other';
+  const deviceLower = device.toLowerCase();
+  if (deviceLower.includes('apple') || deviceLower.includes('watch')) return 'Apple Watch';
+  if (deviceLower.includes('oura') || deviceLower.includes('ring')) return 'Oura Ring';
+  if (deviceLower.includes('muse')) return 'Muse';
+  return 'Other';
+}
+
 function parseCombinedSessions() {
-  const file = join(csvDir, 'Biometric 1_Combined_Participants.csv');
+  const file = join(csvDir, 'Biometric 1_Combined_Participants copy.csv');
   const content = readFileSync(file, 'utf-8');
   const records = parse(content, { columns: true, skip_empty_lines: true, relax_column_count: true });
 
   return records.map(row => {
     const session = row['Session'];
     const participant = row['Participant'];
+    const device = row['Device'];
     if (!participant || participant === 'N/A' || !session) return null;
 
     return {
       session,
       timestamp: row['Timestamp'],
       participant,
+      device,
+      device_category: categorizeDevice(device),
 
       pre_emotional_words: row['Please describe your current emotional state in one to three words (e.g., calm, anxious, joyful)'],
       pre_emotional: parseRating(row['How would you rate your emotional state right now? ']),
