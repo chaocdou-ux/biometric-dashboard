@@ -6,6 +6,19 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const csvDir = join(__dirname, '../Biometric CSVs');
 
+const participantMap = new Map();
+let participantCounter = 1;
+
+function getParticipantNumber(name) {
+  if (!name || name === 'N/A' || name.trim() === '') return null;
+
+  const cleanName = name.trim().toLowerCase();
+  if (!participantMap.has(cleanName)) {
+    participantMap.set(cleanName, `Participant ${participantCounter++}`);
+  }
+  return participantMap.get(cleanName);
+}
+
 function parseRating(value) {
   if (!value) return null;
   const mapping = {
@@ -48,8 +61,9 @@ function parseBaseline() {
   const records = parse(content, { columns: true, skip_empty_lines: true });
 
   return records.map(row => {
-    const participant = row['Please add your first and last name'];
-    if (!participant || participant === 'N/A') return null;
+    const name = row['Please add your first and last name'];
+    const participant = getParticipantNumber(name);
+    if (!participant) return null;
 
     return {
       participant,
@@ -73,21 +87,23 @@ function categorizeDevice(device) {
   return 'Other';
 }
 
-function parseCombinedSessions() {
-  const file = join(csvDir, 'Biometric 1_Combined_Participants copy.csv');
+function parseSession(filename) {
+  const file = join(csvDir, filename);
   const content = readFileSync(file, 'utf-8');
   const records = parse(content, { columns: true, skip_empty_lines: true, relax_column_count: true });
 
   return records.map(row => {
-    const session = row['Session'];
-    const participant = row['Participant'];
-    const device = row['Device'];
-    if (!participant || participant === 'N/A' || !session) return null;
+    const name = row['Please add your first and last name'];
+    const participant = getParticipantNumber(name);
+    if (!participant) return null;
+
+    const device = participantMap.has(name.trim().toLowerCase())
+      ? (baseline.find(b => b.participant === participant)?.device || null)
+      : null;
 
     return {
-      session,
-      timestamp: row['Timestamp'],
       participant,
+      timestamp: row['Timestamp'],
       device,
       device_category: categorizeDevice(device),
 
@@ -125,14 +141,20 @@ function parseCombinedSessions() {
 }
 
 const baseline = parseBaseline();
-const allSessions = parseCombinedSessions();
 
 const sessions = {
-  session_1: allSessions.filter(s => s.session === 'Session 1'),
-  session_2: allSessions.filter(s => s.session === 'Session 2'),
-  session_3: allSessions.filter(s => s.session === 'Session 3'),
-  session_4: allSessions.filter(s => s.session === 'Session 4')
+  session_1: parseSession('Biometric 1_Session 1 - Questionnaire.csv'),
+  session_2: parseSession('Biometric 1_Session 2 - Questionnaire.csv'),
+  session_3: parseSession('Biometric 1_Session 3 - Questionnaire.csv'),
+  session_4: parseSession('Biometric 1_Session 4 - Questionnaire.csv')
 };
+
+const allSessions = [
+  ...sessions.session_1.map(s => ({ ...s, session: 'Session 1' })),
+  ...sessions.session_2.map(s => ({ ...s, session: 'Session 2' })),
+  ...sessions.session_3.map(s => ({ ...s, session: 'Session 3' })),
+  ...sessions.session_4.map(s => ({ ...s, session: 'Session 4' }))
+];
 
 const data = {
   baseline,
@@ -145,6 +167,7 @@ writeFileSync(outputPath, JSON.stringify(data, null, 2));
 
 console.log('✅ CSV data parsed successfully!');
 console.log(`📊 Total baseline participants: ${baseline.length}`);
+console.log(`👥 Total unique participants: ${participantMap.size}`);
 console.log(`📈 Session 1: ${sessions.session_1.length} entries`);
 console.log(`📈 Session 2: ${sessions.session_2.length} entries`);
 console.log(`📈 Session 3: ${sessions.session_3.length} entries`);
