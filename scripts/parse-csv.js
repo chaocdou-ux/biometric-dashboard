@@ -6,19 +6,6 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const csvDir = join(__dirname, '../Biometric CSVs');
 
-const participantMap = new Map();
-let participantCounter = 1;
-
-function getParticipantNumber(name) {
-  if (!name || name === 'N/A' || name.trim() === '') return null;
-
-  const cleanName = name.trim().toLowerCase();
-  if (!participantMap.has(cleanName)) {
-    participantMap.set(cleanName, `Participant ${participantCounter++}`);
-  }
-  return participantMap.get(cleanName);
-}
-
 function parseRating(value) {
   if (!value) return null;
   const mapping = {
@@ -61,9 +48,8 @@ function parseBaseline() {
   const records = parse(content, { columns: true, skip_empty_lines: true });
 
   return records.map(row => {
-    const name = row['Please add your first and last name'];
-    const participant = getParticipantNumber(name);
-    if (!participant) return null;
+    const participant = row['Please add your first and last name'];
+    if (!participant || participant.trim() === '') return null;
 
     return {
       participant,
@@ -82,79 +68,80 @@ function categorizeDevice(device) {
   if (!device) return 'Other';
   const deviceLower = device.toLowerCase();
   if (deviceLower.includes('apple') || deviceLower.includes('watch')) return 'Apple Watch';
-  if (deviceLower.includes('oura') || deviceLower.includes('ring')) return 'Oura Ring';
-  if (deviceLower.includes('muse')) return 'Muse';
+  if (deviceLower.includes('oura') || deviceLower.includes('ring')) return 'Other';
+  if (deviceLower.includes('muse')) return 'Other';
   return 'Other';
 }
 
-function parseSession(filename) {
-  const file = join(csvDir, filename);
+function parseCombinedSessions() {
+  const file = join(csvDir, 'Biometric 1_Combined_Participants.csv');
   const content = readFileSync(file, 'utf-8');
-  const records = parse(content, { columns: true, skip_empty_lines: true, relax_column_count: true });
+  const records = parse(content, { columns: false, skip_empty_lines: true, relax_column_count: true });
 
-  return records.map(row => {
-    const name = row['Please add your first and last name'];
-    const participant = getParticipantNumber(name);
-    if (!participant) return null;
+  // Skip header row
+  const dataRows = records.slice(1);
 
-    const device = participantMap.has(name.trim().toLowerCase())
-      ? (baseline.find(b => b.participant === participant)?.device || null)
-      : null;
+  return dataRows.map(row => {
+    const sessionNum = row[0];
+    const participant = row[2];
+    if (!participant || !sessionNum) return null;
 
     return {
+      session: sessionNum,
       participant,
-      timestamp: row['Timestamp'],
-      device,
-      device_category: categorizeDevice(device),
+      timestamp: row[1],
 
-      pre_emotional_words: row['Please describe your current emotional state in one to three words (e.g., calm, anxious, joyful)'],
-      pre_emotional: parseRating(row['How would you rate your emotional state right now? ']),
-      pre_energy: parseRating(row['How would you rate your physical energy right now? ']),
-      pre_tension: parseRating(row['How would you rate your body tension right now? ']),
-      pre_stress: parseRating(row['How would you rate your stress level right now? ']),
-      pre_clarity: parseRating(row['How would you rate your mental clarity right now?']),
-      pre_spiritual: parseRating(row['How would you rate your spiritual connection right now?']),
-      pre_heart_rate: parseHeartRate(row['Heart Rate']),
-      pre_spo2: parseHeartRate(row['SpO2 (Blood Oxygen Saturation)']),
-      pre_o2: parseHeartRate(row['O2 - Oxygen Level']),
-      pre_rhr: parseHeartRate(row['RHR - Resting Heart Rate']),
+      pre_emotional_words: row[3],
+      pre_emotional: parseRating(row[4]),
+      pre_energy: parseRating(row[5]),
+      pre_tension: parseRating(row[6]),
+      pre_stress: parseRating(row[7]),
+      pre_clarity: parseRating(row[8]),
+      pre_spiritual: parseRating(row[9]),
+      pre_heart_rate: parseHeartRate(row[10]),
+      pre_spo2: parseHeartRate(row[11]),
+      pre_o2: parseHeartRate(row[15]),
+      pre_rhr: parseHeartRate(row[16]),
 
-      post_emotional_words: row['Please describe your current emotional state in one to three words (e.g., calm, anxious, joyful).1'],
-      post_emotional: parseRating(row['How would you rate your emotional state right now? .1']),
-      post_energy: parseRating(row['How would you rate your physical energy right now? .1']),
-      post_tension: parseRating(row['How would you rate your body tension right now? .1']),
-      post_stress: parseRating(row['How would you rate your stress level right now? .1']),
-      post_clarity: parseRating(row['How would you rate your mental clarity right now?.1']),
-      post_spiritual: parseRating(row['How would you rate your spiritual connection right now?.1']),
-      post_heart_rate: parseHeartRate(row['Heart Rate.1']),
-      post_spo2: parseHeartRate(row['SpO2 (Blood Oxygen Saturation).1']),
-      post_o2: parseHeartRate(row['O2 - Oxygen Level.1']),
-      post_rhr: parseHeartRate(row['RHR - Resting Heart Rate.1']),
+      post_emotional_words: row[20],
+      post_emotional: parseRating(row[21]),
+      post_energy: parseRating(row[22]),
+      post_tension: parseRating(row[23]),
+      post_stress: parseRating(row[24]),
+      post_clarity: parseRating(row[25]),
+      post_spiritual: parseRating(row[26]),
+      post_heart_rate: parseHeartRate(row[27]),
+      post_spo2: parseHeartRate(row[28]),
+      post_o2: parseHeartRate(row[32]),
+      post_rhr: parseHeartRate(row[33]),
 
-      sensations: parseArray(row['Which physical sensations did you experience during the session? (please select all that apply)']),
-      experience: parseArray(row['How would you describe your experience during the session? (please select all that apply)']),
-      post_feelings: parseArray(row['How do you feel now, immediately following the session? (please select all that apply)']),
-      violin_influence: parseArray(row['How did the live violin music influence you during the session? (please select all that apply)  ']),
-      comments: row["If you'd like, please share a few words about your overall experience of this session and anything you want us to know. "]
+      sensations: parseArray(row[37]),
+      experience: parseArray(row[38]),
+      post_feelings: parseArray(row[39]),
+      violin_influence: parseArray(row[40]),
+      comments: row[41]
     };
   }).filter(Boolean);
 }
 
 const baseline = parseBaseline();
+const allSessions = parseCombinedSessions();
+
+// Add device information to sessions from baseline
+allSessions.forEach(session => {
+  const participantBaseline = baseline.find(b => b.participant === session.participant);
+  if (participantBaseline) {
+    session.device = participantBaseline.device;
+    session.device_category = categorizeDevice(participantBaseline.device);
+  }
+});
 
 const sessions = {
-  session_1: parseSession('Biometric 1_Session 1 - Questionnaire.csv'),
-  session_2: parseSession('Biometric 1_Session 2 - Questionnaire.csv'),
-  session_3: parseSession('Biometric 1_Session 3 - Questionnaire.csv'),
-  session_4: parseSession('Biometric 1_Session 4 - Questionnaire.csv')
+  session_1: allSessions.filter(s => s.session === 'Session 1'),
+  session_2: allSessions.filter(s => s.session === 'Session 2'),
+  session_3: allSessions.filter(s => s.session === 'Session 3'),
+  session_4: allSessions.filter(s => s.session === 'Session 4')
 };
-
-const allSessions = [
-  ...sessions.session_1.map(s => ({ ...s, session: 'Session 1' })),
-  ...sessions.session_2.map(s => ({ ...s, session: 'Session 2' })),
-  ...sessions.session_3.map(s => ({ ...s, session: 'Session 3' })),
-  ...sessions.session_4.map(s => ({ ...s, session: 'Session 4' }))
-];
 
 const data = {
   baseline,
@@ -167,7 +154,6 @@ writeFileSync(outputPath, JSON.stringify(data, null, 2));
 
 console.log('✅ CSV data parsed successfully!');
 console.log(`📊 Total baseline participants: ${baseline.length}`);
-console.log(`👥 Total unique participants: ${participantMap.size}`);
 console.log(`📈 Session 1: ${sessions.session_1.length} entries`);
 console.log(`📈 Session 2: ${sessions.session_2.length} entries`);
 console.log(`📈 Session 3: ${sessions.session_3.length} entries`);
