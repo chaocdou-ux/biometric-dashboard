@@ -2,945 +2,2327 @@
   "baseline": [
     {
       "participant": "Participant 1",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
-    },
-    {
-      "participant": "Participant 2",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
-    },
-    {
-      "participant": "Participant 3",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
-    },
-    {
-      "participant": "Participant 4",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
-    },
-    {
-      "participant": "Participant 5",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
+      "timestamp": "8/25/2025 21:50",
+      "device": "Ring Conn",
+      "activity_level": "Moderately active (regular exercise 3–4 days/week)",
+      "device_usage": [
+        "Heart rate variability",
+        "Sleep tracking",
+        "Stress or mindfulness",
+        "Oxygen saturation (SpO₂)"
+      ],
+      "baseline_stress": "Moderate stress",
+      "baseline_stress_level": 3
     },
     {
       "participant": "Participant 6",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
-    },
-    {
-      "participant": "Participant 7",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
+      "timestamp": "8/25/2025 21:50",
+      "device": "Apple Watch",
+      "activity_level": "Lightly active (light exercise or daily walking)",
+      "device_usage": [
+        "Steps / daily movement",
+        "Activity tracking / workouts",
+        "Stress or mindfulness"
+      ],
+      "baseline_stress": "Moderate stress",
+      "baseline_stress_level": 3
     },
     {
       "participant": "Participant 8",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
+      "timestamp": "8/25/2025 21:57",
+      "device": "Apple Watch",
+      "activity_level": "Lightly active (light exercise or daily walking)",
+      "device_usage": [
+        "Steps / daily movement",
+        "Heart rate",
+        "Activity tracking / workouts",
+        "Stress or mindfulness"
+      ],
+      "baseline_stress": "Moderate stress",
+      "baseline_stress_level": 3
     },
     {
-      "participant": "Participant 9",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
+      "participant": "Participant 4",
+      "timestamp": "8/26/2025 7:27",
+      "device": "Apple Watch",
+      "activity_level": "Moderately active (regular exercise 3–4 days/week)",
+      "device_usage": [
+        "Steps / daily movement",
+        "Heart rate",
+        "Sleep tracking"
+      ],
+      "baseline_stress": "Moderate stress",
+      "baseline_stress_level": 3
     },
     {
-      "participant": "Participant 10",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
+      "participant": "Participant 3",
+      "timestamp": "8/26/2025 8:21",
+      "device": "Oura Ring",
+      "activity_level": "Moderately active (regular exercise 3–4 days/week)",
+      "device_usage": [
+        "Steps / daily movement",
+        "Recovery / readiness scores"
+      ],
+      "baseline_stress": "Mild stress",
+      "baseline_stress_level": 2
     },
     {
-      "participant": "Participant 11",
-      "device": "",
-      "activity_level": "",
-      "baseline_stress": ""
+      "participant": "Participant 2",
+      "timestamp": "8/26/2025 8:27",
+      "device": "Oura Ring",
+      "activity_level": "Lightly active (light exercise or daily walking)",
+      "device_usage": [
+        "Heart rate variability",
+        "Sleep tracking",
+        "Stress or mindfulness"
+      ],
+      "baseline_stress": "None",
+      "baseline_stress_level": 1
     },
     {
-      "participant": "Participant 12",
-      "device": "wearable device",
-      "activity_level": "active",
-      "baseline_stress": "moderate"
-    },
-    {
-      "participant": "Participant 13",
-      "device": "wearable device",
-      "activity_level": "active",
-      "baseline_stress": "moderate"
-    },
-    {
-      "participant": "Participant 14",
-      "device": "wearable device",
-      "activity_level": "active",
-      "baseline_stress": "moderate"
-    },
-    {
-      "participant": "Participant 15",
-      "device": "wearable device",
-      "activity_level": "active",
-      "baseline_stress": "moderate"
-    },
-    {
-      "participant": "Participant 16",
-      "device": "wearable device",
-      "activity_level": "active",
-      "baseline_stress": "moderate"
+      "participant": "Participant 5",
+      "timestamp": "9/2/2025 8:29",
+      "device": "Oura Ring",
+      "activity_level": "Very active (hard exercise or physical work most days)",
+      "device_usage": [
+        "Steps / daily movement",
+        "Heart rate",
+        "Heart rate variability",
+        "Sleep tracking",
+        "Recovery / readiness scores"
+      ],
+      "baseline_stress": "High stress",
+      "baseline_stress_level": 4
     }
   ],
   "sessions": {
     "session_1": [
       {
-        "participant": "Participant 1",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 2,
-        "post_energy": 2,
-        "pre_tension": 2,
-        "post_tension": 4,
-        "pre_stress": 4,
-        "post_stress": 4,
-        "pre_clarity": 2,
-        "post_clarity": 2,
-        "pre_spiritual": 4,
-        "post_spiritual": 2,
-        "pre_heart_rate": 66,
-        "post_heart_rate": 72,
-        "sensations": [],
-        "experience": []
-      },
-      {
-        "participant": "Participant 7",
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
+        "participant": "Participant 3",
+        "pre_emotional_words": "Solenn Thircuir ",
         "pre_emotional": 2,
-        "post_emotional": 2,
         "pre_energy": 2,
-        "post_energy": 2,
-        "pre_tension": 4,
-        "post_tension": 4,
+        "pre_tension": 2,
         "pre_stress": 3,
-        "post_stress": 3,
         "pre_clarity": 2,
-        "post_clarity": 2,
         "pre_spiritual": 2,
-        "post_spiritual": 2,
-        "pre_heart_rate": 82,
+        "pre_heart_rate": 78,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 55,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "weight on top of my chest and the shoulders",
+          "Tingling",
+          "Weight on top of my chest and the shoulders",
           "in my belly as well"
         ],
         "experience": [
-          "intense",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 12",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 4,
-        "post_energy": 4,
-        "pre_tension": 2,
-        "post_tension": 2,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 4,
-        "pre_heart_rate": 70,
-        "post_heart_rate": 72,
-        "sensations": [
-          "tingling",
-          "warmth"
+          "Intense",
+          "Emotional"
         ],
-        "experience": [
-          "liberating",
-          "grounding",
-          "energizing"
+        "post_feelings": [
+          "Calm / relaxed",
+          "Grounded"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Emotional"
         ]
       },
       {
-        "participant": "Participant 13",
-        "pre_emotional": 2,
-        "post_emotional": 5,
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
+        "participant": "Participant 7",
+        "pre_emotional_words": "Calm",
+        "pre_emotional": 4,
         "pre_energy": 4,
-        "post_energy": 4,
         "pre_tension": 4,
-        "post_tension": 1,
-        "pre_stress": 4,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling"
-        ],
-        "experience": [
-          "liberating"
-        ]
-      },
-      {
-        "participant": "Participant 14",
-        "pre_emotional": 1,
-        "post_emotional": 5,
-        "pre_energy": 4,
-        "post_energy": 5,
-        "pre_tension": 4,
-        "post_tension": 1,
         "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 2,
-        "post_clarity": 5,
-        "pre_spiritual": null,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "lightheaded"
-        ],
-        "experience": [
-          "strenuous",
-          "stressful",
-          "intense",
-          "energizing"
-        ]
-      },
-      {
-        "participant": "Participant 3",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 4,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 1,
-        "pre_stress": 3,
-        "post_stress": 1,
         "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 2,
-        "post_spiritual": 5,
-        "pre_heart_rate": 72,
-        "post_heart_rate": 63,
-        "sensations": [
-          "tingling",
-          "warmth"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "energizing",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 2",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 4,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 1,
-        "pre_stress": 1,
-        "post_stress": 1,
-        "pre_clarity": 5,
-        "post_clarity": 5,
-        "pre_spiritual": 5,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "hands energized to do healing"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "energizing",
-          "shedding"
-        ]
-      },
-      {
-        "participant": "Participant 4",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 2,
-        "post_tension": 2,
-        "pre_stress": 4,
-        "post_stress": 3,
-        "pre_clarity": 4,
-        "post_clarity": 4,
         "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": 77,
-        "post_heart_rate": 65,
+        "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "lightheaded",
-          "muscle tension",
-          "restlessness",
-          "crying"
+          "Tingling",
+          "Warmth"
         ],
         "experience": [
-          "strenuous",
-          "intense",
-          "grounding",
-          "emotional"
+          "Liberating",
+          "Grounding",
+          "Energizing"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Uplifting",
+          "Emotional"
         ]
       },
       {
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
         "participant": "Participant 6",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 4,
-        "post_tension": 1,
+        "pre_emotional_words": "Light. At peace. ",
+        "pre_emotional": 5,
+        "pre_energy": 5,
+        "pre_tension": 5,
         "pre_stress": 1,
-        "post_stress": 1,
         "pre_clarity": 4,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": 56,
+        "pre_spiritual": 5,
+        "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth"
+        ],
+        "experience": [
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Energizing",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Light / relieved",
+          "Grounded",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Emotional"
+        ]
+      },
+      {
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
+        "participant": "Participant 1",
+        "pre_emotional_words": "Energized Bliss",
+        "pre_emotional": 4,
+        "pre_energy": 5,
+        "pre_tension": 5,
+        "pre_stress": 1,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 63,
+        "pre_spo2": null,
+        "pre_o2": 95,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Hands energized to do healing"
+        ],
+        "experience": [
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Energizing",
+          "Shedding"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded",
+          "Energized",
+          "LFG lol"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Violin always tugs on heart strings"
+        ]
+      },
+      {
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
+        "participant": "Participant 8",
+        "pre_emotional_words": "Calm",
+        "pre_emotional": 4,
+        "pre_energy": 4,
+        "pre_tension": 4,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 5,
+        "pre_heart_rate": null,
+        "pre_spo2": 95,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Lightheaded",
+          "Muscle tension",
+          "Restlessness",
+          "Crying"
+        ],
+        "experience": [
+          "Strenuous",
+          "Intense",
+          "Grounding",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Grounded",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Uplifting",
+          "Emotional",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
+        "participant": "Participant 4",
+        "pre_emotional_words": "Super Calm",
+        "pre_emotional": 5,
+        "pre_energy": 4,
+        "pre_tension": 5,
+        "pre_stress": 1,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
+        "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [],
         "experience": [
-          "grounding",
-          "energizing",
-          "emotional",
-          "opening"
+          "Grounding",
+          "Energizing",
+          "Emotional",
+          "Opening"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded",
+          "Energized"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Uplifting",
+          "Emotional",
+          "Grounding",
+          "Intense",
+          "Different at different parts of the practice"
         ]
       },
       {
-        "participant": "Participant 8",
+        "session": "Session 1",
+        "timestamp": "8/26/2025",
+        "participant": "Participant 2",
+        "pre_emotional_words": "Calm, relaxed",
         "pre_emotional": 4,
-        "post_emotional": 4,
         "pre_energy": 4,
-        "post_energy": 4,
-        "pre_tension": 2,
-        "post_tension": 2,
+        "pre_tension": 4,
         "pre_stress": 1,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 2,
-        "pre_spiritual": 2,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
+        "pre_clarity": 2,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 69,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 63,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "chills",
-          "lightheaded",
-          "muscle tension"
+          "Tingling",
+          "Chills",
+          "Lightheaded",
+          "Muscle tension"
         ],
         "experience": [
-          "intense"
+          "Intense"
+        ],
+        "post_feelings": [
+          "Calm / relaxed"
+        ],
+        "violin_influence": [
+          "Uplifting",
+          "Today it was background and I was hyper focused on the breathing"
         ]
       }
     ],
     "session_2": [
       {
-        "participant": "Participant 9",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 4,
-        "post_energy": 4,
-        "pre_tension": 4,
-        "post_tension": 2,
-        "pre_stress": 4,
-        "post_stress": 4,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 4,
-        "pre_heart_rate": 67,
-        "post_heart_rate": 67,
-        "sensations": [
-          "tingling",
-          "lightheaded"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "energizing"
-        ]
-      },
-      {
-        "participant": "Participant 12",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 4,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 1,
-        "pre_stress": 3,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "chills"
-        ],
-        "experience": [
-          "intense",
-          "energizing"
-        ]
-      },
-      {
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
         "participant": "Participant 7",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 4,
-        "post_energy": 4,
-        "pre_tension": 2,
-        "post_tension": 2,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 2,
-        "post_clarity": 2,
-        "pre_spiritual": 2,
-        "post_spiritual": 2,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "muscle tension"
-        ],
-        "experience": [
-          "intense",
-          "grounding"
-        ]
-      },
-      {
-        "participant": "Participant 10",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 4,
-        "post_tension": 4,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": null,
-        "post_spiritual": null,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "muscle tension",
-          "skull pressure"
-        ],
-        "experience": [
-          "imersive"
-        ]
-      },
-      {
-        "participant": "Participant 2",
+        "pre_emotional_words": "Electric ",
         "pre_emotional": 5,
-        "post_emotional": 5,
-        "pre_energy": 4,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 1,
+        "pre_energy": 5,
+        "pre_tension": 5,
         "pre_stress": 1,
-        "post_stress": 1,
         "pre_clarity": 5,
-        "post_clarity": 5,
         "pre_spiritual": 5,
-        "post_spiritual": 5,
         "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "warmth",
-          "chills",
-          "electricity"
+          "Tingling",
+          "Chills"
         ],
         "experience": [
-          "intense",
-          "energizing",
-          "integration of all parts — shadow",
+          "Intense",
+          "Energizing"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Clear-minded",
+          "Energized"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Uplifting"
+        ]
+      },
+      {
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
+        "participant": "Participant 3",
+        "pre_emotional_words": "Calm and tired ",
+        "pre_emotional": 4,
+        "pre_energy": 4,
+        "pre_tension": 4,
+        "pre_stress": 3,
+        "pre_clarity": 2,
+        "pre_spiritual": 2,
+        "pre_heart_rate": 83,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 57,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Muscle tension"
+        ],
+        "experience": [
+          "Intense",
+          "Grounding"
+        ],
+        "post_feelings": [
+          "Grounded"
+        ],
+        "violin_influence": [
+          "Uplifting",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
+        "participant": "Participant 1",
+        "pre_emotional_words": "Bliss",
+        "pre_emotional": 5,
+        "pre_energy": 5,
+        "pre_tension": 5,
+        "pre_stress": 1,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 68,
+        "pre_spo2": null,
+        "pre_o2": 98,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Chills",
+          "Electricity"
+        ],
+        "experience": [
+          "Intense",
+          "Energizing",
+          "Integration of all parts — shadow",
           "light",
           "body",
           "mind",
           "spirit",
           "emotions"
-        ]
-      },
-      {
-        "participant": "Participant 6",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 4,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 1,
-        "pre_stress": 1,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": 78,
-        "post_heart_rate": 87,
-        "sensations": [
-          "tingling"
         ],
-        "experience": [
-          "liberating",
-          "grounding",
-          "energizing",
-          "emotional"
+        "post_feelings": [
+          "Calm / relaxed",
+          "Clear-minded",
+          "Grounded",
+          "Energized",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Emotional"
         ]
       },
       {
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
         "participant": "Participant 4",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 1,
-        "post_energy": 2,
-        "pre_tension": 4,
-        "post_tension": 4,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 2,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": 75,
-        "post_heart_rate": 64,
-        "sensations": [
-          "tingling",
-          "lightheaded",
-          "muscle tension"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 8",
-        "pre_emotional": 4,
-        "post_emotional": 5,
+        "pre_emotional_words": "Calm and alert",
+        "pre_emotional": 5,
         "pre_energy": 5,
-        "post_energy": 4,
-        "pre_tension": 4,
-        "post_tension": 2,
-        "pre_stress": 3,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 2,
-        "post_spiritual": 5,
+        "pre_tension": 5,
+        "pre_stress": 1,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
         "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "lightheaded",
-          "muscle tension",
-          "restlessness"
+          "Tingling"
         ],
         "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "energizing"
+          "Liberating",
+          "Grounding",
+          "Energizing",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded",
+          "Energized",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Uplifting",
+          "Emotional",
+          "Grounding",
+          "Intense",
+          "The addition of the bowls enhanced my experience!"
         ]
       },
       {
-        "participant": "Participant 11",
-        "pre_emotional": 2,
-        "post_emotional": 2,
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
+        "participant": "Participant 8",
+        "pre_emotional_words": "Peaceful",
+        "pre_emotional": 4,
         "pre_energy": 2,
-        "post_energy": 1,
-        "pre_tension": 4,
-        "post_tension": 4,
-        "pre_stress": null,
-        "post_stress": 3,
-        "pre_clarity": 2,
-        "post_clarity": 4,
-        "pre_spiritual": 2,
-        "post_spiritual": 4,
-        "pre_heart_rate": 72,
+        "pre_tension": 2,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 5,
+        "pre_heart_rate": null,
+        "pre_spo2": 96,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "warmth",
-          "lightheaded",
-          "muscle tension"
+          "Tingling",
+          "Lightheaded",
+          "Muscle tension"
         ],
         "experience": [
-          "strenuous",
-          "intense",
-          "emotional"
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Emotional"
+        ]
+      },
+      {
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
+        "participant": "Participant 2",
+        "pre_emotional_words": "Open, hopeful, inspired ",
+        "pre_emotional": 5,
+        "pre_energy": 4,
+        "pre_tension": 4,
+        "pre_stress": 1,
+        "pre_clarity": 4,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 67,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 58,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Lightheaded",
+          "Muscle tension",
+          "Restlessness"
+        ],
+        "experience": [
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Energizing"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Grounded",
+          "Energized"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 2",
+        "timestamp": "9/2/2025",
+        "participant": "Participant 5",
+        "pre_emotional_words": "Sad, exhausted, relieved ",
+        "pre_emotional": 2,
+        "pre_energy": 1,
+        "pre_tension": 2,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 4,
+        "pre_heart_rate": 70,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 56,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Lightheaded",
+          "Muscle tension"
+        ],
+        "experience": [
+          "Strenuous",
+          "Intense",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Clear-minded",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Emotional"
         ]
       }
     ],
     "session_3": [
       {
-        "participant": "Participant 15",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 2,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 2,
-        "pre_stress": 3,
-        "post_stress": 1,
-        "pre_clarity": 2,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 4,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "lightheaded"
-        ],
-        "experience": [
-          "liberating",
-          "grounding",
-          "energizing",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 2",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 2,
-        "post_energy": 5,
-        "pre_tension": 2,
-        "post_tension": 1,
-        "pre_stress": 3,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "chills"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "energizing",
-          "release"
-        ]
-      },
-      {
-        "participant": "Participant 8",
-        "pre_emotional": 2,
-        "post_emotional": 4,
-        "pre_energy": 4,
-        "post_energy": 2,
-        "pre_tension": 2,
-        "post_tension": 2,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 2,
-        "post_spiritual": 4,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "chills",
-          "lightheaded",
-          "muscle tension",
-          "restlessness"
-        ],
-        "experience": [
-          "intense"
-        ]
-      },
-      {
-        "participant": "Participant 6",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 4,
-        "post_energy": 2,
-        "pre_tension": 2,
-        "post_tension": 1,
+        "session": "Session 3",
+        "timestamp": "9/9/2025",
+        "participant": "Participant 1",
+        "pre_emotional_words": "Peaceful ",
+        "pre_emotional": 5,
+        "pre_energy": 5,
+        "pre_tension": 5,
         "pre_stress": 1,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": 75,
-        "post_heart_rate": 51,
-        "sensations": [
-          "tingling"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 3",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 2,
-        "post_energy": 5,
-        "pre_tension": 4,
-        "post_tension": 2,
-        "pre_stress": 3,
-        "post_stress": 1,
-        "pre_clarity": 2,
-        "post_clarity": 4,
-        "pre_spiritual": 2,
-        "post_spiritual": 5,
-        "pre_heart_rate": 75,
-        "post_heart_rate": 70,
-        "sensations": [
-          "tingling",
-          "warmth"
-        ],
-        "experience": [
-          "liberating",
-          "grounding",
-          "energizing",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 11",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 4,
-        "post_tension": 4,
-        "pre_stress": 3,
-        "post_stress": 4,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 4,
-        "pre_heart_rate": null,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 57,
+        "pre_spo2": null,
+        "pre_o2": 99,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "warmth",
-          "muscle tension",
-          "restlessness"
+          "Tingling",
+          "Warmth",
+          "Chills"
         ],
         "experience": [
-          "intense",
-          "emotional"
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Energizing",
+          "Release"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded",
+          "Energized",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Emotional",
+          "Release of sorrow & grief"
+        ]
+      },
+      {
+        "session": "Session 3",
+        "timestamp": "9/9/2025",
+        "participant": "Participant 2",
+        "pre_emotional_words": "Calm",
+        "pre_emotional": 4,
+        "pre_energy": 2,
+        "pre_tension": 4,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 4,
+        "pre_heart_rate": 69,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 53,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Chills",
+          "Lightheaded",
+          "Muscle tension",
+          "Restlessness"
+        ],
+        "experience": [
+          "Intense"
+        ],
+        "post_feelings": [
+          "Calm / relaxed"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 3",
+        "timestamp": "9/9/2025",
+        "participant": "Participant 4",
+        "pre_emotional_words": "Heavy but Good - a lot came up!",
+        "pre_emotional": 5,
+        "pre_energy": 2,
+        "pre_tension": 5,
+        "pre_stress": 1,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
+        "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling"
+        ],
+        "experience": [
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Grounded",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Facilitated the connection"
+        ]
+      },
+      {
+        "session": "Session 3",
+        "timestamp": "9/9/2025",
+        "participant": "Participant 6",
+        "pre_emotional_words": "Euphoric, mellow",
+        "pre_emotional": 5,
+        "pre_energy": 5,
+        "pre_tension": 4,
+        "pre_stress": 1,
+        "pre_clarity": 4,
+        "pre_spiritual": 5,
+        "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth"
+        ],
+        "experience": [
+          "Liberating",
+          "Grounding",
+          "Energizing",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Grounded",
+          "Energized"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Uplifting",
+          "Emotional"
+        ]
+      },
+      {
+        "session": "Session 3",
+        "timestamp": "9/9/2025",
+        "participant": "Participant 5",
+        "pre_emotional_words": "Calmer, relieved ",
+        "pre_emotional": 4,
+        "pre_energy": 4,
+        "pre_tension": 2,
+        "pre_stress": 5,
+        "pre_clarity": 4,
+        "pre_spiritual": 4,
+        "pre_heart_rate": 72,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Muscle tension",
+          "Restlessness"
+        ],
+        "experience": [
+          "Intense",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Light / relieved",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Emotional"
         ]
       }
     ],
     "session_4": [
       {
-        "participant": "Participant 7",
-        "pre_emotional": 2,
-        "post_emotional": 4,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 4,
-        "post_tension": 2,
-        "pre_stress": 4,
-        "post_stress": 3,
-        "pre_clarity": 2,
-        "post_clarity": 2,
-        "pre_spiritual": 2,
-        "post_spiritual": 4,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "muscle tension"
-        ],
-        "experience": [
-          "strenuous",
-          "stressful",
-          "intense"
-        ]
-      },
-      {
-        "participant": "Participant 2",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 1,
-        "post_energy": 5,
-        "pre_tension": 4,
-        "post_tension": 1,
-        "pre_stress": 4,
-        "post_stress": 1,
-        "pre_clarity": 4,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "chills"
-        ],
-        "experience": [
-          "intense",
-          "liberating",
-          "grounding",
-          "energizing"
-        ]
-      },
-      {
+        "session": "Session 4",
+        "timestamp": "9/16/2025",
         "participant": "Participant 3",
+        "pre_emotional_words": "Grounded and relaxed",
         "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 2,
-        "post_tension": 1,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 2,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 4,
-        "pre_heart_rate": 72,
-        "post_heart_rate": 72,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "restlessness"
-        ],
-        "experience": [
-          "intense",
-          "grounding",
-          "energizing"
-        ]
-      },
-      {
-        "participant": "Participant 11",
-        "pre_emotional": 4,
-        "post_emotional": 4,
-        "pre_energy": 2,
-        "post_energy": 4,
-        "pre_tension": 2,
-        "post_tension": 4,
-        "pre_stress": 3,
-        "post_stress": 3,
-        "pre_clarity": 4,
-        "post_clarity": 4,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth",
-          "lightheaded",
-          "muscle tension",
-          "restlessness",
-          "unable to use extremities"
-        ],
-        "experience": [
-          "strenuous",
-          "intense",
-          "liberating",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 16",
-        "pre_emotional": 4,
-        "post_emotional": 5,
-        "pre_energy": 2,
-        "post_energy": 5,
-        "pre_tension": 4,
-        "post_tension": 1,
-        "pre_stress": 4,
-        "post_stress": 1,
-        "pre_clarity": 2,
-        "post_clarity": 5,
-        "pre_spiritual": 4,
-        "post_spiritual": 5,
-        "pre_heart_rate": null,
-        "post_heart_rate": null,
-        "sensations": [
-          "tingling",
-          "warmth"
-        ],
-        "experience": [
-          "liberating",
-          "grounding",
-          "energizing",
-          "emotional"
-        ]
-      },
-      {
-        "participant": "Participant 8",
-        "pre_emotional": 2,
-        "post_emotional": 4,
         "pre_energy": 4,
-        "post_energy": 4,
         "pre_tension": 4,
-        "post_tension": 2,
-        "pre_stress": 4,
-        "post_stress": 3,
-        "pre_clarity": 4,
-        "post_clarity": 4,
+        "pre_stress": 3,
+        "pre_clarity": 2,
         "pre_spiritual": 4,
-        "post_spiritual": 4,
-        "pre_heart_rate": null,
+        "pre_heart_rate": 117,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 54,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
         "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
         "sensations": [
-          "tingling",
-          "warmth",
-          "chills",
-          "lightheaded",
-          "muscle tension",
-          "restlessness"
+          "Tingling",
+          "Warmth",
+          "Muscle tension"
         ],
         "experience": [
-          "intense"
+          "Strenuous",
+          "Stressful",
+          "Intense"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Grounded"
+        ],
+        "violin_influence": [
+          "Uplifting"
+        ]
+      },
+      {
+        "session": "Session 4",
+        "timestamp": "9/16/2025",
+        "participant": "Participant 1",
+        "pre_emotional_words": "Buzzing, calm",
+        "pre_emotional": 5,
+        "pre_energy": 5,
+        "pre_tension": 5,
+        "pre_stress": 1,
+        "pre_clarity": 5,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 84,
+        "pre_spo2": null,
+        "pre_o2": 99,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Chills"
+        ],
+        "experience": [
+          "Intense",
+          "Liberating",
+          "Grounding",
+          "Energizing"
+        ],
+        "post_feelings": [
+          "Calm / relaxed"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Uplifting",
+          "Emotional",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 4",
+        "timestamp": "9/16/2025",
+        "participant": "Participant 6",
+        "pre_emotional_words": "Loose, relaxed, sweaty",
+        "pre_emotional": 5,
+        "pre_energy": 4,
+        "pre_tension": 5,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 4,
+        "pre_heart_rate": null,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Restlessness"
+        ],
+        "experience": [
+          "Intense",
+          "Grounding",
+          "Energizing"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Light / relieved",
+          "Clear-minded",
+          "Grounded",
+          "Energized"
+        ],
+        "violin_influence": [
+          "Uplifting",
+          "Emotional",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 4",
+        "timestamp": "9/16/2025",
+        "participant": "Participant 5",
+        "pre_emotional_words": "Calm and grounded ",
+        "pre_emotional": 4,
+        "pre_energy": 4,
+        "pre_tension": 2,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 5,
+        "pre_heart_rate": 84,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": 59,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Lightheaded",
+          "Muscle tension",
+          "Restlessness",
+          "Unable to use extremities"
+        ],
+        "experience": [
+          "Strenuous",
+          "Intense",
+          "Liberating",
+          "Emotional"
+        ],
+        "post_feelings": [
+          "Light / relieved",
+          "Clear-minded",
+          "Emotional release"
+        ],
+        "violin_influence": [
+          "Calming",
+          "Emotional",
+          "Grounding"
+        ]
+      },
+      {
+        "session": "Session 4",
+        "timestamp": "9/16/2025",
+        "participant": "Participant 2",
+        "pre_emotional_words": "Refreshed ",
+        "pre_emotional": 4,
+        "pre_energy": 4,
+        "pre_tension": 4,
+        "pre_stress": 3,
+        "pre_clarity": 4,
+        "pre_spiritual": 4,
+        "pre_heart_rate": 70,
+        "pre_spo2": null,
+        "pre_o2": null,
+        "pre_rhr": null,
+        "post_emotional": null,
+        "post_energy": null,
+        "post_tension": null,
+        "post_stress": null,
+        "post_clarity": null,
+        "post_spiritual": null,
+        "post_heart_rate": null,
+        "post_spo2": null,
+        "post_o2": null,
+        "post_rhr": null,
+        "sensations": [
+          "Tingling",
+          "Warmth",
+          "Chills",
+          "Lightheaded",
+          "Muscle tension",
+          "Restlessness"
+        ],
+        "experience": [
+          "Intense"
+        ],
+        "post_feelings": [
+          "Calm / relaxed",
+          "Grounded",
+          "Energized"
+        ],
+        "violin_influence": [
+          "Uplifting",
+          "Intense"
         ]
       }
     ]
-  }
+  },
+  "allSessions": [
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 3",
+      "pre_emotional_words": "Solenn Thircuir ",
+      "pre_emotional": 2,
+      "pre_energy": 2,
+      "pre_tension": 2,
+      "pre_stress": 3,
+      "pre_clarity": 2,
+      "pre_spiritual": 2,
+      "pre_heart_rate": 78,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 55,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Weight on top of my chest and the shoulders",
+        "in my belly as well"
+      ],
+      "experience": [
+        "Intense",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Grounded"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 7",
+      "pre_emotional_words": "Calm",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 4,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth"
+      ],
+      "experience": [
+        "Liberating",
+        "Grounding",
+        "Energizing"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Uplifting",
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 6",
+      "pre_emotional_words": "Light. At peace. ",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 4,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Energizing",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Light / relieved",
+        "Grounded",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 1",
+      "pre_emotional_words": "Energized Bliss",
+      "pre_emotional": 4,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 63,
+      "pre_spo2": null,
+      "pre_o2": 95,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Hands energized to do healing"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Energizing",
+        "Shedding"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded",
+        "Energized",
+        "LFG lol"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Violin always tugs on heart strings"
+      ]
+    },
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 8",
+      "pre_emotional_words": "Calm",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": 95,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Lightheaded",
+        "Muscle tension",
+        "Restlessness",
+        "Crying"
+      ],
+      "experience": [
+        "Strenuous",
+        "Intense",
+        "Grounding",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Grounded",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Uplifting",
+        "Emotional",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 4",
+      "pre_emotional_words": "Super Calm",
+      "pre_emotional": 5,
+      "pre_energy": 4,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [],
+      "experience": [
+        "Grounding",
+        "Energizing",
+        "Emotional",
+        "Opening"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded",
+        "Energized"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Uplifting",
+        "Emotional",
+        "Grounding",
+        "Intense",
+        "Different at different parts of the practice"
+      ]
+    },
+    {
+      "session": "Session 1",
+      "timestamp": "8/26/2025",
+      "participant": "Participant 2",
+      "pre_emotional_words": "Calm, relaxed",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 1,
+      "pre_clarity": 2,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 69,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 63,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Chills",
+        "Lightheaded",
+        "Muscle tension"
+      ],
+      "experience": [
+        "Intense"
+      ],
+      "post_feelings": [
+        "Calm / relaxed"
+      ],
+      "violin_influence": [
+        "Uplifting",
+        "Today it was background and I was hyper focused on the breathing"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 7",
+      "pre_emotional_words": "Electric ",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Chills"
+      ],
+      "experience": [
+        "Intense",
+        "Energizing"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Clear-minded",
+        "Energized"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Uplifting"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 3",
+      "pre_emotional_words": "Calm and tired ",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 3,
+      "pre_clarity": 2,
+      "pre_spiritual": 2,
+      "pre_heart_rate": 83,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 57,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Muscle tension"
+      ],
+      "experience": [
+        "Intense",
+        "Grounding"
+      ],
+      "post_feelings": [
+        "Grounded"
+      ],
+      "violin_influence": [
+        "Uplifting",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 1",
+      "pre_emotional_words": "Bliss",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 68,
+      "pre_spo2": null,
+      "pre_o2": 98,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Chills",
+        "Electricity"
+      ],
+      "experience": [
+        "Intense",
+        "Energizing",
+        "Integration of all parts — shadow",
+        "light",
+        "body",
+        "mind",
+        "spirit",
+        "emotions"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Clear-minded",
+        "Grounded",
+        "Energized",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 4",
+      "pre_emotional_words": "Calm and alert",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling"
+      ],
+      "experience": [
+        "Liberating",
+        "Grounding",
+        "Energizing",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded",
+        "Energized",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Uplifting",
+        "Emotional",
+        "Grounding",
+        "Intense",
+        "The addition of the bowls enhanced my experience!"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 8",
+      "pre_emotional_words": "Peaceful",
+      "pre_emotional": 4,
+      "pre_energy": 2,
+      "pre_tension": 2,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": 96,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Lightheaded",
+        "Muscle tension"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 2",
+      "pre_emotional_words": "Open, hopeful, inspired ",
+      "pre_emotional": 5,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 1,
+      "pre_clarity": 4,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 67,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 58,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Lightheaded",
+        "Muscle tension",
+        "Restlessness"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Energizing"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Grounded",
+        "Energized"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 2",
+      "timestamp": "9/2/2025",
+      "participant": "Participant 5",
+      "pre_emotional_words": "Sad, exhausted, relieved ",
+      "pre_emotional": 2,
+      "pre_energy": 1,
+      "pre_tension": 2,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 4,
+      "pre_heart_rate": 70,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 56,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Lightheaded",
+        "Muscle tension"
+      ],
+      "experience": [
+        "Strenuous",
+        "Intense",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Clear-minded",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 3",
+      "timestamp": "9/9/2025",
+      "participant": "Participant 1",
+      "pre_emotional_words": "Peaceful ",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 57,
+      "pre_spo2": null,
+      "pre_o2": 99,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Chills"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Energizing",
+        "Release"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded",
+        "Energized",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Emotional",
+        "Release of sorrow & grief"
+      ]
+    },
+    {
+      "session": "Session 3",
+      "timestamp": "9/9/2025",
+      "participant": "Participant 2",
+      "pre_emotional_words": "Calm",
+      "pre_emotional": 4,
+      "pre_energy": 2,
+      "pre_tension": 4,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 4,
+      "pre_heart_rate": 69,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 53,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Chills",
+        "Lightheaded",
+        "Muscle tension",
+        "Restlessness"
+      ],
+      "experience": [
+        "Intense"
+      ],
+      "post_feelings": [
+        "Calm / relaxed"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 3",
+      "timestamp": "9/9/2025",
+      "participant": "Participant 4",
+      "pre_emotional_words": "Heavy but Good - a lot came up!",
+      "pre_emotional": 5,
+      "pre_energy": 2,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Grounded",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Facilitated the connection"
+      ]
+    },
+    {
+      "session": "Session 3",
+      "timestamp": "9/9/2025",
+      "participant": "Participant 6",
+      "pre_emotional_words": "Euphoric, mellow",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 4,
+      "pre_stress": 1,
+      "pre_clarity": 4,
+      "pre_spiritual": 5,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth"
+      ],
+      "experience": [
+        "Liberating",
+        "Grounding",
+        "Energizing",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Grounded",
+        "Energized"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Uplifting",
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 3",
+      "timestamp": "9/9/2025",
+      "participant": "Participant 5",
+      "pre_emotional_words": "Calmer, relieved ",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 2,
+      "pre_stress": 5,
+      "pre_clarity": 4,
+      "pre_spiritual": 4,
+      "pre_heart_rate": 72,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Muscle tension",
+        "Restlessness"
+      ],
+      "experience": [
+        "Intense",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Light / relieved",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Emotional"
+      ]
+    },
+    {
+      "session": "Session 4",
+      "timestamp": "9/16/2025",
+      "participant": "Participant 3",
+      "pre_emotional_words": "Grounded and relaxed",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 3,
+      "pre_clarity": 2,
+      "pre_spiritual": 4,
+      "pre_heart_rate": 117,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 54,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Muscle tension"
+      ],
+      "experience": [
+        "Strenuous",
+        "Stressful",
+        "Intense"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Grounded"
+      ],
+      "violin_influence": [
+        "Uplifting"
+      ]
+    },
+    {
+      "session": "Session 4",
+      "timestamp": "9/16/2025",
+      "participant": "Participant 1",
+      "pre_emotional_words": "Buzzing, calm",
+      "pre_emotional": 5,
+      "pre_energy": 5,
+      "pre_tension": 5,
+      "pre_stress": 1,
+      "pre_clarity": 5,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 84,
+      "pre_spo2": null,
+      "pre_o2": 99,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Chills"
+      ],
+      "experience": [
+        "Intense",
+        "Liberating",
+        "Grounding",
+        "Energizing"
+      ],
+      "post_feelings": [
+        "Calm / relaxed"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Uplifting",
+        "Emotional",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 4",
+      "timestamp": "9/16/2025",
+      "participant": "Participant 6",
+      "pre_emotional_words": "Loose, relaxed, sweaty",
+      "pre_emotional": 5,
+      "pre_energy": 4,
+      "pre_tension": 5,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 4,
+      "pre_heart_rate": null,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Restlessness"
+      ],
+      "experience": [
+        "Intense",
+        "Grounding",
+        "Energizing"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Light / relieved",
+        "Clear-minded",
+        "Grounded",
+        "Energized"
+      ],
+      "violin_influence": [
+        "Uplifting",
+        "Emotional",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 4",
+      "timestamp": "9/16/2025",
+      "participant": "Participant 5",
+      "pre_emotional_words": "Calm and grounded ",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 2,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 5,
+      "pre_heart_rate": 84,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": 59,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Lightheaded",
+        "Muscle tension",
+        "Restlessness",
+        "Unable to use extremities"
+      ],
+      "experience": [
+        "Strenuous",
+        "Intense",
+        "Liberating",
+        "Emotional"
+      ],
+      "post_feelings": [
+        "Light / relieved",
+        "Clear-minded",
+        "Emotional release"
+      ],
+      "violin_influence": [
+        "Calming",
+        "Emotional",
+        "Grounding"
+      ]
+    },
+    {
+      "session": "Session 4",
+      "timestamp": "9/16/2025",
+      "participant": "Participant 2",
+      "pre_emotional_words": "Refreshed ",
+      "pre_emotional": 4,
+      "pre_energy": 4,
+      "pre_tension": 4,
+      "pre_stress": 3,
+      "pre_clarity": 4,
+      "pre_spiritual": 4,
+      "pre_heart_rate": 70,
+      "pre_spo2": null,
+      "pre_o2": null,
+      "pre_rhr": null,
+      "post_emotional": null,
+      "post_energy": null,
+      "post_tension": null,
+      "post_stress": null,
+      "post_clarity": null,
+      "post_spiritual": null,
+      "post_heart_rate": null,
+      "post_spo2": null,
+      "post_o2": null,
+      "post_rhr": null,
+      "sensations": [
+        "Tingling",
+        "Warmth",
+        "Chills",
+        "Lightheaded",
+        "Muscle tension",
+        "Restlessness"
+      ],
+      "experience": [
+        "Intense"
+      ],
+      "post_feelings": [
+        "Calm / relaxed",
+        "Grounded",
+        "Energized"
+      ],
+      "violin_influence": [
+        "Uplifting",
+        "Intense"
+      ]
+    }
+  ]
 }

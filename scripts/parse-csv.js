@@ -6,169 +6,134 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const csvDir = join(__dirname, '../Biometric CSVs');
 
-// Mapping of actual names to anonymized participant numbers
-const participantMap = new Map();
-let participantCounter = 1;
-
-function getParticipantNumber(name) {
-  if (!name || name === 'N/A' || name.trim() === '') return null;
-  
-  const cleanName = name.trim().toLowerCase();
-  if (!participantMap.has(cleanName)) {
-    participantMap.set(cleanName, `Participant ${participantCounter++}`);
-  }
-  return participantMap.get(cleanName);
-}
-
 function parseRating(value) {
   if (!value) return null;
   const mapping = {
+    'Extremely stressed': 5,
     'Very positive': 5, 'Positive': 4, 'Negative': 2, 'Very negative': 1,
     'Vibrant': 5, 'Energized': 4, 'Sluggish': 2, 'Depleted': 1,
-    'Very relaxed': 1, 'Relaxed': 2, 'Tense': 4, 'Very tense': 5,
-    'Stressed': 4, 'Mild': 3, 'No stress': 1,
+    'Very relaxed': 5, 'Relaxed': 4, 'Tense': 2, 'Very tense': 1,
+    'Stressed': 5, 'Mild': 3, 'No stress': 1,
     'Very sharp': 5, 'Clear': 4, 'Unclear': 2, 'Very unclear': 1,
     'Deeply Connected': 5, 'Connected': 4, 'Disconnected': 2, 'Very disconnected': 1
   };
   return mapping[value] || null;
 }
 
+function parseStress(value) {
+  if (!value) return null;
+  const mapping = {
+    'High stress': 4,
+    'Moderate stress': 3,
+    'Mild stress': 2,
+    'None': 1
+  };
+  return mapping[value] || null;
+}
+
 function parseHeartRate(value) {
-  if (!value || value === 'N/A' || value === 'N/a' || value === 'na') return null;
+  if (!value || value === 'N/A' || value === 'N/a' || value === 'na' || value === 'NA') return null;
   const num = parseFloat(String(value).replace(/[^0-9.]/g, ''));
   return isNaN(num) ? null : Math.round(num);
 }
 
 function parseArray(value) {
   if (!value || value === 'N/A' || value.trim() === '') return [];
-  return value.split(/[;,]/).map(s => s.trim().toLowerCase()).filter(s => s);
+  return value.split(/[;,]/).map(s => s.trim()).filter(s => s);
 }
 
 function parseBaseline() {
-  const file = join(csvDir, 'Biometric 1_Baseline Questionnaire.csv');
+  const file = join(csvDir, 'Biometric 1_Baseline_Participants.csv');
   const content = readFileSync(file, 'utf-8');
   const records = parse(content, { columns: true, skip_empty_lines: true });
-  
+
   return records.map(row => {
-    const name = row['Please add your first and last name'];
-    const participant = getParticipantNumber(name);
-    if (!participant) return null;
-    
+    const participant = row['Please add your first and last name'];
+    if (!participant || participant === 'N/A') return null;
+
     return {
       participant,
-      device: (row['What device do you use to measure your biometric health data'] || '').toLowerCase(),
-      activity_level: (row['How would you describe your activity level?'] || '').toLowerCase(),
-      baseline_stress: (row['How would you describe your current stress level?'] || '').toLowerCase()
+      timestamp: row['Timestamp'],
+      device: row['Which device(s) will you be using for this study?'],
+      activity_level: row['How would you describe your typical daily activity level?  '],
+      device_usage: parseArray(row['How much do you use your device to monitor your activity, health, or wellness on a regular basis?  (please select all that apply)']),
+      baseline_stress: row['In the past 30 days, have you experienced any major life stresses (for example: job changes, relationship shifts, illness, financial strain, or loss)? '],
+      baseline_stress_level: parseStress(row['In the past 30 days, have you experienced any major life stresses (for example: job changes, relationship shifts, illness, financial strain, or loss)? ']),
+      reflection: row["This is your space to tell us about what you're going through right now, in your own words. Share as much or as little as feels right. We'll return to these reflections at the end of the study to see how these practices may have supported your journey. "]
     };
   }).filter(Boolean);
 }
 
-function parseSession(filename) {
-  const file = join(csvDir, filename);
+function parseCombinedSessions() {
+  const file = join(csvDir, 'Biometric 1_Combined_Participants.csv');
   const content = readFileSync(file, 'utf-8');
-  const records = parse(content, { columns: false, skip_empty_lines: true, relax_column_count: true, relax_quotes: true });
-  
-  // First row is header
-  const header = records[0];
-  
-  return records.slice(1).map(row => {
-    const name = row[1]; // Column B
-    const participant = getParticipantNumber(name);
-    if (!participant) return null;
-    
-    // Pre-session columns (columns 3-12 approximately)
-    const pre_emotional = parseRating(row[3]);
-    const pre_energy = parseRating(row[4]);
-    const pre_tension = parseRating(row[5]);
-    const pre_stress = parseRating(row[6]);
-    const pre_clarity = parseRating(row[7]);
-    const pre_spiritual = parseRating(row[8]);
-    
-    // Pre heart rate (column 9)
-    const pre_heart_rate = parseHeartRate(row[9]);
-    
-    // Post-session columns (columns 19-28 approximately)
-    const post_emotional = parseRating(row[20]);
-    const post_energy = parseRating(row[21]);
-    const post_tension = parseRating(row[22]);
-    const post_stress = parseRating(row[23]);
-    const post_clarity = parseRating(row[24]);
-    const post_spiritual = parseRating(row[25]);
-    
-    // Post heart rate (column 26)
-    const post_heart_rate = parseHeartRate(row[26]);
-    
-    // Sensations and experience (columns 36-37 approximately)
-    const sensations = parseArray(row[36]);
-    const experience = parseArray(row[37]);
-    
+  const records = parse(content, { columns: true, skip_empty_lines: true, relax_column_count: true });
+
+  return records.map(row => {
+    const session = row['Session'];
+    const participant = row['Participant'];
+    if (!participant || participant === 'N/A' || !session) return null;
+
     return {
+      session,
+      timestamp: row['Timestamp'],
       participant,
-      pre_emotional,
-      post_emotional,
-      pre_energy,
-      post_energy,
-      pre_tension,
-      post_tension,
-      pre_stress,
-      post_stress,
-      pre_clarity,
-      post_clarity,
-      pre_spiritual,
-      post_spiritual,
-      pre_heart_rate,
-      post_heart_rate,
-      sensations,
-      experience
+
+      pre_emotional_words: row['Please describe your current emotional state in one to three words (e.g., calm, anxious, joyful)'],
+      pre_emotional: parseRating(row['How would you rate your emotional state right now? ']),
+      pre_energy: parseRating(row['How would you rate your physical energy right now? ']),
+      pre_tension: parseRating(row['How would you rate your body tension right now? ']),
+      pre_stress: parseRating(row['How would you rate your stress level right now? ']),
+      pre_clarity: parseRating(row['How would you rate your mental clarity right now?']),
+      pre_spiritual: parseRating(row['How would you rate your spiritual connection right now?']),
+      pre_heart_rate: parseHeartRate(row['Heart Rate']),
+      pre_spo2: parseHeartRate(row['SpO2 (Blood Oxygen Saturation)']),
+      pre_o2: parseHeartRate(row['O2 - Oxygen Level']),
+      pre_rhr: parseHeartRate(row['RHR - Resting Heart Rate']),
+
+      post_emotional_words: row['Please describe your current emotional state in one to three words (e.g., calm, anxious, joyful).1'],
+      post_emotional: parseRating(row['How would you rate your emotional state right now? .1']),
+      post_energy: parseRating(row['How would you rate your physical energy right now? .1']),
+      post_tension: parseRating(row['How would you rate your body tension right now? .1']),
+      post_stress: parseRating(row['How would you rate your stress level right now? .1']),
+      post_clarity: parseRating(row['How would you rate your mental clarity right now?.1']),
+      post_spiritual: parseRating(row['How would you rate your spiritual connection right now?.1']),
+      post_heart_rate: parseHeartRate(row['Heart Rate.1']),
+      post_spo2: parseHeartRate(row['SpO2 (Blood Oxygen Saturation).1']),
+      post_o2: parseHeartRate(row['O2 - Oxygen Level.1']),
+      post_rhr: parseHeartRate(row['RHR - Resting Heart Rate.1']),
+
+      sensations: parseArray(row['Which physical sensations did you experience during the session? (please select all that apply)']),
+      experience: parseArray(row['How would you describe your experience during the session? (please select all that apply)']),
+      post_feelings: parseArray(row['How do you feel now, immediately following the session? (please select all that apply)']),
+      violin_influence: parseArray(row['How did the live violin music influence you during the session? (please select all that apply)  ']),
+      comments: row["If you'd like, please share a few words about your overall experience of this session and anything you want us to know. "]
     };
   }).filter(Boolean);
 }
 
-// Parse all data
-const data = {
-  baseline: parseBaseline(),
-  sessions: {
-    session_1: parseSession('Biometric 1_Session 1 - Questionnaire.csv'),
-    session_2: parseSession('Biometric 1_Session 2 - Questionnaire.csv'),
-    session_3: parseSession('Biometric 1_Session 3 - Questionnaire.csv'),
-    session_4: parseSession('Biometric 1_Session 4 - Questionnaire.csv')
-  }
+const baseline = parseBaseline();
+const allSessions = parseCombinedSessions();
+
+const sessions = {
+  session_1: allSessions.filter(s => s.session === 'Session 1'),
+  session_2: allSessions.filter(s => s.session === 'Session 2'),
+  session_3: allSessions.filter(s => s.session === 'Session 3'),
+  session_4: allSessions.filter(s => s.session === 'Session 4')
 };
 
-// Ensure baseline has all participants from sessions
-const allParticipants = new Set();
-Object.values(data.sessions).forEach(session => {
-  session.forEach(entry => {
-    if (entry.participant) {
-      allParticipants.add(entry.participant);
-    }
-  });
-});
+const data = {
+  baseline,
+  sessions,
+  allSessions
+};
 
-// Fill in missing baseline entries with defaults
-const baselineParticipants = new Set(data.baseline.map(b => b.participant));
-allParticipants.forEach(participant => {
-  if (!baselineParticipants.has(participant)) {
-    data.baseline.push({
-      participant,
-      device: 'wearable device',
-      activity_level: 'active',
-      baseline_stress: 'moderate'
-    });
-  }
-});
-
-// Sort baseline by participant number
-data.baseline.sort((a, b) => {
-  const numA = parseInt(a.participant.replace('Participant ', ''));
-  const numB = parseInt(b.participant.replace('Participant ', ''));
-  return numA - numB;
-});
-
-// Write processed data
 const outputPath = join(__dirname, '../src/data/processed-data.json');
 writeFileSync(outputPath, JSON.stringify(data, null, 2));
 
 console.log('✅ CSV data parsed successfully!');
-console.log(`📊 Total participants: ${participantMap.size}`);
-console.log(`📈 Total data points: ${Object.values(data.sessions).flat().length}`);
+console.log(`📊 Total baseline participants: ${baseline.length}`);
+console.log(`📈 Session 1: ${sessions.session_1.length} entries`);
+console.log(`📈 Session 2: ${sessions.session_2.length} entries`);
+console.log(`📈 Session 3: ${sessions.session_3.length} entries`);
+console.log(`📈 Session 4: ${sessions.session_4.length} entries`);
