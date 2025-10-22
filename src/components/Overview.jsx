@@ -64,23 +64,23 @@ export default function Overview({ data }) {
       <section className="glass-card">
         <h2 className="section-header">Study Overview</h2>
 
-        <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(168, 200, 218, 0.1)' }}>
-          <p className="text-sm font-medium mb-2" style={{ color: '#50604F' }}>
+        <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
+          <p className="text-sm font-medium mb-2" style={{ color: '#0f172a' }}>
             What is a Feasibility Study?
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: '#333430' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
             A feasibility study assesses how practical and achievable a proposed plan, project, or method is before full-scale implementation.
           </p>
         </div>
 
-        <div className="space-y-4 leading-relaxed" style={{ color: '#333430' }}>
+        <div className="space-y-4 leading-relaxed" style={{ color: '#1e293b' }}>
           <p>
             This study explores the effects of ancient yogic breathwork (two inhales, one exhale) combined with immersive soundscapes on emotional state, physical energy, and nervous system function. Participants engaged in guided breathwork and sound-based sessions designed to hyper-oxygenate the bloodstream, trigger emotional release, and foster healing.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-6">
             <div>
-              <h3 className="font-semibold mb-2" style={{ color: '#50604F' }}>Modalities</h3>
+              <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Modalities</h3>
               <ul className="space-y-1 text-sm">
                 <li>• Breathwork: Two inhales, one exhale pattern</li>
                 <li>• Sound: Live violin (all sessions)</li>
@@ -91,7 +91,7 @@ export default function Overview({ data }) {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-2" style={{ color: '#50604F' }}>Measurement Approach</h3>
+              <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Measurement Approach</h3>
               <ul className="space-y-1 text-sm">
                 <li>• Baseline assessment before study</li>
                 <li>• Pre/post-session self-reports (emotional, physical, mental)</li>
@@ -108,20 +108,20 @@ export default function Overview({ data }) {
         <h2 className="section-header">Facilitators</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-2">
-            <h3 className="font-semibold" style={{ color: '#50604F' }}>Nathalie Bonin</h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#333430' }}>
+            <h3 className="font-semibold" style={{ color: '#0f172a' }}>Nathalie Bonin</h3>
+            <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
               Grammy-winning violinist, artist, and speaker blending live music with inspiring transformation.
             </p>
           </div>
           <div className="space-y-2">
-            <h3 className="font-semibold" style={{ color: '#50604F' }}>Robert Bahedry</h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#333430' }}>
+            <h3 className="font-semibold" style={{ color: '#0f172a' }}>Robert Bahedry</h3>
+            <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
               Breathwork facilitator and coach, guiding personal breakthroughs through conscious breathing since 2010.
             </p>
           </div>
           <div className="space-y-2">
-            <h3 className="font-semibold" style={{ color: '#50604F' }}>Chao Dou</h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#333430' }}>
+            <h3 className="font-semibold" style={{ color: '#0f172a' }}>Chao Dou</h3>
+            <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
               Experience strategist, designer, and artist integrating architecture, creative experimentation, and multisensory wellness practices.
             </p>
           </div>
@@ -161,39 +161,39 @@ export default function Overview({ data }) {
                 <div className="flex items-center gap-4">
                   <div
                     className="data-point"
-                    style={{ backgroundColor: '#F53B57' }}
+                    style={{ backgroundColor: '#0f172a' }}
                     aria-hidden="true"
                   />
                   <div>
-                    <div className="text-lg font-semibold" style={{ color: '#333430' }}>
+                    <div className="text-lg font-semibold" style={{ color: '#0f172a' }}>
                       {metricLabels[metric]}
                     </div>
-                    <div className="text-sm opacity-70" style={{ color: '#333430' }}>
+                    <div className="text-sm opacity-70" style={{ color: '#1e293b' }}>
                       n={data.count} responses
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold" style={{ color: '#F53B57' }}>
+                  <div className="text-2xl font-bold" style={{ color: '#0f172a' }}>
                     +{data.change.toFixed(1)}%
                   </div>
-                  <div className="text-xs opacity-70" style={{ color: '#333430' }}>
+                  <div className="text-xs opacity-70" style={{ color: '#1e293b' }}>
                     improved on average
                   </div>
                 </div>
               </div>
 
-              <div className="relative h-12 rounded-lg overflow-hidden" style={{ backgroundColor: 'rgba(0,0,0,0.05)' }}>
+              <div className="relative h-12 rounded-lg overflow-hidden" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
                 <div
                   className="absolute inset-y-0 left-0 rounded-lg transition-all duration-500"
                   style={{
                     width: `${Math.min(Math.abs(data.change), 100)}%`,
                     backgroundColor: metricColors[metric],
-                    opacity: 0.6
+                    opacity: 0.7
                   }}
                 />
                 <div className="absolute inset-0 flex items-center px-4">
-                  <div className="text-xs font-medium" style={{ color: '#333430' }}>
+                  <div className="text-xs font-medium" style={{ color: '#0f172a' }}>
                     Pre: {data.pre.toFixed(1)} → Post: {data.post.toFixed(1)}
                   </div>
                 </div>
@@ -205,11 +205,11 @@ export default function Overview({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Next Steps</h2>
-        <div className="p-6 rounded-lg" style={{ backgroundColor: 'rgba(241, 141, 68, 0.1)' }}>
-          <h3 className="text-xl font-semibold mb-2" style={{ color: '#F18D44' }}>
+        <div className="p-6 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+          <h3 className="text-xl font-semibold mb-2" style={{ color: '#0f172a' }}>
             Biometric Study 2
           </h3>
-          <p className="text-sm" style={{ color: '#333430' }}>
+          <p className="text-sm" style={{ color: '#1e293b' }}>
             Scheduled for November 2025 — Building on insights from this feasibility study to explore deeper patterns in breathwork and sound therapy.
           </p>
         </div>

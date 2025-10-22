@@ -103,7 +103,7 @@ export default function Metrics({ data }) {
     <div className="space-y-8">
       <section className="glass-card">
         <h2 className="section-header">Overall Pre vs Post Comparison</h2>
-        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+        <p className="text-sm mb-6" style={{ color: '#1e293b' }}>
           Radial visualization showing average pre-session and post-session values across all metrics.
         </p>
         <ResponsiveContainer width="100%" height={400}>
@@ -111,12 +111,12 @@ export default function Metrics({ data }) {
             <PolarGrid stroke={colors.cloudGrey} strokeWidth={1} />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: colors.deepCharcoal, fontSize: 14, fontWeight: 500 }}
+              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
             />
             <PolarRadiusAxis
               angle={90}
               domain={[0, 5]}
-              tick={{ fill: colors.forestMoss, fontSize: 11 }}
+              tick={{ fill: '#1e293b', fontSize: 11 }}
             />
             <Radar
               name="Pre-Session"

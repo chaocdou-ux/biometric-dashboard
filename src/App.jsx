@@ -42,19 +42,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen pb-32 relative">
-      <AbstractBackground />
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
         <header className="mb-12 text-center relative">
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase" style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15))', color: '#3B82F6', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase" style={{ background: 'rgba(255, 255, 255, 0.2)', color: '#0f172a', border: '1px solid rgba(255, 255, 255, 0.3)', backdropFilter: 'blur(10px)' }}>
             Feasibility Study
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#0f172a' }}>
             Biometric Study 1
           </h1>
-          <p className="text-xl md:text-2xl mb-8 font-medium" style={{ color: '#3B82F6' }}>
+          <p className="text-xl md:text-2xl mb-8 font-medium" style={{ color: '#1e293b' }}>
             Sound and Breath Study
           </p>
-          <div className="glass-panel inline-block px-8 py-4 text-sm" style={{ color: '#333430' }}>
+          <div className="glass-panel inline-block px-8 py-4 text-sm" style={{ color: '#0f172a' }}>
             <p className="font-medium mb-1">Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
             <p className="opacity-75">Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
           </div>
