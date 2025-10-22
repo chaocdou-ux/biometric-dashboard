@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { Activity, Calendar, TrendingUp, Users, Watch, BookOpen } from 'lucide-react';
-import AbstractBackground from './components/AbstractBackground';
 import Overview from './components/Overview';
 import Sessions from './components/Sessions';
 import Metrics from './components/Metrics';
@@ -10,12 +8,12 @@ import Definitions from './components/Definitions';
 import data from './data/processed-data.json';
 
 const tabs = [
-  { id: 'overview', label: 'Overview', icon: Activity },
-  { id: 'sessions', label: 'Sessions', icon: Calendar },
-  { id: 'metrics', label: 'Metrics', icon: TrendingUp },
-  { id: 'participants', label: 'Participants', icon: Users },
-  { id: 'devices', label: 'Devices', icon: Watch },
-  { id: 'methodology', label: 'Methodology', icon: BookOpen }
+  { id: 'overview', label: 'Overview' },
+  { id: 'sessions', label: 'Sessions' },
+  { id: 'metrics', label: 'Metrics' },
+  { id: 'participants', label: 'Participants' },
+  { id: 'devices', label: 'Devices' },
+  { id: 'methodology', label: 'Methodology' }
 ];
 
 export default function App() {
@@ -41,55 +39,79 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen pb-32 relative">
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
-        <header className="mb-12 text-center relative">
-          <div className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase" style={{ background: 'rgba(255, 255, 255, 0.2)', color: '#0f172a', border: '1px solid rgba(255, 255, 255, 0.3)', backdropFilter: 'blur(10px)' }}>
-            Feasibility Study
+    <div className="min-h-screen relative">
+      <div className="relative z-10 container mx-auto px-8 py-12 max-w-7xl">
+        <header className="mb-16 flex items-start justify-between">
+          <div className="flex-1">
+            <h1 className="text-6xl md:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
+              Biometric
+              <br />
+              Study 1
+            </h1>
+            <p className="text-base font-medium mt-4" style={{ color: '#1e293b' }}>
+              Experimental Laboratory. Next Generation.
+            </p>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#0f172a' }}>
-            Biometric Study 1
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 font-medium" style={{ color: '#1e293b' }}>
-            Sound and Breath Study
-          </p>
-          <div className="glass-panel inline-block px-8 py-4 text-sm" style={{ color: '#0f172a' }}>
-            <p className="font-medium mb-1">Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
-            <p className="opacity-75">Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
+          <div className="flex items-center gap-6">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
+              <circle cx="24" cy="24" r="20" stroke="#0f172a" strokeWidth="1.5" fill="none" />
+              <path d="M 12 24 L 36 24 M 24 12 L 24 36" stroke="#0f172a" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
+              <circle cx="16" cy="24" r="4" fill="#0f172a" />
+              <circle cx="24" cy="24" r="4" fill="#0f172a" />
+              <circle cx="32" cy="24" r="4" fill="#0f172a" />
+              <path d="M 16 24 Q 20 16 24 24 Q 28 32 32 24" stroke="#0f172a" strokeWidth="1.5" fill="none" />
+            </svg>
+            <div className="glass-panel px-6 py-3 text-sm" style={{ color: '#0f172a' }}>
+              <p className="font-medium">Sound and Breath Study</p>
+            </div>
           </div>
         </header>
 
-        <div className="mb-8">
+        <div className="border-t" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
+
+        <div className="my-12">
           {renderTabContent()}
         </div>
-      </div>
 
-      <nav
-        className="fixed bottom-0 left-0 right-0 z-50 glass-panel mx-4 mb-4 rounded-2xl"
-        style={{ maxWidth: '1400px', marginLeft: 'auto', marginRight: 'auto' }}
-        role="navigation"
-        aria-label="Main navigation"
-      >
-        <div className="grid grid-cols-6 gap-2 p-2">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
+        <div className="border-t mb-8" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`nav-tab ${isActive ? 'active' : ''}`}
-                aria-label={tab.label}
-                aria-current={isActive ? 'page' : undefined}
-              >
-                <Icon size={20} strokeWidth={2} />
-                <span className="text-xs font-medium">{tab.label}</span>
-              </button>
-            );
-          })}
+        <nav
+          className="mb-12"
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          <div className="flex items-center gap-4 flex-wrap">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className="px-6 py-3 rounded-full text-sm font-medium tracking-wide uppercase transition-all duration-300"
+                  style={{
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.2)',
+                    color: isActive ? '#ffffff' : '#0f172a',
+                    border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
+                    backdropFilter: 'blur(10px)'
+                  }}
+                  aria-label={tab.label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </nav>
+
+        <div className="text-sm" style={{ color: '#1e293b', opacity: 0.7 }}>
+          <p>Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
+          <p>Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
         </div>
-      </nav>
+      </div>
     </div>
   );
 }

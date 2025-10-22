@@ -158,28 +158,6 @@
     @apply glass-panel p-8 text-center;
   }
 
-  .nav-tab {
-    @apply glass-panel px-6 py-3 cursor-pointer text-sm font-medium;
-    min-height: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .nav-tab:hover {
-    background: rgba(255, 255, 255, 0.85);
-  }
-
-  .nav-tab.active {
-    background: rgba(255, 255, 255, 0.35);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    box-shadow:
-      0 0 0 3px rgba(255, 255, 255, 0.1),
-      0 8px 32px rgba(0, 0, 0, 0.15);
-  }
-
   .stat-value {
     font-size: 2.5rem;
     font-weight: 700;
