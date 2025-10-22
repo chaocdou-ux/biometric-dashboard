@@ -50,19 +50,19 @@ export default function Participants({ data }) {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
+      <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-2xl text-blue-600">Participant Demographics</CardTitle>
+          <CardTitle className="text-2xl" style={{ color: '#0f172a' }}>Participant Demographics</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b-2 border-slate-300 bg-gradient-to-r from-blue-50 to-purple-50">
-                  <th className="text-left p-3 font-semibold text-slate-700">Participant</th>
-                  <th className="text-left p-3 font-semibold text-slate-700">Device</th>
-                  <th className="text-left p-3 font-semibold text-slate-700">Activity Level</th>
-                  <th className="text-left p-3 font-semibold text-slate-700">Baseline Stress</th>
+                <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.15)' }}>
+                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Participant</th>
+                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Device</th>
+                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Activity Level</th>
+                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Baseline Stress</th>
                   <th className="text-center p-3 font-semibold text-slate-700">Attendance</th>
                 </tr>
               </thead>
@@ -72,9 +72,13 @@ export default function Participants({ data }) {
                   return (
                     <tr
                       key={participant.participant}
-                      className={`border-b border-slate-200 hover:bg-slate-50 transition-colors ${
-                        idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'
-                      }`}
+                      style={{
+                        borderBottom: '1px solid rgba(15, 23, 42, 0.1)',
+                        background: idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)',
+                        transition: 'all 0.3s'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(168, 200, 218, 0.2)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'}
                     >
                       <td className="p-3 font-semibold text-slate-800">{participant.participant}</td>
                       <td className="p-3 text-slate-700">
@@ -114,42 +118,42 @@ export default function Participants({ data }) {
       </Card>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+        <Card className="metric-card">
           <CardHeader>
-            <CardTitle className="text-lg text-blue-600">Total Participants</CardTitle>
+            <CardTitle className="text-lg" style={{ color: '#0f172a' }}>Total Participants</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-blue-600">{data.baseline.length}</p>
+            <p className="stat-value" style={{ color: '#A8C8DA' }}>{data.baseline.length}</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+        <Card className="metric-card">
           <CardHeader>
-            <CardTitle className="text-lg text-purple-600">Full Attendance</CardTitle>
+            <CardTitle className="text-lg" style={{ color: '#0f172a' }}>Full Attendance</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-purple-600">
+            <p className="stat-value" style={{ color: '#50604F' }}>
               {Object.values(attendance).filter(a => a.attended === 4).length}
             </p>
-            <p className="text-sm text-slate-600 mt-1">Completed all 4 sessions</p>
+            <p className="text-sm mt-1" style={{ color: '#1e293b', opacity: 0.85 }}>Completed all 4 sessions</p>
           </CardContent>
         </Card>
 
-        <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+        <Card className="metric-card">
           <CardHeader>
-            <CardTitle className="text-lg text-blue-600">Avg Attendance</CardTitle>
+            <CardTitle className="text-lg" style={{ color: '#0f172a' }}>Avg Attendance</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-4xl font-bold text-blue-600">
+            <p className="stat-value" style={{ color: '#F3C77B' }}>
               {(Object.values(attendance).reduce((sum, a) => sum + parseInt(a.rate), 0) / data.baseline.length).toFixed(0)}%
             </p>
           </CardContent>
         </Card>
       </div>
 
-      <Card className="bg-white/80 backdrop-blur-sm border-purple-200">
+      <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-xl text-purple-600">Baseline Reflections</CardTitle>
+          <CardTitle className="text-xl" style={{ color: '#0f172a' }}>Baseline Reflections</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -158,10 +162,14 @@ export default function Participants({ data }) {
               .map(participant => (
                 <div
                   key={participant.participant}
-                  className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg"
+                  className="p-4 rounded-lg"
+                  style={{
+                    background: 'rgba(168, 200, 218, 0.2)',
+                    border: '1px solid rgba(168, 200, 218, 0.3)'
+                  }}
                 >
-                  <p className="font-semibold text-slate-800 mb-2">{participant.participant}</p>
-                  <p className="text-slate-700 text-sm italic leading-relaxed">{participant.reflection}</p>
+                  <p className="font-semibold mb-2" style={{ color: '#0f172a' }}>{participant.participant}</p>
+                  <p className="text-sm italic leading-relaxed" style={{ color: '#1e293b' }}>{participant.reflection}</p>
                 </div>
               ))}
           </div>

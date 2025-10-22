@@ -103,28 +103,28 @@ export default function DeviceComparison({ data }) {
 
   return (
     <div className="space-y-6">
-      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-300">
+      <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-2xl text-blue-600">Device Comparison Overview</CardTitle>
+          <CardTitle className="text-2xl" style={{ color: '#0f172a' }}>Device Comparison Overview</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="prose prose-slate max-w-none">
-            <p className="text-slate-700 leading-relaxed mb-4">
+            <p className="leading-relaxed mb-4" style={{ color: '#1e293b' }}>
               This analysis compares outcomes between participants using Apple Watch devices and those using other wearable devices (Oura Ring, Ring Conn, Muse). Device differentiation helps validate measurement consistency, understand potential capture differences across device types, and assess whether therapeutic effects are independent of tracking technology.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
-              <Card className="bg-white border-blue-200">
+              <Card className="metric-card">
                 <CardContent className="pt-6">
-                  <h3 className="text-lg font-semibold text-blue-600 mb-2">Apple Watch Users</h3>
-                  <p className="text-4xl font-bold text-blue-600">{appleWatchData.length}</p>
-                  <p className="text-sm text-slate-600">Total observations</p>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#0f172a' }}>Apple Watch Users</h3>
+                  <p className="stat-value" style={{ color: '#A8C8DA' }}>{appleWatchData.length}</p>
+                  <p className="text-sm" style={{ color: '#1e293b', opacity: 0.85 }}>Total observations</p>
                 </CardContent>
               </Card>
-              <Card className="bg-white border-purple-200">
+              <Card className="metric-card">
                 <CardContent className="pt-6">
-                  <h3 className="text-lg font-semibold text-purple-600 mb-2">Other Device Users</h3>
-                  <p className="text-4xl font-bold text-purple-600">{otherDevicesData.length}</p>
-                  <p className="text-sm text-slate-600">Total observations</p>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#0f172a' }}>Other Device Users</h3>
+                  <p className="stat-value" style={{ color: '#50604F' }}>{otherDevicesData.length}</p>
+                  <p className="text-sm" style={{ color: '#1e293b', opacity: 0.85 }}>Total observations</p>
                 </CardContent>
               </Card>
             </div>
@@ -132,7 +132,7 @@ export default function DeviceComparison({ data }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
+      <Card className="glass-panel">
         <CardHeader>
           <CardTitle className="text-xl text-blue-600">Pre vs Post Comparison by Device Type</CardTitle>
         </CardHeader>
@@ -159,7 +159,7 @@ export default function DeviceComparison({ data }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-white/80 backdrop-blur-sm border-purple-200">
+      <Card className="glass-panel">
         <CardHeader>
           <CardTitle className="text-xl text-purple-600">Average Change by Device Type</CardTitle>
         </CardHeader>
@@ -184,7 +184,7 @@ export default function DeviceComparison({ data }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
+      <Card className="glass-panel">
         <CardHeader>
           <CardTitle className="text-xl text-blue-600">Detailed Statistical Comparison</CardTitle>
         </CardHeader>
@@ -192,14 +192,14 @@ export default function DeviceComparison({ data }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b-2 border-slate-300 bg-gradient-to-r from-blue-50 to-purple-50">
-                  <th className="text-left p-3 font-semibold text-slate-700">Metric</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Device</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Pre (Mean ± SD)</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Post (Mean ± SD)</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Median Pre→Post</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Change</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">N</th>
+                <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.15)' }}>
+                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Metric</th>
+                  <th className="text-center p-3 font-semibold" style={{ color: '#0f172a' }}>Device</th>
+                  <th className="text-center p-3 font-semibold" style={{ color: '#0f172a' }}>Pre (Mean ± SD)</th>
+                  <th className="text-center p-3 font-semibold" style={{ color: '#0f172a' }}>Post (Mean ± SD)</th>
+                  <th className="text-center p-3 font-semibold" style={{ color: '#0f172a' }}>Median Pre→Post</th>
+                  <th className="text-center p-3 font-semibold" style={{ color: '#0f172a' }}>Change</th>
+                  <th className="text-center p-3 font-semibold" style={{ color: '#0f172a' }}>N</th>
                 </tr>
               </thead>
               <tbody>
@@ -207,12 +207,15 @@ export default function DeviceComparison({ data }) {
                   const otherData = otherMetrics[metric] || {};
                   return (
                     <Fragment key={metric}>
-                      <tr className={`border-b border-slate-200 ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+                      <tr style={{
+                        borderBottom: '1px solid rgba(15, 23, 42, 0.1)',
+                        background: idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'
+                      }}>
                         <td className="p-3 font-semibold text-slate-800" rowSpan="2">
                           {metric.charAt(0).toUpperCase() + metric.slice(1).replace('_', ' ')}
                         </td>
                         <td className="text-center p-3">
-                          <Badge className="bg-blue-100 text-blue-700 border-blue-300">Apple Watch</Badge>
+                          <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(168, 200, 218, 0.3)', color: '#0f172a', border: '1px solid rgba(168, 200, 218, 0.4)' }}>Apple Watch</Badge>
                         </td>
                         <td className="text-center p-3 text-slate-700">
                           {appleData.pre_mean?.toFixed(2)} ± {appleData.pre_sd?.toFixed(2)}
@@ -228,9 +231,12 @@ export default function DeviceComparison({ data }) {
                         </td>
                         <td className="text-center p-3 text-slate-700">{appleData.count}</td>
                       </tr>
-                      <tr className={`border-b-2 border-slate-300 ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'}`}>
+                      <tr style={{
+                        borderBottom: '2px solid rgba(15, 23, 42, 0.15)',
+                        background: idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'
+                      }}>
                         <td className="text-center p-3">
-                          <Badge className="bg-purple-100 text-purple-700 border-purple-300">Other Devices</Badge>
+                          <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(80, 96, 79, 0.3)', color: '#0f172a', border: '1px solid rgba(80, 96, 79, 0.4)' }}>Other Devices</Badge>
                         </td>
                         <td className="text-center p-3 text-slate-700">
                           {otherData.pre_mean?.toFixed(2)} ± {otherData.pre_sd?.toFixed(2)}
@@ -255,7 +261,7 @@ export default function DeviceComparison({ data }) {
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-300">
+      <Card className="glass-panel">
         <CardHeader>
           <CardTitle className="text-lg text-blue-600">Key Findings</CardTitle>
         </CardHeader>

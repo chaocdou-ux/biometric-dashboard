@@ -91,25 +91,25 @@ function SessionView({ sessionKey, sessionData }) {
   const metrics = ['emotional', 'energy', 'tension', 'stress', 'clarity', 'spiritual'];
 
   return (
-    <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
+    <Card className="glass-panel">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
-            <CardTitle className="text-2xl text-blue-600">{desc.title}</CardTitle>
+            <CardTitle className="text-2xl" style={{ color: '#0f172a' }}>{desc.title}</CardTitle>
             <p className="text-sm text-slate-600 mt-1">{desc.subtitle}</p>
           </div>
-          <Badge className="bg-purple-100 text-purple-700 border-purple-300">
+          <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(168, 200, 218, 0.3)', color: '#0f172a', border: '1px solid rgba(168, 200, 218, 0.4)' }}>
             {desc.date}
           </Badge>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200">
-          <p className="text-slate-700 leading-relaxed">{desc.description}</p>
+        <div className="mb-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.2)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
+          <p className="leading-relaxed" style={{ color: '#0f172a' }}>{desc.description}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-4">Aggregate Pre/Post Comparison</h3>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#0f172a' }}>Aggregate Pre/Post Comparison</h3>
             {metrics.map(metric => (
               <MetricComparison
                 key={metric}
@@ -164,12 +164,15 @@ export default function Sessions({ data }) {
         </p>
       </div>
       <Tabs value={activeSession} onValueChange={setActiveSession}>
-        <TabsList className="grid w-full grid-cols-4 bg-white/80 backdrop-blur-sm border border-slate-200">
+        <TabsList className="grid w-full grid-cols-4 glass-panel">
           {Object.entries(sessionDescriptions).map(([key, desc]) => (
             <TabsTrigger
               key={key}
               value={key}
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white"
+              className="data-[state=active]:bg-slate-900 data-[state=active]:text-white transition-all duration-300"
+              style={{
+                borderRadius: '0.75rem'
+              }}
             >
               {desc.title}
             </TabsTrigger>
