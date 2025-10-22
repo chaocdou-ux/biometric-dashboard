@@ -166,7 +166,7 @@ export default function App() {
 
         <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-        <div className="glass-panel p-6 text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+        <div className="text-sm leading-relaxed" style={{ color: '#000000' }}>
           <p className="mb-2">Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
           <p className="mb-2">Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
           <p>Contact: biometricstudy@gmail.com | Instagram: biometric.study</p>
