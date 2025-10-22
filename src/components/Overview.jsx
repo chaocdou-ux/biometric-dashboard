@@ -65,39 +65,36 @@ export default function Overview({ data }) {
         <h2 className="section-header">Study Overview</h2>
 
         <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
-          <p className="text-sm font-medium mb-2" style={{ color: '#0f172a' }}>
-            What is a Feasibility Study?
-          </p>
           <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-            A feasibility study assesses how practical and achievable a proposed plan, project, or method is before full-scale implementation.
+            This was a feasibility study designed to assess the practicality and achievability of the proposed therapeutic plan and method before full-scale implementation.
           </p>
         </div>
 
         <div className="space-y-4 leading-relaxed" style={{ color: '#1e293b' }}>
           <p>
-            This study explores the effects of ancient yogic breathwork (two inhales, one exhale) combined with immersive soundscapes on emotional state, physical energy, and nervous system function. Participants engaged in guided breathwork and sound-based sessions designed to hyper-oxygenate the bloodstream, trigger emotional release, and foster healing.
+            This study examined how guided breathwork (using a two-inhale, one-exhale pattern) combined with immersive live violin soundscapes influenced emotional state, physical energy, and nervous system function. Participants engaged in sessions blending structured breathwork and sound, aiming to hyper-oxygenate the bloodstream, prompt emotional release, and foster healing. Protocols were designed to stimulate the vagus nerve and heart rate variability, supporting both physiological and emotional resilience.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6 mt-6">
             <div>
               <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Modalities</h3>
               <ul className="space-y-1 text-sm">
-                <li>• Breathwork: Two inhales, one exhale pattern</li>
-                <li>• Sound: Live violin (all sessions)</li>
-                <li>• Sound bowls (sessions 2-4)</li>
-                <li>• Binaural beats via headphones (sessions 3-4)</li>
-                <li>• Movement: Ecstatic dance (session 4)</li>
+                <li>• Breathwork: Two inhales followed by one exhale per cycle</li>
+                <li>• Sound: Live violin at every session</li>
+                <li>• Sound Bowls: Added in session 2 for resonance and relaxation</li>
+                <li>• Binaural Beats: Introduced via headphones in session 3</li>
+                <li>• Movement: Incorporated before breathwork in session 4 to facilitate energy release</li>
               </ul>
             </div>
 
             <div>
               <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Measurement Approach</h3>
               <ul className="space-y-1 text-sm">
-                <li>• Baseline assessment before study</li>
-                <li>• Pre/post-session self-reports (emotional, physical, mental)</li>
+                <li>• Baseline assessment prior to study</li>
+                <li>• Pre- and post-session self-reports for emotional, physical, and mental states</li>
                 <li>• Biometric data from wearable devices</li>
-                <li>• Attendance: {uniqueParticipants} participants with 2+ sessions</li>
-                <li>• Devices: Apple Watch, Oura Ring, Muse, Ring Conn</li>
+                <li>• Attendance: {uniqueParticipants} participants completed at least 2 sessions</li>
+                <li>• Devices used: Apple Watch, Oura Ring, Muse, Ring Conn</li>
               </ul>
             </div>
           </div>
@@ -105,24 +102,24 @@ export default function Overview({ data }) {
       </section>
 
       <section className="glass-card">
-        <h2 className="section-header">Facilitators</h2>
+        <h2 className="section-header">Key Facilitators</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Nathalie Bonin</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Grammy-winning violinist, artist, and speaker blending live music with inspiring transformation.
+              Internationally acclaimed violinist, Grammy-winning artist, and inspirational speaker who blends live music and storytelling to ignite transformation.
             </p>
           </div>
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Robert Bahedry</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Breathwork facilitator and coach, guiding personal breakthroughs through conscious breathing since 2010.
+              Certified breathwork practitioner and transformational coach, based in Los Angeles. Known for creating safe, welcoming environments since 2010, Robert specializes in conscious breathing for meaningful transformation.
             </p>
           </div>
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Chao Dou</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Experience strategist, designer, and artist integrating architecture, creative experimentation, and multisensory wellness practices.
+              Experience strategist, designer, and artist exploring the intersections of art, wellness, and sensory experimentation to deepen presence and connection.
             </p>
           </div>
         </div>
@@ -130,6 +127,14 @@ export default function Overview({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Key Findings</h2>
+        <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
+          <p className="text-base font-semibold" style={{ color: '#0f172a' }}>
+            +33.7% Improvement in Spiritual Connection
+          </p>
+          <p className="text-sm mt-1" style={{ color: '#1e293b' }}>
+            Average increase in self-reported spiritual connection across all sessions.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="metric-card">
             <div className="stat-value">{totalSessions}</div>

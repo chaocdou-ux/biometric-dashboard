@@ -5,28 +5,28 @@ import { Badge } from './ui/badge';
 
 const sessionDescriptions = {
   session_1: {
-    title: 'Session 1',
-    subtitle: 'Baseline with Sound and Breath',
+    title: 'Session 1 (8/26/25)',
+    subtitle: 'Baseline',
     date: '8/26/25',
-    description: 'Initial session establishing baseline measurements. Participants engaged in ancient yogic breathwork (two inhales, one exhale) accompanied by live violin music. This session focused on introducing the breathwork technique and creating a foundation for comparison.'
+    description: '90 minutes: Breathwork (2 inhales, 1 exhale) + live violin. Baseline session establishing the core practice.'
   },
   session_2: {
-    title: 'Session 2',
-    subtitle: 'Sound, Breath, and Sound Bowls',
+    title: 'Session 2 (9/2/25)',
+    subtitle: 'Resonance',
     date: '9/2/25',
-    description: 'Building on Session 1, this session added Tibetan singing bowls to the soundscape. The combination of breathwork, violin, and resonant bowl frequencies created a multi-layered sonic environment designed to enhance relaxation and emotional release.'
+    description: '90 minutes: Breathwork + live violin + quartz sound bowls. Introduction of sound bowls for deeper resonance.'
   },
   session_3: {
-    title: 'Session 3',
-    subtitle: 'Sound, Breath, and Binaural Beats',
+    title: 'Session 3 (9/9/25)',
+    subtitle: 'Brainwave Entrainment',
     date: '9/9/25',
-    description: 'Introduced binaural beats through headphones to participants. These precisely calibrated audio frequencies were designed to entrain brainwaves and deepen meditative states while maintaining the core breathwork practice.'
+    description: '90 minutes: Breathwork + live violin + binaural beats (headphones). Binaural beats added for enhanced brainwave synchronization.'
   },
   session_4: {
-    title: 'Session 4',
-    subtitle: 'Sound, Breath, and Movement',
+    title: 'Session 4 (9/16/25)',
+    subtitle: 'Movement Integration',
     date: '9/16/25',
-    description: 'Final session incorporated gentle movement before breathwork to help participants release physical tension and arrive more fully in their bodies. This preparatory movement enhanced the breathwork experience and emotional processing.'
+    description: '90 minutes: Movement + breathwork + live violin. Movement introduced before breathwork for physical energy release.'
   }
 };
 
@@ -155,6 +155,14 @@ export default function Sessions({ data }) {
 
   return (
     <div className="space-y-6">
+      <div className="glass-card mb-6">
+        <h2 className="text-2xl font-semibold mb-2" style={{ color: '#0f172a' }}>
+          Session Protocols
+        </h2>
+        <p className="text-sm" style={{ color: '#1e293b', opacity: 0.8 }}>
+          Each 90-minute session progressively introduced new modalities to explore their combined effects on participant wellbeing.
+        </p>
+      </div>
       <Tabs value={activeSession} onValueChange={setActiveSession}>
         <TabsList className="grid w-full grid-cols-4 bg-white/80 backdrop-blur-sm border border-slate-200">
           {Object.entries(sessionDescriptions).map(([key, desc]) => (
