@@ -139,7 +139,7 @@
 
 @layer components {
   .glass-panel {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.45);
@@ -153,7 +153,7 @@
   }
 
   .glass-panel:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     box-shadow:
       0 16px 48px rgba(0, 0, 0, 0.15),
       0 8px 16px rgba(0, 0, 0, 0.1),

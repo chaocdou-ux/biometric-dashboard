@@ -166,7 +166,7 @@ export default function Sessions({ data }) {
                   onClick={() => setActiveSession(key)}
                   className="px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center"
                   style={{
-                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.6)',
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.7)',
                     color: isActive ? '#ffffff' : '#0f172a',
                     border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
                     backdropFilter: 'blur(10px)',
@@ -175,14 +175,14 @@ export default function Sessions({ data }) {
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.8)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.85)';
                       e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
                       e.currentTarget.style.boxShadow = '0 8px 24px rgba(168, 200, 218, 0.3), 0 0 12px rgba(168, 200, 218, 0.2)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.6)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.7)';
                       e.currentTarget.style.transform = 'translateY(0) scale(1)';
                       e.currentTarget.style.boxShadow = 'none';
                     }

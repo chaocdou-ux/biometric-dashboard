@@ -130,12 +130,13 @@ export default function Metrics({ data }) {
             <Radar
               name="Post-Session"
               dataKey="Post"
-              stroke={colors.accentRed}
-              fill={colors.accentRed}
+              stroke="#1e7d3e"
+              fill="#22c55e"
               fillOpacity={0.3}
               strokeWidth={3}
             />
             <Legend
+              iconType="circle"
               wrapperStyle={{ paddingTop: '20px' }}
               formatter={(value) => (
                 <span style={{ color: colors.deepCharcoal, fontWeight: 500 }}>{value}</span>
@@ -166,6 +167,7 @@ export default function Metrics({ data }) {
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
+              iconType="circle"
               wrapperStyle={{ paddingTop: '10px' }}
               formatter={(value) => (
                 <span style={{ color: colors.deepCharcoal, fontWeight: 500 }}>{value}</span>
@@ -175,7 +177,7 @@ export default function Metrics({ data }) {
               type="monotone"
               dataKey="Emotional"
               stroke={colors.metrics.emotional}
-              strokeWidth={3}
+              strokeWidth={4}
               dot={<CustomDot />}
               activeDot={{ r: 6 }}
             />
@@ -183,7 +185,7 @@ export default function Metrics({ data }) {
               type="monotone"
               dataKey="Energy"
               stroke={colors.metrics.energy}
-              strokeWidth={3}
+              strokeWidth={4}
               dot={<CustomDot />}
               activeDot={{ r: 6 }}
             />
@@ -191,7 +193,7 @@ export default function Metrics({ data }) {
               type="monotone"
               dataKey="Clarity"
               stroke={colors.metrics.clarity}
-              strokeWidth={3}
+              strokeWidth={4}
               dot={<CustomDot />}
               activeDot={{ r: 6 }}
             />
@@ -199,7 +201,7 @@ export default function Metrics({ data }) {
               type="monotone"
               dataKey="Spiritual"
               stroke={colors.metrics.spiritual}
-              strokeWidth={3}
+              strokeWidth={4}
               dot={<CustomDot />}
               activeDot={{ r: 6 }}
             />

@@ -37,23 +37,6 @@ export default function DeviceComparison({ data }) {
       }
     });
 
-    const heartRateData = dataset.filter(s => s.pre_heart_rate && s.post_heart_rate);
-    if (heartRateData.length > 0) {
-      const preHR = heartRateData.map(s => s.pre_heart_rate);
-      const postHR = heartRateData.map(s => s.post_heart_rate);
-
-      results.heart_rate = {
-        pre_mean: preHR.reduce((a, b) => a + b, 0) / preHR.length,
-        post_mean: postHR.reduce((a, b) => a + b, 0) / postHR.length,
-        pre_median: median(preHR),
-        post_median: median(postHR),
-        pre_sd: standardDeviation(preHR),
-        post_sd: standardDeviation(postHR),
-        count: heartRateData.length,
-        change: (postHR.reduce((a, b) => a + b, 0) / postHR.length) - (preHR.reduce((a, b) => a + b, 0) / preHR.length)
-      };
-    }
-
     return results;
   };
 

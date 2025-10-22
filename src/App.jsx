@@ -126,7 +126,7 @@ export default function App() {
                   onClick={() => setActiveTab(tab.id)}
                   className="px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 flex items-center touch-manipulation min-h-[44px]"
                   style={{
-                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.5)',
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.7)',
                     color: isActive ? '#ffffff' : '#0f172a',
                     border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
                     backdropFilter: 'blur(10px)',
@@ -135,14 +135,14 @@ export default function App() {
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.7)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.8)';
                       e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
                       e.currentTarget.style.boxShadow = '0 8px 24px rgba(168, 200, 218, 0.3), 0 0 12px rgba(168, 200, 218, 0.2)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.5)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.7)';
                       e.currentTarget.style.transform = 'translateY(0) scale(1)';
                       e.currentTarget.style.boxShadow = 'none';
                     }

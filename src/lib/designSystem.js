@@ -18,12 +18,12 @@ export const colors = {
   darkYellow: '#D4A017',
 
   metrics: {
-    emotional: '#A8C8DA',
-    energy: '#F3C77B',
-    tension: '#7D8D74',
-    stress: '#C96F4E',
-    clarity: '#50604F',
-    spiritual: '#B8A389'
+    emotional: '#5a95b8',
+    energy: '#d4a52d',
+    tension: '#4d5d4c',
+    stress: '#a54d30',
+    clarity: '#2d3d2c',
+    spiritual: '#8a6d59'
   }
 };
 
