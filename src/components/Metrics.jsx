@@ -122,8 +122,8 @@ export default function Metrics({ data }) {
             <Radar
               name="Pre-Session"
               dataKey="Pre"
-              stroke={colors.skyBlue}
-              fill={colors.skyBlue}
+              stroke={colors.darkYellow}
+              fill={colors.darkYellow}
               fillOpacity={0.4}
               strokeWidth={3}
             />

@@ -15,6 +15,7 @@ export const colors = {
   accentTeal: '#2BC6EA',
   accentViolet: '#6F49EE',
   accentYellow: '#FFD952',
+  darkYellow: '#D4A017',
 
   metrics: {
     emotional: '#A8C8DA',

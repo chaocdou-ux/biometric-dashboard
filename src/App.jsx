@@ -19,17 +19,17 @@ const tabs = [
     </svg>
   },
   {
-    id: 'sessions',
-    label: 'Sessions',
-    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
-      <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    </svg>
-  },
-  {
     id: 'metrics',
     label: 'Metrics',
     icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
       <path d="M2 14V6l4-4 4 6 4-4v10" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
+    </svg>
+  },
+  {
+    id: 'sessions',
+    label: 'Sessions',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   },
   {
@@ -166,10 +166,10 @@ export default function App() {
 
         <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-        <div className="text-sm" style={{ color: '#0f172a' }}>
-          <p>Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
-          <p>Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
-          <p className="mt-2">Contact: biometricstudy@gmail.com | Instagram: biometric.study</p>
+        <div className="glass-panel p-6 text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+          <p className="mb-2">Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
+          <p className="mb-2">Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
+          <p>Contact: biometricstudy@gmail.com | Instagram: biometric.study</p>
         </div>
       </div>
     </div>

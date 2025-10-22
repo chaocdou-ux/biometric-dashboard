@@ -68,7 +68,7 @@ function MetricComparison({ label, preValue, postValue, inverse = false }) {
           <p className="text-sm font-medium text-slate-800">{postLabel}</p>
           {change !== null && (
             <Badge className={`mt-1 ${changeColor}`} variant="outline">
-              {change > 0 ? '+' : ''}{change}
+              {change > 0 ? '+' : ''}{change.toFixed(2)}
             </Badge>
           )}
         </div>
