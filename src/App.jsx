@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Activity, Calendar, TrendingUp, Users, Watch, BookOpen } from 'lucide-react';
+import AbstractBackground from './components/AbstractBackground';
 import Overview from './components/Overview';
 import Sessions from './components/Sessions';
 import Metrics from './components/Metrics';
@@ -41,12 +42,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen pb-32 relative">
+      <AbstractBackground />
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
-        <header className="mb-12 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4" style={{ color: '#333430' }}>
+        <header className="mb-12 text-center relative">
+          <div className="inline-block mb-6 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase" style={{ background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15))', color: '#3B82F6', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+            Feasibility Study
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 bg-clip-text text-transparent">
             Biometric Study 1
           </h1>
-          <p className="text-xl md:text-2xl mb-6" style={{ color: '#50604F' }}>
+          <p className="text-xl md:text-2xl mb-8 font-medium" style={{ color: '#3B82F6' }}>
             Sound and Breath Study
           </p>
           <div className="glass-panel inline-block px-8 py-4 text-sm" style={{ color: '#333430' }}>
