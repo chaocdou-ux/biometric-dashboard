@@ -260,13 +260,18 @@ export default function Metrics({ data }) {
               <div className="space-y-1 text-sm" style={{ color: colors.deepCharcoal }}>
                 <p>Pre-session avg: {values.pre.toFixed(2)}</p>
                 <p>Post-session avg: {values.post.toFixed(2)}</p>
-                <p className="font-semibold" style={{ color: colors.accentRed }}>
+                <p className="font-semibold" style={{ color: values.change > 0 ? '#16a34a' : '#dc2626' }}>
                   Change: {values.change > 0 ? '+' : ''}{values.change.toFixed(1)}%
                 </p>
                 <p className="text-xs opacity-70">n = {values.count} responses</p>
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+            <strong>Note:</strong> All metrics are calculated on a 1 to 4 scale, with 4 representing the most positive outcome.
+          </p>
         </div>
       </section>
     </div>
