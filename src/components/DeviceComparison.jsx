@@ -117,26 +117,26 @@ export default function DeviceComparison({ data }) {
 
       <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-xl text-blue-600">Pre vs Post Comparison by Device Type</CardTitle>
+          <h2 className="section-header">Pre vs Post Comparison by Device Type</h2>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={comparisonData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#E4E5DF" opacity={0.5} />
               <XAxis
                 dataKey="metric"
-                tick={{ fill: '#475569', fontSize: 11, fontWeight: 600 }}
+                tick={{ fill: '#0f172a', fontSize: 11, fontWeight: 600 }}
                 angle={-15}
                 textAnchor="end"
                 height={100}
               />
-              <YAxis tick={{ fill: '#64748b', fontSize: 10 }} domain={[0, 5]} />
+              <YAxis tick={{ fill: '#0f172a', fontSize: 10, fontWeight: 500 }} domain={[0, 5]} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
-              <Bar dataKey="Apple Watch (Pre)" fill="#93c5fd" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Apple Watch (Post)" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Other Devices (Pre)" fill="#d8b4fe" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Other Devices (Post)" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+              <Legend iconType="circle" wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
+              <Bar dataKey="Apple Watch (Pre)" fill="#A8C8DA" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Apple Watch (Post)" fill="#5a95b8" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Other Devices (Pre)" fill="#B8A389" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Other Devices (Post)" fill="#8a6d59" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -144,24 +144,24 @@ export default function DeviceComparison({ data }) {
 
       <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-xl text-purple-600">Average Change by Device Type</CardTitle>
+          <h2 className="section-header">Average Change by Device Type</h2>
         </CardHeader>
         <CardContent>
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={changeComparisonData} layout="horizontal">
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#E4E5DF" opacity={0.5} />
               <XAxis
                 dataKey="metric"
-                tick={{ fill: '#475569', fontSize: 11, fontWeight: 600 }}
+                tick={{ fill: '#0f172a', fontSize: 11, fontWeight: 600 }}
                 angle={-15}
                 textAnchor="end"
                 height={100}
               />
-              <YAxis tick={{ fill: '#64748b', fontSize: 10 }} domain={[-2, 2]} />
+              <YAxis tick={{ fill: '#0f172a', fontSize: 10, fontWeight: 500 }} domain={[-2, 2]} />
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
-              <Bar dataKey="Apple Watch" fill="#3b82f6" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Other Devices" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
+              <Legend iconType="circle" wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
+              <Bar dataKey="Apple Watch" fill="#5a95b8" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Other Devices" fill="#8a6d59" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -169,7 +169,7 @@ export default function DeviceComparison({ data }) {
 
       <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-xl text-blue-600">Detailed Statistical Comparison</CardTitle>
+          <h2 className="section-header">Detailed Statistical Comparison</h2>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
@@ -241,12 +241,17 @@ export default function DeviceComparison({ data }) {
               </tbody>
             </table>
           </div>
+          <div className="mt-4 p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
+            <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+              <strong>Note:</strong> All metrics are reported on a 1 to 4 scale, with 4 representing the most positive outcome.
+            </p>
+          </div>
         </CardContent>
       </Card>
 
       <Card className="glass-panel">
         <CardHeader>
-          <CardTitle className="text-lg text-blue-600">Key Findings</CardTitle>
+          <h3 className="text-lg font-semibold" style={{ color: '#0f172a', marginBottom: '1rem' }}>Key Findings</h3>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2 text-slate-700">
@@ -260,8 +265,8 @@ export default function DeviceComparison({ data }) {
                     <span>
                       <strong>{metric.charAt(0).toUpperCase() + metric.slice(1).replace('_', ' ')}:</strong>{' '}
                       Apple Watch users showed a {appleData.change > (otherData.change || 0) ? 'larger' : 'smaller'} change
-                      ({appleData.change > 0 ? '+' : ''}{appleData.change.toFixed(2)}) compared to other devices
-                      ({otherData.change > 0 ? '+' : ''}{(otherData.change || 0).toFixed(2)})
+                      (<span className={appleData.change > 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>{appleData.change > 0 ? '+' : ''}{appleData.change.toFixed(2)}</span>) compared to other devices
+                      (<span className={otherData.change > 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>{otherData.change > 0 ? '+' : ''}{(otherData.change || 0).toFixed(2)}</span>)
                     </span>
                   </li>
                 );
