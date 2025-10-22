@@ -75,7 +75,7 @@ export default function Overview({ data }) {
             This study examined how guided breathwork (using a two-inhale, one-exhale pattern) combined with immersive live violin soundscapes influenced emotional state, physical energy, and nervous system function. Participants engaged in sessions blending structured breathwork and sound, aiming to hyper-oxygenate the bloodstream, prompt emotional release, and foster healing. Protocols were designed to stimulate the vagus nerve and heart rate variability, supporting both physiological and emotional resilience.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-6">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
             <div>
               <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Modalities</h3>
               <ul className="space-y-1 text-sm">
@@ -103,7 +103,7 @@ export default function Overview({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Key Facilitators</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Nathalie Bonin</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>

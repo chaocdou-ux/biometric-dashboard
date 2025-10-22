@@ -82,41 +82,41 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative">
-      <div className="relative z-10 container mx-auto px-8 py-12 max-w-7xl">
-        <header className="mb-12 flex flex-col md:flex-row items-start justify-between gap-6">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 max-w-7xl">
+        <header className="mb-6 sm:mb-8 md:mb-12 flex flex-col md:flex-row items-start justify-between gap-4 sm:gap-6">
           <div className="flex-1">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
               Biometric
               <br />
               Study 1
             </h1>
-            <p className="text-sm md:text-base font-medium mt-4" style={{ color: '#1e293b' }}>
+            <p className="text-xs sm:text-sm md:text-base font-medium mt-2 sm:mt-4" style={{ color: '#1e293b' }}>
               Measurement Meets Human Transformation
             </p>
           </div>
-          <div className="flex items-center gap-4 md:gap-6 flex-wrap">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
+          <div className="flex items-center gap-3 sm:gap-4 md:gap-6 flex-wrap">
+            <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
               <circle cx="24" cy="24" r="20" stroke="#0f172a" strokeWidth="1.5" fill="none" />
               <path d="M 12 24 L 36 24 M 24 12 L 24 36" stroke="#0f172a" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
+            <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
               <circle cx="16" cy="24" r="4" fill="#0f172a" />
               <circle cx="24" cy="24" r="4" fill="#0f172a" />
               <circle cx="32" cy="24" r="4" fill="#0f172a" />
               <path d="M 16 24 Q 20 16 24 24 Q 28 32 32 24" stroke="#0f172a" strokeWidth="1.5" fill="none" />
             </svg>
-            <div className="glass-panel px-6 py-3 text-sm" style={{ color: '#0f172a' }}>
+            <div className="glass-panel px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm" style={{ color: '#0f172a' }}>
               <p className="font-medium">Sound and Breath Study</p>
             </div>
           </div>
         </header>
 
         <nav
-          className="mb-8"
+          className="mb-6 sm:mb-8"
           role="navigation"
           aria-label="Main navigation"
         >
-          <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-wrap">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
 
@@ -124,13 +124,13 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center"
+                  className="px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 flex items-center touch-manipulation min-h-[44px]"
                   style={{
                     background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.5)',
                     color: isActive ? '#ffffff' : '#0f172a',
                     border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
                     backdropFilter: 'blur(10px)',
-                    fontSize: '14px',
+                    fontSize: '0.875rem',
                     letterSpacing: '0.02em'
                   }}
                   onMouseEnter={(e) => {
@@ -158,9 +158,9 @@ export default function App() {
           </div>
         </nav>
 
-        <div className="border-t mb-8" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
+        <div className="border-t mb-6 sm:mb-8" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-        <div className="mb-12">
+        <div className="mb-8 sm:mb-12">
           {renderTabContent()}
         </div>
 
