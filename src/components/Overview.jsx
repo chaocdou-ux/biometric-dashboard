@@ -127,15 +127,26 @@ export default function Overview({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Key Findings</h2>
-        <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
-          <p className="text-base font-semibold" style={{ color: '#0f172a' }}>
-            +33.7% Improvement in Spiritual Connection
-          </p>
-          <p className="text-sm mt-1" style={{ color: '#1e293b' }}>
-            Average increase in self-reported spiritual connection across all sessions.
-          </p>
+        <div className="space-y-4 leading-relaxed" style={{ color: '#1e293b' }}>
+          <ul className="space-y-3">
+            <li>
+              <strong style={{ color: '#0f172a' }}>Emotional Well-Being Consistently Improves:</strong> Breathwork sessions—especially those combined with immersive live music—are linked to measurable improvements in emotional state, physical energy, and mental clarity. Participants frequently report greater calm, vitality, and focus after each session, corroborated by self-reported metrics and biometric feedback.
+            </li>
+            <li>
+              <strong style={{ color: '#0f172a' }}>Significant Increase in Spiritual Connection:</strong> Data analysis reveals a +33.7% average improvement in spiritual connection across sessions. This finding aligns with research showing breathwork and mindful modalities foster self-awareness and meaningful spiritual shifts.
+            </li>
+            <li>
+              <strong style={{ color: '#0f172a' }}>Physiological and Psychological Shifts Track Together:</strong> Biometric indicators (e.g., heart rate, respiratory patterns) show post-session improvements like reduced stress markers and more stable heart rhythms. These shifts support evidence that breathwork modulates nervous system activity and mood.
+            </li>
+            <li>
+              <strong style={{ color: '#0f172a' }}>Device and Modality Variability:</strong> Heart rate and other biometrics may vary between devices (Apple Watch, Oura Ring, Muse, etc.), but overall trends are positive. Segmenting by device provides transparency and reliability.
+            </li>
+            <li>
+              <strong style={{ color: '#0f172a' }}>Engagement Amplifies Outcomes:</strong> Participants who attended more sessions showed stronger positive changes, especially in emotional and spiritual domains. Continued engagement maximizes breathwork's benefits.
+            </li>
+          </ul>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
           <div className="metric-card">
             <div className="stat-value">{totalSessions}</div>
             <div className="stat-label">Total Sessions</div>

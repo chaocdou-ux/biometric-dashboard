@@ -123,7 +123,7 @@ export default function Participants({ data }) {
             <CardTitle className="text-lg" style={{ color: '#0f172a' }}>Total Participants</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="stat-value" style={{ color: '#A8C8DA' }}>{data.baseline.length}</p>
+            <p className="stat-value" style={{ color: '#2d5016' }}>{data.baseline.length}</p>
           </CardContent>
         </Card>
 
@@ -150,31 +150,6 @@ export default function Participants({ data }) {
           </CardContent>
         </Card>
       </div>
-
-      <Card className="glass-panel">
-        <CardHeader>
-          <CardTitle className="text-xl" style={{ color: '#0f172a' }}>Baseline Reflections</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {data.baseline
-              .filter(p => p.reflection && p.reflection.trim())
-              .map(participant => (
-                <div
-                  key={participant.participant}
-                  className="p-4 rounded-lg"
-                  style={{
-                    background: 'rgba(168, 200, 218, 0.2)',
-                    border: '1px solid rgba(168, 200, 218, 0.3)'
-                  }}
-                >
-                  <p className="font-semibold mb-2" style={{ color: '#0f172a' }}>{participant.participant}</p>
-                  <p className="text-sm italic leading-relaxed" style={{ color: '#1e293b' }}>{participant.reflection}</p>
-                </div>
-              ))}
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }

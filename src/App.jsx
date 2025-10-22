@@ -91,7 +91,7 @@ export default function App() {
               Study 1
             </h1>
             <p className="text-sm md:text-base font-medium mt-4" style={{ color: '#1e293b' }}>
-              Experimental Laboratory. Next Generation.
+              Measurement Meets Human Transformation
             </p>
           </div>
           <div className="flex items-center gap-4 md:gap-6 flex-wrap">
@@ -166,9 +166,10 @@ export default function App() {
 
         <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-        <div className="text-sm" style={{ color: '#1e293b', opacity: 0.7 }}>
+        <div className="text-sm" style={{ color: '#0f172a' }}>
           <p>Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
           <p>Location: The KINN, Venice | Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
+          <p className="mt-2">Contact: biometricstudy@gmail.com | Instagram: biometric.study</p>
         </div>
       </div>
     </div>
