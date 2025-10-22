@@ -155,29 +155,56 @@ export default function Sessions({ data }) {
 
   return (
     <div className="space-y-6">
-      <div className="glass-card mb-6">
-        <h2 className="text-2xl font-semibold mb-2" style={{ color: '#0f172a' }}>
-          Session Protocols
-        </h2>
-        <p className="text-sm" style={{ color: '#1e293b', opacity: 0.8 }}>
-          Each 90-minute session progressively introduced new modalities to explore their combined effects on participant wellbeing.
-        </p>
-      </div>
       <Tabs value={activeSession} onValueChange={setActiveSession}>
-        <TabsList className="grid w-full grid-cols-4 glass-panel">
-          {Object.entries(sessionDescriptions).map(([key, desc]) => (
-            <TabsTrigger
-              key={key}
-              value={key}
-              className="data-[state=active]:bg-slate-900 data-[state=active]:text-white transition-all duration-300"
-              style={{
-                borderRadius: '0.75rem'
-              }}
-            >
-              {desc.title}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <div className="mb-6">
+          <div className="flex items-center gap-3 flex-wrap mb-4">
+            {Object.entries(sessionDescriptions).map(([key, desc]) => {
+              const isActive = activeSession === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveSession(key)}
+                  className="px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center"
+                  style={{
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.6)',
+                    color: isActive ? '#ffffff' : '#0f172a',
+                    border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
+                    backdropFilter: 'blur(10px)',
+                    fontSize: '14px',
+                    letterSpacing: '0.02em'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.8)';
+                      e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(168, 200, 218, 0.3), 0 0 12px rgba(168, 200, 218, 0.2)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.6)';
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
+                  }}
+                  aria-label={desc.title}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {desc.title}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="glass-card mb-6">
+          <h2 className="text-2xl font-semibold mb-2" style={{ color: '#0f172a' }}>
+            Session Protocols
+          </h2>
+          <p className="text-sm" style={{ color: '#1e293b', opacity: 0.8 }}>
+            Each 90-minute session progressively introduced new modalities to explore their combined effects on participant wellbeing.
+          </p>
+        </div>
 
         {Object.entries(data.sessions).map(([sessionKey, sessionData]) => (
           <TabsContent key={sessionKey} value={sessionKey}>
