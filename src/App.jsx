@@ -8,12 +8,54 @@ import Definitions from './components/Definitions';
 import data from './data/processed-data.json';
 
 const tabs = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'sessions', label: 'Sessions' },
-  { id: 'metrics', label: 'Metrics' },
-  { id: 'participants', label: 'Participants' },
-  { id: 'devices', label: 'Devices' },
-  { id: 'methodology', label: 'Methodology' }
+  {
+    id: 'overview',
+    label: 'Overview',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+      <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+      <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+      <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    </svg>
+  },
+  {
+    id: 'sessions',
+    label: 'Sessions',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  },
+  {
+    id: 'metrics',
+    label: 'Metrics',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <path d="M2 14V6l4-4 4 6 4-4v10" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
+    </svg>
+  },
+  {
+    id: 'participants',
+    label: 'Participants',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <circle cx="8" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+      <path d="M3 13c0-2.5 2-4 5-4s5 1.5 5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  },
+  {
+    id: 'devices',
+    label: 'Devices',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <rect x="4" y="2" width="8" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+      <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
+    </svg>
+  },
+  {
+    id: 'methodology',
+    label: 'Methodology',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <rect x="3" y="2" width="10" height="12" rx="1" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+      <path d="M6 6h4M6 9h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  }
 ];
 
 export default function App() {
@@ -82,28 +124,33 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="px-6 py-3 rounded-full text-sm font-medium tracking-wide uppercase transition-all duration-300 hover-lift"
+                  className="px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center"
                   style={{
-                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.2)',
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.5)',
                     color: isActive ? '#ffffff' : '#0f172a',
                     border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
-                    backdropFilter: 'blur(10px)'
+                    backdropFilter: 'blur(10px)',
+                    fontSize: '14px',
+                    letterSpacing: '0.02em'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.7)';
+                      e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(168, 200, 218, 0.3), 0 0 12px rgba(168, 200, 218, 0.2)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.5)';
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = 'none';
                     }
                   }}
                   aria-label={tab.label}
                   aria-current={isActive ? 'page' : undefined}
                 >
+                  {tab.icon}
                   {tab.label}
                 </button>
               );

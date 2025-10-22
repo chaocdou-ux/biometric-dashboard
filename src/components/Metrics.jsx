@@ -111,12 +111,13 @@ export default function Metrics({ data }) {
             <PolarGrid stroke={colors.cloudGrey} strokeWidth={1} />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
+              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 600 }}
             />
             <PolarRadiusAxis
               angle={90}
-              domain={[0, 5]}
-              tick={{ fill: '#1e293b', fontSize: 11 }}
+              domain={[0, 4]}
+              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
+              tickCount={5}
             />
             <Radar
               name="Pre-Session"
@@ -155,11 +156,11 @@ export default function Metrics({ data }) {
             <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
             <XAxis
               dataKey="session"
-              tick={{ fill: colors.deepCharcoal, fontSize: 12 }}
+              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
               stroke={colors.forestMoss}
             />
             <YAxis
-              tick={{ fill: colors.deepCharcoal, fontSize: 12 }}
+              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
               stroke={colors.forestMoss}
               label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
             />
@@ -216,14 +217,14 @@ export default function Metrics({ data }) {
             <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
             <XAxis
               dataKey="name"
-              tick={{ fill: colors.deepCharcoal, fontSize: 11 }}
+              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
               angle={-45}
               textAnchor="end"
               height={80}
               stroke={colors.forestMoss}
             />
             <YAxis
-              tick={{ fill: colors.deepCharcoal, fontSize: 12 }}
+              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
               stroke={colors.forestMoss}
               label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
             />
