@@ -5,42 +5,42 @@ export default function Definitions() {
     {
       metric: 'Emotional State',
       description: metricDescriptions.emotional,
-      scale: '1-5 scale',
+      scale: '1-4 scale',
       direction: 'Higher is better',
       normalRange: '3-4 typical baseline'
     },
     {
       metric: 'Physical Energy',
       description: metricDescriptions.energy,
-      scale: '1-5 scale',
+      scale: '1-4 scale',
       direction: 'Higher is better',
       normalRange: '3-4 typical baseline'
     },
     {
       metric: 'Body Tension',
       description: metricDescriptions.tension,
-      scale: '1-5 scale',
+      scale: '1-4 scale',
       direction: 'Lower is better',
       normalRange: '2-3 typical baseline'
     },
     {
       metric: 'Stress Level',
       description: metricDescriptions.stress,
-      scale: '1-5 scale',
+      scale: '1-4 scale',
       direction: 'Lower is better',
       normalRange: '2-3 typical baseline'
     },
     {
       metric: 'Mental Clarity',
       description: metricDescriptions.clarity,
-      scale: '1-5 scale',
+      scale: '1-4 scale',
       direction: 'Higher is better',
       normalRange: '3-4 typical baseline'
     },
     {
       metric: 'Spiritual Connection',
       description: metricDescriptions.spiritual,
-      scale: '1-5 scale',
+      scale: '1-4 scale',
       direction: 'Higher is better',
       normalRange: '2-4 varies by individual'
     }
@@ -87,27 +87,31 @@ export default function Definitions() {
   const sessionProtocols = [
     {
       session: 'Session 1 (8/26/25)',
-      protocol: 'Breathwork (2 inhales, 1 exhale) + Live violin',
+      subtitle: 'Baseline',
+      protocol: 'Breathwork (2 inhales, 1 exhale) + live violin',
       duration: '90 minutes',
-      notes: 'Baseline session establishing core practice'
+      notes: 'Establishes foundational practice'
     },
     {
       session: 'Session 2 (9/2/25)',
-      protocol: 'Breathwork + Live violin + Sound bowls',
+      subtitle: 'Resonance',
+      protocol: 'Breathwork + live violin + quartz sound bowls',
       duration: '90 minutes',
-      notes: 'Introduction of sound bowls for deeper resonance'
+      notes: 'Sound bowls introduced for deeper resonance by Will Webb'
     },
     {
       session: 'Session 3 (9/9/25)',
-      protocol: 'Breathwork + Live violin + Sound bowls + Binaural beats (headphones)',
+      subtitle: 'Brainwave Entrainment',
+      protocol: 'Breathwork + live violin + binaural beats (headphones)',
       duration: '90 minutes',
-      notes: 'Added binaural beats for enhanced brainwave entrainment'
+      notes: 'Binaural beats added for brainwave synchronization, created by Nathalie Bonin'
     },
     {
       session: 'Session 4 (9/16/25)',
-      protocol: 'Ecstatic dance + Breathwork + Live violin + Sound bowls + Binaural beats',
+      subtitle: 'Movement Integration',
+      protocol: 'Movement + breathwork + live violin',
       duration: '90 minutes',
-      notes: 'Movement added before breathwork to release physical energy'
+      notes: 'Movement introduced before breathwork to support physical energy release, led by Atasiea Kenneth L. Ferguson'
     }
   ];
 
@@ -126,10 +130,10 @@ export default function Definitions() {
             </p>
             <ul className="space-y-1 text-sm">
               <li>• Consumer wearables (Apple Watch, Oura Ring, Muse, Ring Conn) used for biometric data</li>
-              <li>• Device accuracy varies; data should be considered indicative rather than clinical-grade</li>
+              <li>• Device accuracy varies; all biometric results are indicative and should not be considered clinical-grade</li>
               <li>• Participants with 2+ sessions included for longitudinal analysis</li>
               <li>• Missing data handled transparently; sample sizes (n) reported for all metrics</li>
-              <li>• Self-reported measures use 1-5 scale across all metrics</li>
+              <li>• Self-reported measures use 1-4 scale across all metrics</li>
             </ul>
           </div>
         </div>
@@ -145,9 +149,14 @@ export default function Definitions() {
               style={{ backgroundColor: `rgba(168, 200, 218, ${0.1 + index * 0.05})` }}
             >
               <div className="flex items-start justify-between mb-3">
-                <h3 className="font-semibold text-lg" style={{ color: colors.pineGreen }}>
-                  {session.session}
-                </h3>
+                <div>
+                  <h3 className="font-semibold text-lg" style={{ color: colors.pineGreen }}>
+                    {session.session}
+                  </h3>
+                  <p className="text-sm font-medium mt-1" style={{ color: colors.deepCharcoal, opacity: 0.7 }}>
+                    {session.subtitle}
+                  </p>
+                </div>
                 <span className="text-sm px-3 py-1 rounded-full" style={{ backgroundColor: colors.skyBlue, color: 'white' }}>
                   {session.duration}
                 </span>
@@ -166,7 +175,7 @@ export default function Definitions() {
       <section className="glass-card">
         <h2 className="section-header">Self-Reported Metrics</h2>
         <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
-          Participants rated these dimensions before and after each session using a 1-5 scale.
+          Participants rated these dimensions before and after each session using a 1-4 scale.
         </p>
         <div className="grid md:grid-cols-2 gap-6">
           {measuredMetrics.map((item, index) => (

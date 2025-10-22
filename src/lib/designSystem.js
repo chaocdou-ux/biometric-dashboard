@@ -36,12 +36,12 @@ export const metricLabels = {
 };
 
 export const metricDescriptions = {
-  emotional: 'Self-reported emotional state (1-5 scale, higher is better)',
-  energy: 'Self-reported physical energy level (1-5 scale, higher is better)',
-  tension: 'Self-reported body tension (1-5 scale, lower is better)',
-  stress: 'Self-reported stress level (1-5 scale, lower is better)',
-  clarity: 'Self-reported mental clarity (1-5 scale, higher is better)',
-  spiritual: 'Self-reported spiritual connection (1-5 scale, higher is better)'
+  emotional: 'Self-reported emotional state (1-4 scale, higher is better)',
+  energy: 'Self-reported physical energy level (1-4 scale, higher is better)',
+  tension: 'Self-reported body tension (1-4 scale, lower is better)',
+  stress: 'Self-reported stress level (1-4 scale, lower is better)',
+  clarity: 'Self-reported mental clarity (1-4 scale, higher is better)',
+  spiritual: 'Self-reported spiritual connection (1-4 scale, higher is better)'
 };
 
 export const calculateImprovement = (preValue, postValue, metric) => {
@@ -53,4 +53,37 @@ export const calculateImprovement = (preValue, postValue, metric) => {
 
 export const getMetricColor = (metric) => {
   return colors.metrics[metric] || colors.skyBlue;
+};
+
+export const getMetricDirection = (metric) => {
+  return (metric === 'tension' || metric === 'stress') ? 'lower' : 'higher';
+};
+
+export const getMetricIcon = (metric) => {
+  const icons = {
+    emotional: '😊',
+    energy: '⚡',
+    tension: '🎯',
+    stress: '🧘',
+    clarity: '💭',
+    spiritual: '✨'
+  };
+  return icons[metric] || '📊';
+};
+
+export const dataSourceInfo = {
+  title: 'Data Collection',
+  description: 'Self-reported assessments collected before and after each breathwork and sound therapy session.',
+  frequency: 'Measured at the start and end of all 4 sessions',
+  scale: '1-4 scale (1 = lowest, 4 = highest)',
+  participants: 'Participants with 2+ session attendance included for longitudinal analysis',
+  devices: 'Consumer wearables: Apple Watch, Oura Ring, Muse, Ring Conn',
+  disclaimer: 'Device accuracy varies; all biometric results are indicative and should not be considered clinical-grade.'
+};
+
+export const significanceThreshold = {
+  minimal: 5,
+  moderate: 15,
+  significant: 25,
+  description: 'Improvement percentages: <5% minimal, 5-15% moderate, 15-25% significant, >25% highly significant'
 };

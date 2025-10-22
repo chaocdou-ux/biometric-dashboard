@@ -8,25 +8,25 @@ const sessionDescriptions = {
     title: 'Session 1 (8/26/25)',
     subtitle: 'Baseline',
     date: '8/26/25',
-    description: '90 minutes: Breathwork (2 inhales, 1 exhale) + live violin. Baseline session establishing the core practice.'
+    description: '90 minutes: Breathwork (2 inhales, 1 exhale) + live violin. Establishes foundational practice.'
   },
   session_2: {
     title: 'Session 2 (9/2/25)',
     subtitle: 'Resonance',
     date: '9/2/25',
-    description: '90 minutes: Breathwork + live violin + quartz sound bowls. Introduction of sound bowls for deeper resonance.'
+    description: '90 minutes: Breathwork + live violin + quartz sound bowls. Sound bowls introduced for deeper resonance by Will Webb.'
   },
   session_3: {
     title: 'Session 3 (9/9/25)',
     subtitle: 'Brainwave Entrainment',
     date: '9/9/25',
-    description: '90 minutes: Breathwork + live violin + binaural beats (headphones). Binaural beats added for enhanced brainwave synchronization.'
+    description: '90 minutes: Breathwork + live violin + binaural beats (headphones). Binaural beats added for brainwave synchronization, created by Nathalie Bonin.'
   },
   session_4: {
     title: 'Session 4 (9/16/25)',
     subtitle: 'Movement Integration',
     date: '9/16/25',
-    description: '90 minutes: Movement + breathwork + live violin. Movement introduced before breathwork for physical energy release.'
+    description: '90 minutes: Movement + breathwork + live violin. Movement introduced before breathwork to support physical energy release, led by Atasiea Kenneth L. Ferguson.'
   }
 };
 

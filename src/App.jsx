@@ -41,18 +41,18 @@ export default function App() {
   return (
     <div className="min-h-screen relative">
       <div className="relative z-10 container mx-auto px-8 py-12 max-w-7xl">
-        <header className="mb-16 flex items-start justify-between">
+        <header className="mb-12 flex flex-col md:flex-row items-start justify-between gap-6">
           <div className="flex-1">
-            <h1 className="text-6xl md:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
               Biometric
               <br />
               Study 1
             </h1>
-            <p className="text-base font-medium mt-4" style={{ color: '#1e293b' }}>
+            <p className="text-sm md:text-base font-medium mt-4" style={{ color: '#1e293b' }}>
               Experimental Laboratory. Next Generation.
             </p>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 md:gap-6 flex-wrap">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
               <circle cx="24" cy="24" r="20" stroke="#0f172a" strokeWidth="1.5" fill="none" />
               <path d="M 12 24 L 36 24 M 24 12 L 24 36" stroke="#0f172a" strokeWidth="1.5" strokeLinecap="round" />
@@ -69,16 +69,8 @@ export default function App() {
           </div>
         </header>
 
-        <div className="border-t" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
-
-        <div className="my-12">
-          {renderTabContent()}
-        </div>
-
-        <div className="border-t mb-8" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
-
         <nav
-          className="mb-12"
+          className="mb-8"
           role="navigation"
           aria-label="Main navigation"
         >
@@ -90,12 +82,24 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="px-6 py-3 rounded-full text-sm font-medium tracking-wide uppercase transition-all duration-300"
+                  className="px-6 py-3 rounded-full text-sm font-medium tracking-wide uppercase transition-all duration-300 hover-lift"
                   style={{
                     background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.2)',
                     color: isActive ? '#ffffff' : '#0f172a',
                     border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
                     backdropFilter: 'blur(10px)'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }
                   }}
                   aria-label={tab.label}
                   aria-current={isActive ? 'page' : undefined}
@@ -106,6 +110,14 @@ export default function App() {
             })}
           </div>
         </nav>
+
+        <div className="border-t mb-8" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
+
+        <div className="mb-12">
+          {renderTabContent()}
+        </div>
+
+        <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
         <div className="text-sm" style={{ color: '#1e293b', opacity: 0.7 }}>
           <p>Sessions: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM</p>
