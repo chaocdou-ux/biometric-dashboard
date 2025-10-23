@@ -7,42 +7,48 @@ export default function Definitions() {
       description: metricDescriptions.emotional,
       scale: '1-4 scale',
       direction: 'Higher is better',
-      normalRange: '3-4 typical baseline'
+      normalRange: '3-4 typical baseline',
+      options: 'Very Negative (1) → Negative (2) → Positive (3) → Very Positive (4)'
     },
     {
       metric: 'Physical Energy',
       description: metricDescriptions.energy,
       scale: '1-4 scale',
       direction: 'Higher is better',
-      normalRange: '3-4 typical baseline'
+      normalRange: '3-4 typical baseline',
+      options: 'Depleted (1) → Sluggish (2) → Energized (3) → Vibrant (4)'
     },
     {
       metric: 'Body Tension',
       description: metricDescriptions.tension,
       scale: '1-4 scale',
       direction: 'Lower is better',
-      normalRange: '2-3 typical baseline'
+      normalRange: '2-3 typical baseline',
+      options: 'Very Tense (1) → Tense (2) → Relaxed (3) → Very Relaxed (4)'
     },
     {
       metric: 'Stress Level',
       description: metricDescriptions.stress,
       scale: '1-4 scale',
       direction: 'Lower is better',
-      normalRange: '2-3 typical baseline'
+      normalRange: '2-3 typical baseline',
+      options: 'Extremely Stressed (1) → Stressed (2) → Mild (3) → No Stress (4)'
     },
     {
       metric: 'Mental Clarity',
       description: metricDescriptions.clarity,
       scale: '1-4 scale',
       direction: 'Higher is better',
-      normalRange: '3-4 typical baseline'
+      normalRange: '3-4 typical baseline',
+      options: 'Very Foggy (1) → Unclear (2) → Clear (3) → Very Sharp (4)'
     },
     {
       metric: 'Spiritual Connection',
       description: metricDescriptions.spiritual,
       scale: '1-4 scale',
       direction: 'Higher is better',
-      normalRange: '2-4 varies by individual'
+      normalRange: '2-4 varies by individual',
+      options: 'Very Disconnected (1) → Disconnected (2) → Connected (3) → Deeply Connected (4)'
     }
   ];
 
@@ -133,7 +139,8 @@ export default function Definitions() {
               <li>• Device accuracy varies; all biometric results are indicative and should not be considered clinical-grade</li>
               <li>• Participants with 2+ sessions included for longitudinal analysis</li>
               <li>• Missing data handled transparently; sample sizes (n) reported for all metrics</li>
-              <li>• Self-reported measures use 1-4 scale across all metrics</li>
+              <li>• Self-reported measures use consistent 1-4 scale across all metrics</li>
+              <li>• Response options ordered from lowest (1) to highest (4) for each metric</li>
             </ul>
           </div>
         </div>
@@ -174,9 +181,21 @@ export default function Definitions() {
 
       <section className="glass-card">
         <h2 className="section-header">Self-Reported Metrics</h2>
-        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
-          Participants rated these dimensions before and after each session using a 1-4 scale.
+        <p className="text-sm mb-4" style={{ color: colors.pineGreen }}>
+          Participants rated these dimensions before and after each session using a consistent 1-4 scale.
         </p>
+        <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
+          <p className="font-semibold mb-2 text-sm" style={{ color: colors.deepCharcoal }}>
+            Scale Methodology
+          </p>
+          <ul className="space-y-1 text-xs" style={{ color: colors.deepCharcoal }}>
+            <li>• All self-reported metrics use a 4-point scale (1-4)</li>
+            <li>• Response options are presented in ascending order from lowest (1) to highest (4)</li>
+            <li>• For Body Tension and Stress Level: lower scores indicate better outcomes (1 = worst, 4 = best)</li>
+            <li>• For all other metrics: higher scores indicate better outcomes (1 = worst, 4 = best)</li>
+            <li>• All averages and calculations reflect this consistent 1-4 scale</li>
+          </ul>
+        </div>
         <div className="grid md:grid-cols-2 gap-6">
           {measuredMetrics.map((item, index) => (
             <div key={index} className="p-5 rounded-lg" style={{ backgroundColor: 'rgba(80, 96, 79, 0.05)' }}>
@@ -185,6 +204,10 @@ export default function Definitions() {
               </h3>
               <div className="space-y-2 text-sm" style={{ color: colors.deepCharcoal }}>
                 <p className="leading-relaxed">{item.description}</p>
+                <div className="p-2 rounded text-xs mt-2" style={{ backgroundColor: 'rgba(168, 200, 218, 0.2)' }}>
+                  <strong>Response Options:</strong><br />
+                  {item.options}
+                </div>
                 <div className="flex gap-4 pt-2 text-xs">
                   <span className="px-2 py-1 rounded" style={{ backgroundColor: colors.cloudGrey }}>
                     {item.scale}
