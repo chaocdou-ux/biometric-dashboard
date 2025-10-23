@@ -102,9 +102,9 @@ export default function Metrics({ data }) {
   return (
     <div className="space-y-8">
       <section className="glass-card">
-        <h2 className="section-header">Overall Pre vs Post Comparison</h2>
+        <h2 className="section-header">Pre vs Post Comparison</h2>
         <p className="text-sm mb-6" style={{ color: '#1e293b' }}>
-          Radial visualization showing average pre-session and post-session values across all metrics.
+          Radial chart showing average pre-session and post-session values across all six metrics.
         </p>
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart data={radarData}>
@@ -148,9 +148,9 @@ export default function Metrics({ data }) {
       </section>
 
       <section className="glass-card">
-        <h2 className="section-header">Session Progression</h2>
+        <h2 className="section-header">Metric Evolution</h2>
         <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
-          Percent change from pre to post across sessions. Flowing lines represent the evolution of each metric.
+          Tracks how each metric changed across the four sessions.
         </p>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={sessionTrends} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -210,9 +210,9 @@ export default function Metrics({ data }) {
       </section>
 
       <section className="glass-card">
-        <h2 className="section-header">Percent Change by Metric</h2>
+        <h2 className="section-header">Average Change</h2>
         <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
-          Average percent improvement (or reduction for tension/stress) across all sessions.
+          Average percent change for each metric across all four sessions.
         </p>
         <ResponsiveContainer width="100%" height={400}>
           <BarChart data={percentChangeData} margin={{ top: 10, right: 30, left: 0, bottom: 60 }}>

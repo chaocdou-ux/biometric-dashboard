@@ -133,8 +133,8 @@ export default function DeviceComparison({ data }) {
               <YAxis tick={{ fill: '#0f172a', fontSize: 10, fontWeight: 500 }} domain={[0, 5]} />
               <Tooltip content={<CustomTooltip />} />
               <Legend iconType="circle" wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
-              <Bar dataKey="Apple Watch (Pre)" fill="#A8C8DA" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Apple Watch (Post)" fill="#5a95b8" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Apple Watch (Pre)" fill="#7D8D74" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Apple Watch (Post)" fill="#50604F" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Other Devices (Pre)" fill="#B8A389" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Other Devices (Post)" fill="#8a6d59" radius={[4, 4, 0, 0]} />
             </BarChart>

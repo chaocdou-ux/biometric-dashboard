@@ -5,28 +5,32 @@ import { Badge } from './ui/badge';
 
 const sessionDescriptions = {
   session_1: {
-    title: 'Session 1 (8/26/25)',
+    title: 'Session 1 - Baseline',
     subtitle: 'Baseline',
     date: '8/26/25',
-    description: '90 minutes: Breathwork (2 inhales, 1 exhale) + live violin. Establishes foundational practice.'
+    protocol: 'Breathwork (2 inhales, 1 exhale) + live violin',
+    description: 'Establishes foundational practice.'
   },
   session_2: {
-    title: 'Session 2 (9/2/25)',
+    title: 'Session 2 - Resonance',
     subtitle: 'Resonance',
     date: '9/2/25',
-    description: '90 minutes: Breathwork + live violin + quartz sound bowls. Sound bowls introduced for deeper resonance by Will Webb.'
+    protocol: 'Breathwork + live violin + quartz sound bowls',
+    description: 'Sound bowls introduced for deeper resonance by Will Webb.'
   },
   session_3: {
-    title: 'Session 3 (9/9/25)',
+    title: 'Session 3 - Brainwave Entrainment',
     subtitle: 'Brainwave Entrainment',
     date: '9/9/25',
-    description: '90 minutes: Breathwork + live violin + binaural beats (headphones). Binaural beats added for brainwave synchronization, created by Nathalie Bonin.'
+    protocol: 'Breathwork + live violin + binaural beats (headphones)',
+    description: 'Binaural beats added for brainwave synchronization, created by Nathalie Bonin.'
   },
   session_4: {
-    title: 'Session 4 (9/16/25)',
+    title: 'Session 4 - Movement Integration',
     subtitle: 'Movement Integration',
     date: '9/16/25',
-    description: '90 minutes: Movement + breathwork + live violin. Movement introduced before breathwork to support physical energy release, led by Atasiea Kenneth L. Ferguson.'
+    protocol: 'Movement + breathwork + live violin',
+    description: 'Movement introduced before breathwork to support physical energy release, led by Atasiea Kenneth L. Ferguson.'
   }
 };
 
@@ -96,16 +100,13 @@ function SessionView({ sessionKey, sessionData }) {
         <div className="flex items-center justify-between">
           <div>
             <CardTitle className="text-2xl" style={{ color: '#0f172a' }}>{desc.title}</CardTitle>
-            <p className="text-sm text-slate-600 mt-1">{desc.subtitle}</p>
           </div>
-          <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(168, 200, 218, 0.3)', color: '#0f172a', border: '1px solid rgba(168, 200, 218, 0.4)' }}>
-            {desc.date}
-          </Badge>
         </div>
       </CardHeader>
       <CardContent>
         <div className="mb-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.2)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-          <p className="leading-relaxed" style={{ color: '#0f172a' }}>{desc.description}</p>
+          <p className="font-medium mb-2" style={{ color: '#0f172a' }}>Protocol: {desc.protocol}</p>
+          <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>{desc.description}</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <div>
