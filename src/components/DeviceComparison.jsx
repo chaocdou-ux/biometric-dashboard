@@ -134,7 +134,7 @@ export default function DeviceComparison({ data }) {
               <Tooltip content={<CustomTooltip />} />
               <Legend iconType="circle" wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
               <Bar dataKey="Apple Watch (Pre)" fill="#7D8D74" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="Apple Watch (Post)" fill="#50604F" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Apple Watch (Post)" fill="#3d4a3c" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Other Devices (Pre)" fill="#B8A389" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Other Devices (Post)" fill="#8a6d59" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -198,7 +198,10 @@ export default function DeviceComparison({ data }) {
                           {metric.charAt(0).toUpperCase() + metric.slice(1).replace('_', ' ')}
                         </td>
                         <td className="text-center p-3">
-                          <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(168, 200, 218, 0.3)', color: '#0f172a', border: '1px solid rgba(168, 200, 218, 0.4)' }}>Apple Watch</Badge>
+                          <div className="flex items-center justify-center gap-2">
+                            <span>⌚</span>
+                            <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(125, 141, 116, 0.2)', color: '#0f172a', border: '1px solid rgba(125, 141, 116, 0.3)' }}>Apple Watch</Badge>
+                          </div>
                         </td>
                         <td className="text-center p-3 text-slate-700">
                           {appleData.pre_mean?.toFixed(2)} ± {appleData.pre_sd?.toFixed(2)}
@@ -219,7 +222,10 @@ export default function DeviceComparison({ data }) {
                         background: idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'
                       }}>
                         <td className="text-center p-3">
-                          <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(80, 96, 79, 0.3)', color: '#0f172a', border: '1px solid rgba(80, 96, 79, 0.4)' }}>Other Devices</Badge>
+                          <div className="flex items-center justify-center gap-2">
+                            <span>📱</span>
+                            <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(184, 163, 137, 0.2)', color: '#0f172a', border: '1px solid rgba(184, 163, 137, 0.3)' }}>Other Devices</Badge>
+                          </div>
                         </td>
                         <td className="text-center p-3 text-slate-700">
                           {otherData.pre_mean?.toFixed(2)} ± {otherData.pre_sd?.toFixed(2)}
@@ -243,7 +249,7 @@ export default function DeviceComparison({ data }) {
           </div>
           <div className="mt-4 p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
             <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
-              <strong>Note:</strong> All metrics are reported on a 1 to 4 scale, with 4 representing the most positive outcome.
+              <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
             </p>
           </div>
         </CardContent>
@@ -254,26 +260,26 @@ export default function DeviceComparison({ data }) {
           <h3 className="text-lg font-semibold" style={{ color: '#0f172a', marginBottom: '1rem' }}>Key Findings</h3>
         </CardHeader>
         <CardContent>
-          <ul className="space-y-2 text-slate-700">
+          <div className="grid md:grid-cols-2 gap-4">
             {Object.entries(appleMetrics).map(([metric, appleData]) => {
               const otherData = otherMetrics[metric] || {};
               const diff = Math.abs(appleData.change - (otherData.change || 0));
               if (diff > 0.3) {
                 return (
-                  <li key={metric} className="flex items-start gap-2">
-                    <span className="text-blue-600 font-bold">•</span>
-                    <span>
-                      <strong>{metric.charAt(0).toUpperCase() + metric.slice(1).replace('_', ' ')}:</strong>{' '}
+                  <div key={metric} className="flex items-start gap-2 p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.1)' }}>
+                    <span className="font-bold" style={{ color: '#50604F' }}>•</span>
+                    <span style={{ color: '#1e293b' }}>
+                      <strong style={{ color: '#0f172a' }}>{metric.charAt(0).toUpperCase() + metric.slice(1).replace('_', ' ')}:</strong>{' '}
                       Apple Watch users showed a {appleData.change > (otherData.change || 0) ? 'larger' : 'smaller'} change
                       (<span className={appleData.change > 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>{appleData.change > 0 ? '+' : ''}{appleData.change.toFixed(2)}</span>) compared to other devices
                       (<span className={otherData.change > 0 ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold'}>{otherData.change > 0 ? '+' : ''}{(otherData.change || 0).toFixed(2)}</span>)
                     </span>
-                  </li>
+                  </div>
                 );
               }
               return null;
             }).filter(Boolean)}
-          </ul>
+          </div>
         </CardContent>
       </Card>
     </div>

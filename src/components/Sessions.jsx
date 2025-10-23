@@ -111,6 +111,11 @@ function SessionView({ sessionKey, sessionData }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <h3 className="text-lg font-semibold mb-4" style={{ color: '#0f172a' }}>Aggregate Pre/Post Comparison</h3>
+            <div className="mb-4 p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
+              <p className="text-xs leading-relaxed" style={{ color: '#0f172a' }}>
+                <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
+              </p>
+            </div>
             {metrics.map(metric => (
               <MetricComparison
                 key={metric}
@@ -123,25 +128,25 @@ function SessionView({ sessionKey, sessionData }) {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 mb-4">Physical Metrics</h3>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: '#0f172a' }}>Physical Metrics</h3>
             <div className="space-y-3">
-              <div className="border-b border-slate-200 pb-3">
-                <h4 className="text-sm font-semibold text-slate-700 mb-2">Heart Rate</h4>
+              <div className="border-b pb-3" style={{ borderColor: 'rgba(15, 23, 42, 0.2)' }}>
+                <h4 className="text-sm font-semibold mb-2" style={{ color: '#0f172a' }}>Heart Rate</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-xs text-slate-500">Pre</p>
-                    <p className="text-sm font-medium">{aggregateData('pre_heart_rate') || 'N/A'} BPM</p>
+                    <p className="text-xs" style={{ color: '#1e293b', opacity: 0.7 }}>Pre</p>
+                    <p className="text-sm font-medium" style={{ color: '#0f172a' }}>{aggregateData('pre_heart_rate') || 'N/A'} BPM</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500">Post</p>
-                    <p className="text-sm font-medium">{aggregateData('post_heart_rate') || 'N/A'} BPM</p>
+                    <p className="text-xs" style={{ color: '#1e293b', opacity: 0.7 }}>Post</p>
+                    <p className="text-sm font-medium" style={{ color: '#0f172a' }}>{aggregateData('post_heart_rate') || 'N/A'} BPM</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-6">
-                <h4 className="text-sm font-semibold text-slate-700 mb-2">Participant Count</h4>
-                <p className="text-3xl font-bold text-blue-600">{sessionData.length}</p>
+                <h4 className="text-sm font-semibold mb-2" style={{ color: '#0f172a' }}>Participant Count</h4>
+                <p className="text-3xl font-bold" style={{ color: '#50604F' }}>{sessionData.length}</p>
               </div>
             </div>
           </div>
@@ -191,7 +196,7 @@ export default function Sessions({ data }) {
                   aria-label={desc.title}
                   aria-current={isActive ? 'page' : undefined}
                 >
-                  {desc.title}
+                  {desc.subtitle}
                 </button>
               );
             })}

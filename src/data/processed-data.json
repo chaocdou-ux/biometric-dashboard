@@ -93,6 +93,15 @@
       ],
       "baseline_stress": "High stress",
       "baseline_stress_level": 4
+    },
+    {
+      "participant": "Participant 7",
+      "timestamp": "n/a",
+      "device": "Muse",
+      "activity_level": "n/a",
+      "device_usage": [],
+      "baseline_stress": "n/a",
+      "baseline_stress_level": null
     }
   ],
   "sessions": {

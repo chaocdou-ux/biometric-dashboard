@@ -103,9 +103,14 @@ export default function Metrics({ data }) {
     <div className="space-y-8">
       <section className="glass-card">
         <h2 className="section-header">Pre vs Post Comparison</h2>
-        <p className="text-sm mb-6" style={{ color: '#1e293b' }}>
+        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
           Radial chart showing average pre-session and post-session values across all six metrics.
         </p>
+        <div className="mb-4 p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
+          <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+            <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
+          </p>
+        </div>
         <ResponsiveContainer width="100%" height={400}>
           <RadarChart data={radarData}>
             <PolarGrid stroke={colors.cloudGrey} strokeWidth={1} />
@@ -116,7 +121,7 @@ export default function Metrics({ data }) {
             <PolarRadiusAxis
               angle={90}
               domain={[0, 4]}
-              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
+              tick={false}
               tickCount={5}
             />
             <Radar
@@ -130,8 +135,8 @@ export default function Metrics({ data }) {
             <Radar
               name="Post-Session"
               dataKey="Post"
-              stroke="#1e7d3e"
-              fill="#22c55e"
+              stroke="#8b5cf6"
+              fill="#a78bfa"
               fillOpacity={0.3}
               strokeWidth={3}
             />
@@ -270,7 +275,7 @@ export default function Metrics({ data }) {
         </div>
         <div className="mt-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
           <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
-            <strong>Note:</strong> All metrics are calculated on a 1 to 4 scale, with 4 representing the most positive outcome.
+            <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
           </p>
         </div>
       </section>

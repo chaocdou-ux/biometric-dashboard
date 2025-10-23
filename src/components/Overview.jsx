@@ -146,10 +146,14 @@ export default function Overview({ data }) {
             </li>
           </ul>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           <div className="metric-card">
-            <div className="stat-value">{totalSessions}</div>
-            <div className="stat-label">Total Sessions</div>
+            <div className="stat-value">4</div>
+            <div className="stat-label">Weeks</div>
+          </div>
+          <div className="metric-card">
+            <div className="stat-value">90 min</div>
+            <div className="stat-label">Sessions</div>
           </div>
           <div className="metric-card">
             <div className="stat-value">{uniqueParticipants}</div>
@@ -160,10 +164,6 @@ export default function Overview({ data }) {
               {topMetrics.length > 0 ? `+${topMetrics[0][1].change.toFixed(1)}%` : 'N/A'}
             </div>
             <div className="stat-label">Top Improvement</div>
-          </div>
-          <div className="metric-card">
-            <div className="stat-value">4</div>
-            <div className="stat-label">Weeks</div>
           </div>
         </div>
       </section>
@@ -219,17 +219,6 @@ export default function Overview({ data }) {
         </div>
       </section>
 
-      <section className="glass-card">
-        <h2 className="section-header">Next Steps</h2>
-        <div className="p-6 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
-          <h3 className="text-xl font-semibold mb-2" style={{ color: '#0f172a' }}>
-            Biometric Study 2
-          </h3>
-          <p className="text-sm" style={{ color: '#1e293b' }}>
-            Scheduled for November 2025 — Building on insights from this feasibility study to explore deeper patterns in breathwork and sound therapy.
-          </p>
-        </div>
-      </section>
     </div>
   );
 }

@@ -59,43 +59,52 @@ export default function Participants({ data }) {
             <table className="w-full text-sm">
               <thead>
                 <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.15)' }}>
-                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Participant</th>
-                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Device</th>
-                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Activity Level</th>
-                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a' }}>Baseline Stress</th>
-                  <th className="text-center p-3 font-semibold text-slate-700">Attendance</th>
+                  <th className="text-left p-3 font-semibold" style={{ color: '#0f172a', minWidth: '120px' }}>Category</th>
+                  {data.baseline.map((participant) => (
+                    <th key={participant.participant} className="text-center p-3 font-semibold" style={{ color: '#0f172a', minWidth: '100px' }}>
+                      {participant.participant.replace('Participant ', 'P')}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                {data.baseline.map((participant, idx) => {
-                  const att = attendance[participant.participant];
-                  return (
-                    <tr
-                      key={participant.participant}
-                      style={{
-                        borderBottom: '1px solid rgba(15, 23, 42, 0.1)',
-                        background: idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)',
-                        transition: 'all 0.3s'
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(168, 200, 218, 0.2)'}
-                      onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'}
-                    >
-                      <td className="p-3 font-semibold text-slate-800">{participant.participant}</td>
-                      <td className="p-3 text-slate-700">
-                        <span className="mr-2">{getDeviceIcon(participant.device)}</span>
-                        {participant.device || 'N/A'}
-                      </td>
-                      <td className="p-3">
-                        <Badge className={getActivityColor(participant.activity_level)}>
-                          {participant.activity_level ? participant.activity_level.split('(')[0].trim() : 'N/A'}
-                        </Badge>
-                      </td>
-                      <td className="p-3">
-                        <Badge className={getStressColor(participant.baseline_stress)}>
-                          {participant.baseline_stress || 'N/A'}
-                        </Badge>
-                      </td>
-                      <td className="p-3 text-center">
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Device</td>
+                  {data.baseline.map((participant) => (
+                    <td key={participant.participant} className="p-3 text-center" style={{ color: '#1e293b' }}>
+                      <div className="flex flex-col items-center gap-1">
+                        <span>{getDeviceIcon(participant.device)}</span>
+                        <span className="text-xs">{participant.device || 'N/A'}</span>
+                      </div>
+                    </td>
+                  ))}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Activity</td>
+                  {data.baseline.map((participant) => (
+                    <td key={participant.participant} className="p-3 text-center">
+                      <Badge className={getActivityColor(participant.activity_level)} style={{ fontSize: '10px' }}>
+                        {participant.activity_level ? participant.activity_level.split('(')[0].trim() : 'N/A'}
+                      </Badge>
+                    </td>
+                  ))}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Baseline Stress</td>
+                  {data.baseline.map((participant) => (
+                    <td key={participant.participant} className="p-3 text-center">
+                      <Badge className={getStressColor(participant.baseline_stress)} style={{ fontSize: '10px' }}>
+                        {participant.baseline_stress || 'N/A'}
+                      </Badge>
+                    </td>
+                  ))}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Attendance</td>
+                  {data.baseline.map((participant) => {
+                    const att = attendance[participant.participant];
+                    return (
+                      <td key={participant.participant} className="p-3 text-center">
                         <Badge
                           className={
                             att.attended === 4
@@ -104,13 +113,14 @@ export default function Participants({ data }) {
                               ? 'bg-blue-100 text-blue-700 border-blue-300'
                               : 'bg-slate-100 text-slate-700'
                           }
+                          style={{ fontSize: '11px' }}
                         >
-                          {att.attended}/4 ({att.rate}%)
+                          {att.attended}/4
                         </Badge>
                       </td>
-                    </tr>
-                  );
-                })}
+                    );
+                  })}
+                </tr>
               </tbody>
             </table>
           </div>
