@@ -78,10 +78,7 @@ export default function Participants({ data }) {
                   <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Device</td>
                   {sortedParticipants.map((participant) => (
                     <td key={participant.participant} className="p-3 text-center" style={{ color: '#1e293b' }}>
-                      <div className="flex flex-col items-center gap-1">
-                        <span>{getDeviceIcon(participant.device)}</span>
-                        <span className="text-xs">{participant.device || 'N/A'}</span>
-                      </div>
+                      <span className="text-xs">{participant.device || 'N/A'}</span>
                     </td>
                   ))}
                 </tr>
@@ -127,46 +124,190 @@ export default function Participants({ data }) {
                     );
                   })}
                 </tr>
+                <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.25)' }}>
+                  <td className="p-3 font-bold" style={{ color: '#0f172a' }} colSpan={sortedParticipants.length + 1}>Session 1</td>
+                </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
-                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 1</td>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Emotion</td>
                   {sortedParticipants.map((participant) => {
-                    const attended = data.sessions.session_1?.some(s => s.participant === participant.participant);
+                    const sessionData = data.sessions.session_1?.find(s => s.participant === participant.participant);
                     return (
-                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
-                        {attended ? '✓' : '—'}
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_emotional || '—'}
                       </td>
                     );
                   })}
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
-                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 2</td>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Emotion</td>
                   {sortedParticipants.map((participant) => {
-                    const attended = data.sessions.session_2?.some(s => s.participant === participant.participant);
+                    const sessionData = data.sessions.session_1?.find(s => s.participant === participant.participant);
                     return (
-                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
-                        {attended ? '✓' : '—'}
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_emotional || '—'}
                       </td>
                     );
                   })}
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
-                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 3</td>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Energy</td>
                   {sortedParticipants.map((participant) => {
-                    const attended = data.sessions.session_3?.some(s => s.participant === participant.participant);
+                    const sessionData = data.sessions.session_1?.find(s => s.participant === participant.participant);
                     return (
-                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
-                        {attended ? '✓' : '—'}
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_energy || '—'}
                       </td>
                     );
                   })}
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
-                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 4</td>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Energy</td>
                   {sortedParticipants.map((participant) => {
-                    const attended = data.sessions.session_4?.some(s => s.participant === participant.participant);
+                    const sessionData = data.sessions.session_1?.find(s => s.participant === participant.participant);
                     return (
-                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
-                        {attended ? '✓' : '—'}
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_energy || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.25)' }}>
+                  <td className="p-3 font-bold" style={{ color: '#0f172a' }} colSpan={sortedParticipants.length + 1}>Session 2</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Emotion</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_2?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_emotional || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Emotion</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_2?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_emotional || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Energy</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_2?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_energy || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Energy</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_2?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_energy || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.25)' }}>
+                  <td className="p-3 font-bold" style={{ color: '#0f172a' }} colSpan={sortedParticipants.length + 1}>Session 3</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Emotion</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_3?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_emotional || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Emotion</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_3?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_emotional || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Energy</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_3?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_energy || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Energy</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_3?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_energy || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.25)' }}>
+                  <td className="p-3 font-bold" style={{ color: '#0f172a' }} colSpan={sortedParticipants.length + 1}>Session 4</td>
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Emotion</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_4?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_emotional || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Emotion</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_4?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_emotional || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Pre-Energy</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_4?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.pre_energy || '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 pl-6 text-sm" style={{ color: '#1e293b' }}>Post-Energy</td>
+                  {sortedParticipants.map((participant) => {
+                    const sessionData = data.sessions.session_4?.find(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center text-sm" style={{ color: sessionData ? '#0f172a' : '#cbd5e1' }}>
+                        {sessionData?.post_energy || '—'}
                       </td>
                     );
                   })}

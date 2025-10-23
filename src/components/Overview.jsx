@@ -119,7 +119,7 @@ export default function Overview({ data }) {
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Chao Dou</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Experience strategist and data innovator blending art, technology, and human insight
+              Experience strategist, data innovator, and artist exploring the intersections of art, wellness, and sensory experimentation to deepen presence and connection.
             </p>
           </div>
         </div>
