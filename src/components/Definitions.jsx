@@ -189,12 +189,12 @@ export default function Definitions() {
             Scale Methodology
           </p>
           <ul className="space-y-1 text-xs" style={{ color: colors.deepCharcoal }}>
-            <li>• All self-reported metrics use a 4-point scale (1-4)</li>
-            <li>• Response options are presented in ascending order from lowest (1) to highest (4)</li>
-            <li>• Higher scores indicate better outcomes across ALL metrics (1 = worst, 4 = best)</li>
-            <li>• For Stress Level: 1 = Extremely Stressed, 4 = No Stress (higher is better)</li>
-            <li>• For Body Tension: 1 = Very Tense, 4 = Very Relaxed (higher is better)</li>
-            <li>• All averages and calculations reflect this consistent interpretation</li>
+            <li>• <strong>Consistent 1-4 Scale:</strong> All self-reported metrics use a 4-point scale where higher numeric values represent better outcomes</li>
+            <li>• <strong>Response Ordering:</strong> All options are ordered from worst (1) to best (4) in ascending order</li>
+            <li>• <strong>Stress Level Scale:</strong> 1 = Extremely Stressed (worst) → 4 = No Stress (best)</li>
+            <li>• <strong>Body Tension Scale:</strong> 1 = Very Tense (worst) → 4 = Very Relaxed (best)</li>
+            <li>• <strong>Change Calculation:</strong> Average Change = Post-Session Average − Pre-Session Average</li>
+            <li>• <strong>Interpretation:</strong> Positive change values indicate improvement; negative change values indicate worsening</li>
           </ul>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
