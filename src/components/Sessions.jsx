@@ -1,375 +1,219 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
-import { ChevronDown, ChevronUp, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { colors, metricLabels, calculateImprovement } from '../lib/designSystem';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { TrendingUp, TrendingDown, Users, Activity } from 'lucide-react';
 
 const sessionDescriptions = {
   session_1: {
     title: 'Session 1 - Baseline',
     date: '08/26/25',
-    description: 'Breathwork + live violin to establish foundational practice.'
+    description: 'Breathwork + live violin to establish foundational practice.',
+    protocol: 'Breathwork + live violin',
+    duration: '60 minutes'
   },
   session_2: {
     title: 'Session 2 - Resonance',
     date: '09/02/25',
-    description: 'Breathwork + live violin + quartz sound bowls for deeper resonance.'
+    description: 'Breathwork + live violin + quartz sound bowls for deeper resonance.',
+    protocol: 'Breathwork + live violin + sound bowls',
+    duration: '75 minutes'
   },
   session_3: {
     title: 'Session 3 - Brainwave Entrainment',
     date: '09/09/25',
-    description: 'Breathwork + live violin + binaural beats (headphones) for brainwave synchronization.'
+    description: 'Breathwork + live violin + binaural beats (headphones) for brainwave synchronization.',
+    protocol: 'Breathwork + live violin + binaural beats',
+    duration: '75 minutes'
   },
   session_4: {
     title: 'Session 4 - Movement Integration',
     date: '09/16/25',
-    description: 'Movement + breathwork + live violin to support physical energy release.'
+    description: 'Movement + breathwork + live violin to support physical energy release.',
+    protocol: 'Movement + breathwork + live violin',
+    duration: '90 minutes'
   }
 };
 
 export default function Sessions({ data }) {
-  const [expandedSessions, setExpandedSessions] = useState({});
+  const sessionSummaries = Object.entries(data.sessions).map(([sessionKey, sessionData]) => {
+    const sessionInfo = sessionDescriptions[sessionKey];
+    const participantCount = sessionData.length;
 
-  const toggleSession = (sessionKey) => {
-    setExpandedSessions(prev => ({
-      ...prev,
-      [sessionKey]: !prev[sessionKey]
-    }));
-  };
+    const metricNames = ['emotional', 'energy', 'tension', 'stress', 'clarity', 'spiritual'];
+    const metrics = {};
 
-  const calculateChange = (pre, post) => {
-    if (!pre || !post) return null;
-    return post - pre;
-  };
+    metricNames.forEach(metric => {
+      const validData = sessionData.filter(
+        s => s[`pre_${metric}`] !== null && s[`post_${metric}`] !== null
+      );
 
-  const getChangeIcon = (change) => {
-    if (change === null || change === 0) return <Minus className="w-3 h-3 text-slate-400" />;
-    if (change > 0) return <TrendingUp className="w-3 h-3 text-green-600" />;
-    return <TrendingDown className="w-3 h-3 text-red-600" />;
-  };
+      if (validData.length > 0) {
+        const preAvg = validData.reduce((sum, s) => sum + s[`pre_${metric}`], 0) / validData.length;
+        const postAvg = validData.reduce((sum, s) => sum + s[`post_${metric}`], 0) / validData.length;
+        const improvement = calculateImprovement(preAvg, postAvg, metric);
 
-  const getChangeColor = (change) => {
-    if (change === null || change === 0) return 'text-slate-600';
-    if (change > 0) return 'text-green-600';
-    return 'text-red-600';
-  };
+        metrics[metric] = {
+          pre: preAvg,
+          post: postAvg,
+          change: improvement,
+          count: validData.length
+        };
+      }
+    });
 
-  const MetricTooltip = ({ label, description }) => {
-    const [isVisible, setIsVisible] = useState(false);
+    return {
+      sessionKey,
+      sessionInfo,
+      participantCount,
+      metrics
+    };
+  });
 
-    return (
-      <span className="relative inline-block">
-        <span
-          onMouseEnter={() => setIsVisible(true)}
-          onMouseLeave={() => setIsVisible(false)}
-          className="cursor-help border-b border-dotted border-slate-400"
-        >
-          {label}
-        </span>
-
-        {isVisible && (
-          <div
-            className="absolute z-50 px-3 py-2 text-sm rounded-lg shadow-lg"
-            style={{
-              bottom: 'calc(100% + 8px)',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              background: 'rgba(15, 23, 42, 0.95)',
-              color: '#ffffff',
-              backdropFilter: 'blur(10px)',
-              minWidth: '200px',
-              maxWidth: '300px',
-              whiteSpace: 'normal'
-            }}
-          >
-            {description}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '-4px',
-                left: '50%',
-                transform: 'translateX(-50%) rotate(45deg)',
-                width: '8px',
-                height: '8px',
-                background: 'rgba(15, 23, 42, 0.95)'
-              }}
-            />
-          </div>
-        )}
-      </span>
-    );
-  };
-
-  const metricDescriptions = {
-    emotional: "Self-reported emotional state on a scale of 1-5, where 5 represents the most positive emotional state",
-    energy: "Physical energy level on a scale of 1-5, where 5 represents highest energy",
-    tension: "Body tension level on a scale of 1-5, where 5 represents highest tension",
-    stress: "Perceived stress level on a scale of 1-5, where 5 represents highest stress",
-    clarity: "Mental clarity and focus on a scale of 1-5, where 5 represents highest clarity",
-    spiritual: "Sense of spiritual connection on a scale of 1-5, where 5 represents strongest connection"
-  };
-
-  const ParticipantRow = ({ participantData }) => {
-    const metrics = [
-      { key: 'emotional', label: 'Emotional State', pre: participantData.pre_emotional, post: participantData.post_emotional },
-      { key: 'energy', label: 'Physical Energy', pre: participantData.pre_energy, post: participantData.post_energy },
-      { key: 'tension', label: 'Body Tension', pre: participantData.pre_tension, post: participantData.post_tension },
-      { key: 'stress', label: 'Stress Level', pre: participantData.pre_stress, post: participantData.post_stress },
-      { key: 'clarity', label: 'Mental Clarity', pre: participantData.pre_clarity, post: participantData.post_clarity },
-      { key: 'spiritual', label: 'Spiritual Connection', pre: participantData.pre_spiritual, post: participantData.post_spiritual }
-    ];
-
-    return (
-      <div className="p-4 rounded-lg mb-3" style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-        <div className="flex justify-between items-center mb-3">
-          <h5 className="font-semibold" style={{ color: '#0f172a' }}>{participantData.participant}</h5>
-          <Badge className="text-xs" style={{ background: 'rgba(125, 141, 116, 0.2)', color: '#0f172a', border: '1px solid rgba(125, 141, 116, 0.3)' }}>
-            {participantData.device || 'N/A'}
-          </Badge>
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="glass-panel p-4 shadow-xl">
+          <p className="font-semibold mb-2" style={{ color: colors.deepCharcoal }}>
+            {label}
+          </p>
+          {payload.map((entry, index) => (
+            <p key={index} className="text-sm" style={{ color: entry.color }}>
+              {entry.name}: {typeof entry.value === 'number' ? `${entry.value.toFixed(1)}%` : entry.value}
+            </p>
+          ))}
         </div>
-
-        {participantData.pre_emotional_words && (
-          <div className="p-3 rounded-lg mb-3" style={{ background: 'rgba(168, 200, 218, 0.2)', border: '1px solid rgba(168, 200, 218, 0.4)' }}>
-            <h6 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#0f172a' }}>Emotional Description</h6>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <div>
-                <p className="text-xs mb-1" style={{ color: '#64748b' }}>Pre-Session:</p>
-                <p className="text-sm italic" style={{ color: '#1e293b' }}>"{participantData.pre_emotional_words}"</p>
-              </div>
-              {participantData.post_emotional_words && (
-                <div>
-                  <p className="text-xs mb-1" style={{ color: '#64748b' }}>Post-Session:</p>
-                  <p className="text-sm italic" style={{ color: '#1e293b' }}>"{participantData.post_emotional_words}"</p>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <h6 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#50604F' }}>Pre-Session Metrics</h6>
-            {metrics.map(metric => (
-              <div key={`pre-${metric.key}`} className="flex justify-between items-center p-2 rounded" style={{ background: 'rgba(255, 255, 255, 0.5)' }}>
-                <span className="text-sm" style={{ color: '#1e293b' }}>
-                  <MetricTooltip label={metric.label} description={metricDescriptions[metric.key]} />
-                </span>
-                <span className="text-sm font-semibold" style={{ color: '#0f172a' }}>{metric.pre || '—'}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-2">
-            <h6 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#7D8D74' }}>Post-Session Metrics</h6>
-            {metrics.map(metric => {
-              const change = calculateChange(metric.pre, metric.post);
-              return (
-                <div key={`post-${metric.key}`} className="flex justify-between items-center p-2 rounded" style={{ background: 'rgba(255, 255, 255, 0.5)' }}>
-                  <span className="text-sm" style={{ color: '#1e293b' }}>{metric.label}</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold" style={{ color: '#0f172a' }}>{metric.post || '—'}</span>
-                    {change !== null && (
-                      <div className="flex items-center gap-1">
-                        {getChangeIcon(change)}
-                        <span className={`text-xs font-medium ${getChangeColor(change)}`}>
-                          {change > 0 ? '+' : ''}{change.toFixed(1)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
-          <div className="p-3 rounded-lg" style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-            <h6 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#0f172a' }}>Pre-Session Vitals</h6>
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>Heart Rate:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.pre_heart_rate ? `${participantData.pre_heart_rate} BPM` : '—'}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>SpO2:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.pre_spo2 ? `${participantData.pre_spo2}%` : '—'}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>O2 Level:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.pre_o2 || '—'}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>Resting HR:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.pre_rhr ? `${participantData.pre_rhr} BPM` : '—'}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-lg" style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-            <h6 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#0f172a' }}>Post-Session Vitals</h6>
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>Heart Rate:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.post_heart_rate ? `${participantData.post_heart_rate} BPM` : '—'}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>SpO2:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.post_spo2 ? `${participantData.post_spo2}%` : '—'}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>O2 Level:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.post_o2 || '—'}</span>
-              </div>
-              <div className="flex justify-between text-sm">
-                <span style={{ color: '#64748b' }}>Resting HR:</span>
-                <span className="font-medium" style={{ color: '#0f172a' }}>{participantData.post_rhr ? `${participantData.post_rhr} BPM` : '—'}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {(participantData.sensations || participantData.experience || participantData.post_feelings || participantData.violin_influence || participantData.comments) && (
-          <div className="p-3 rounded-lg space-y-3 mt-4" style={{ background: 'rgba(125, 141, 116, 0.1)', border: '1px solid rgba(125, 141, 116, 0.3)' }}>
-            <h6 className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#0f172a' }}>Post-Session Details</h6>
-
-            {participantData.sensations && participantData.sensations.length > 0 && (
-              <div>
-                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Physical Sensations:</p>
-                <ul className="list-disc list-inside text-sm space-y-0.5" style={{ color: '#1e293b' }}>
-                  {participantData.sensations.map((sensation, idx) => (
-                    <li key={idx}>{sensation}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {participantData.experience && participantData.experience.length > 0 && (
-              <div>
-                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Experience Description:</p>
-                <div className="flex flex-wrap gap-2">
-                  {participantData.experience.map((exp, idx) => (
-                    <span key={idx} className="px-2 py-1 rounded text-xs" style={{ background: 'rgba(255, 255, 255, 0.6)', color: '#0f172a' }}>
-                      {exp}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {participantData.post_feelings && participantData.post_feelings.length > 0 && (
-              <div>
-                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Post-Session Feelings:</p>
-                <div className="flex flex-wrap gap-2">
-                  {participantData.post_feelings.map((feeling, idx) => (
-                    <span key={idx} className="px-2 py-1 rounded text-xs" style={{ background: 'rgba(255, 255, 255, 0.6)', color: '#0f172a' }}>
-                      {feeling}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {participantData.violin_influence && participantData.violin_influence.length > 0 && (
-              <div>
-                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Violin's Influence:</p>
-                <div className="flex flex-wrap gap-2">
-                  {participantData.violin_influence.map((influence, idx) => (
-                    <span key={idx} className="px-2 py-1 rounded text-xs" style={{ background: 'rgba(255, 255, 255, 0.6)', color: '#0f172a' }}>
-                      {influence}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {participantData.comments && (
-              <div>
-                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Additional Comments:</p>
-                <p className="text-sm italic" style={{ color: '#1e293b' }}>"{participantData.comments}"</p>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    );
+      );
+    }
+    return null;
   };
 
-  const SessionCard = ({ sessionKey, sessionInfo }) => {
-    const sessionData = data.sessions[sessionKey] || [];
-    const isExpanded = expandedSessions[sessionKey];
-    const attendanceCount = sessionData.length;
-
-    return (
-      <Card className="glass-panel">
-        <CardHeader className="pb-3">
-          <div className="flex justify-between items-start">
-            <div className="flex-1">
-              <CardTitle className="text-xl mb-2" style={{ color: '#0f172a' }}>
-                {sessionInfo.title}
-              </CardTitle>
-              <p className="text-sm mb-3" style={{ color: '#64748b' }}>
-                {sessionInfo.description}
-              </p>
-
-              <div className="flex flex-wrap gap-3 items-center">
-                <Badge className="text-xs" style={{ background: 'rgba(168, 200, 218, 0.2)', color: '#0f172a', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-                  {sessionInfo.date}
-                </Badge>
-                <Badge className="text-xs" style={{
-                  background: attendanceCount === data.baseline.length ? 'rgba(34, 197, 94, 0.2)' :
-                             attendanceCount >= data.baseline.length * 0.75 ? 'rgba(59, 130, 246, 0.2)' :
-                             'rgba(148, 163, 184, 0.2)',
-                  color: '#0f172a',
-                  border: `1px solid ${attendanceCount === data.baseline.length ? 'rgba(34, 197, 94, 0.3)' :
-                          attendanceCount >= data.baseline.length * 0.75 ? 'rgba(59, 130, 246, 0.3)' :
-                          'rgba(148, 163, 184, 0.3)'}`
-                }}>
-                  {attendanceCount} Participants
-                </Badge>
-              </div>
-            </div>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => toggleSession(sessionKey)}
-              className="ml-4"
-            >
-              {isExpanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-            </Button>
-          </div>
-        </CardHeader>
-
-        {isExpanded && (
-          <CardContent className="pt-0">
-            <div className="space-y-0">
-              {sessionData.map((participantData, idx) => (
-                <ParticipantRow key={idx} participantData={participantData} />
-              ))}
-            </div>
-          </CardContent>
-        )}
-      </Card>
-    );
-  };
+  const chartData = sessionSummaries.map(summary => ({
+    session: summary.sessionInfo.title.split(' - ')[0],
+    'Emotional State': summary.metrics.emotional?.change || 0,
+    'Physical Energy': summary.metrics.energy?.change || 0,
+    'Body Tension': summary.metrics.tension?.change || 0,
+    'Stress Level': summary.metrics.stress?.change || 0,
+    'Mental Clarity': summary.metrics.clarity?.change || 0,
+    'Spiritual Connection': summary.metrics.spiritual?.change || 0
+  }));
 
   return (
-    <div className="space-y-6">
-      <Card className="glass-panel">
-        <CardHeader>
-          <CardTitle className="text-2xl" style={{ color: '#0f172a' }}>Sessions</CardTitle>
-          <p className="text-sm mt-2" style={{ color: '#64748b' }}>
-            Detailed participant data for each session
-          </p>
-        </CardHeader>
-      </Card>
+    <div className="space-y-8">
+      <section className="glass-card">
+        <h2 className="section-header">Session Outcomes Summary</h2>
+        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+          Aggregated percent change for all metrics across each session, showing overall session effectiveness.
+        </p>
 
-      <div className="space-y-4">
-        {Object.entries(sessionDescriptions).map(([key, info]) => (
-          <SessionCard key={key} sessionKey={key} sessionInfo={info} />
-        ))}
-      </div>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 60 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
+            <XAxis
+              dataKey="session"
+              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
+              stroke={colors.forestMoss}
+              angle={0}
+            />
+            <YAxis
+              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
+              stroke={colors.forestMoss}
+              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend
+              wrapperStyle={{ paddingTop: '20px' }}
+              iconType="square"
+            />
+            <Bar dataKey="Emotional State" fill={colors.metrics.emotional} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Physical Energy" fill={colors.metrics.energy} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Body Tension" fill={colors.metrics.tension} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Stress Level" fill={colors.metrics.stress} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Mental Clarity" fill={colors.metrics.clarity} radius={[4, 4, 0, 0]} />
+            <Bar dataKey="Spiritual Connection" fill={colors.metrics.spiritual} radius={[4, 4, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </section>
+
+      <section className="glass-card">
+        <h2 className="section-header">Session Details</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {sessionSummaries.map((summary) => (
+            <div
+              key={summary.sessionKey}
+              className="p-6 rounded-lg"
+              style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}
+            >
+              <div className="mb-4">
+                <h3 className="text-lg font-bold mb-1" style={{ color: colors.deepCharcoal }}>
+                  {summary.sessionInfo.title}
+                </h3>
+                <p className="text-sm mb-2" style={{ color: colors.pineGreen }}>
+                  {summary.sessionInfo.date}
+                </p>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: colors.deepCharcoal }}>
+                  {summary.sessionInfo.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(125, 141, 116, 0.2)', color: colors.deepCharcoal }}>
+                    <Users className="w-3 h-3" />
+                    {summary.participantCount} participants
+                  </span>
+                  <span className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(168, 200, 218, 0.2)', color: colors.deepCharcoal }}>
+                    <Activity className="w-3 h-3" />
+                    {summary.sessionInfo.duration}
+                  </span>
+                </div>
+
+                <div className="p-3 rounded-lg mb-4" style={{ backgroundColor: 'rgba(243, 199, 123, 0.15)', border: '1px solid rgba(243, 199, 123, 0.3)' }}>
+                  <p className="text-xs font-semibold mb-1" style={{ color: colors.deepCharcoal }}>Protocol</p>
+                  <p className="text-sm" style={{ color: colors.deepCharcoal }}>{summary.sessionInfo.protocol}</p>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <h4 className="text-sm font-semibold mb-3" style={{ color: colors.pineGreen }}>
+                  Metric Changes
+                </h4>
+                {Object.entries(summary.metrics).map(([metricKey, metricData]) => (
+                  <div
+                    key={metricKey}
+                    className="flex items-center justify-between p-3 rounded"
+                    style={{ backgroundColor: `${colors.metrics[metricKey]}15` }}
+                  >
+                    <div className="flex items-center gap-2">
+                      <div
+                        className="w-3 h-3 rounded-full"
+                        style={{ backgroundColor: colors.metrics[metricKey] }}
+                      />
+                      <span className="text-sm font-medium" style={{ color: colors.deepCharcoal }}>
+                        {metricLabels[metricKey]}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs" style={{ color: colors.deepCharcoal, opacity: 0.7 }}>
+                        n={metricData.count}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        {metricData.change > 0 ? (
+                          <TrendingUp className="w-4 h-4 text-green-600" />
+                        ) : metricData.change < 0 ? (
+                          <TrendingDown className="w-4 h-4 text-red-600" />
+                        ) : null}
+                        <span
+                          className="text-sm font-bold"
+                          style={{ color: metricData.change > 0 ? '#16a34a' : metricData.change < 0 ? '#dc2626' : colors.deepCharcoal }}
+                        >
+                          {metricData.change > 0 ? '+' : ''}{metricData.change.toFixed(1)}%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -47,7 +47,7 @@ export default function Metrics({ data }) {
 
   const sessionTrends = Object.entries(data.sessions).map(([sessionKey, sessionData], idx) => {
     const metrics = {};
-    ['emotional', 'energy', 'clarity', 'spiritual'].forEach(metric => {
+    ['emotional', 'energy', 'clarity', 'spiritual', 'tension', 'stress'].forEach(metric => {
       const validData = sessionData.filter(s => s[`post_${metric}`] !== null && s[`pre_${metric}`] !== null);
       if (validData.length > 0) {
         const preAvg = validData.reduce((sum, s) => sum + s[`pre_${metric}`], 0) / validData.length;
@@ -62,7 +62,9 @@ export default function Metrics({ data }) {
       Emotional: metrics.emotional || 0,
       Energy: metrics.energy || 0,
       Clarity: metrics.clarity || 0,
-      Spiritual: metrics.spiritual || 0
+      Spiritual: metrics.spiritual || 0,
+      Tension: metrics.tension || 0,
+      Stress: metrics.stress || 0
     };
   });
 
@@ -155,7 +157,7 @@ export default function Metrics({ data }) {
       <section className="glass-card">
         <h2 className="section-header">Metric Evolution</h2>
         <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
-          Tracks how each metric changed across the four sessions.
+          Tracks how all six metrics changed across the four sessions: emotional state, physical energy, mental clarity, spiritual connection, body tension, and stress level.
         </p>
         <ResponsiveContainer width="100%" height={400}>
           <LineChart data={sessionTrends} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -206,6 +208,22 @@ export default function Metrics({ data }) {
               type="monotone"
               dataKey="Spiritual"
               stroke={colors.metrics.spiritual}
+              strokeWidth={4}
+              dot={<CustomDot />}
+              activeDot={{ r: 6 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="Tension"
+              stroke={colors.metrics.tension}
+              strokeWidth={4}
+              dot={<CustomDot />}
+              activeDot={{ r: 6 }}
+            />
+            <Line
+              type="monotone"
+              dataKey="Stress"
+              stroke={colors.metrics.stress}
               strokeWidth={4}
               dot={<CustomDot />}
               activeDot={{ r: 6 }}
