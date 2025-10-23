@@ -5,7 +5,6 @@ import Metrics from './components/Metrics';
 import Participants from './components/Participants';
 import DeviceComparison from './components/DeviceComparison';
 import Definitions from './components/Definitions';
-import Methodology from './components/Methodology';
 import data from './data/processed-data.json';
 
 const tabs = [
@@ -75,8 +74,6 @@ export default function App() {
       case 'devices':
         return <DeviceComparison data={data} />;
       case 'methodology':
-        return <Methodology />;
-      case 'definitions':
         return <Definitions />;
       default:
         return <Overview data={data} />;
