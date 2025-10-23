@@ -160,7 +160,7 @@ export default function DeviceComparison({ data }) {
               <YAxis tick={{ fill: '#0f172a', fontSize: 10, fontWeight: 500 }} domain={[-2, 2]} />
               <Tooltip content={<CustomTooltip />} />
               <Legend iconType="circle" wrapperStyle={{ fontSize: '13px', fontWeight: 600 }} />
-              <Bar dataKey="Apple Watch" fill="#5a95b8" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="Apple Watch" fill="#7D8D74" radius={[4, 4, 0, 0]} />
               <Bar dataKey="Other Devices" fill="#8a6d59" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -197,11 +197,8 @@ export default function DeviceComparison({ data }) {
                         <td className="p-3 font-semibold text-slate-800" rowSpan="2">
                           {metric.charAt(0).toUpperCase() + metric.slice(1).replace('_', ' ')}
                         </td>
-                        <td className="text-center p-3">
-                          <div className="flex items-center justify-center gap-2">
-                            <span>⌚</span>
-                            <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(125, 141, 116, 0.2)', color: '#0f172a', border: '1px solid rgba(125, 141, 116, 0.3)' }}>Apple Watch</Badge>
-                          </div>
+                        <td className="text-center p-3 font-semibold" style={{ color: '#7D8D74' }}>
+                          Apple Watch
                         </td>
                         <td className="text-center p-3 text-slate-700">
                           {appleData.pre_mean?.toFixed(2)} ± {appleData.pre_sd?.toFixed(2)}
@@ -221,11 +218,8 @@ export default function DeviceComparison({ data }) {
                         borderBottom: '2px solid rgba(15, 23, 42, 0.15)',
                         background: idx % 2 === 0 ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'
                       }}>
-                        <td className="text-center p-3">
-                          <div className="flex items-center justify-center gap-2">
-                            <span>📱</span>
-                            <Badge className="glass-panel px-3 py-1" style={{ background: 'rgba(184, 163, 137, 0.2)', color: '#0f172a', border: '1px solid rgba(184, 163, 137, 0.3)' }}>Other Devices</Badge>
-                          </div>
+                        <td className="text-center p-3 font-semibold" style={{ color: '#8a6d59' }}>
+                          Other Devices
                         </td>
                         <td className="text-center p-3 text-slate-700">
                           {otherData.pre_mean?.toFixed(2)} ± {otherData.pre_sd?.toFixed(2)}

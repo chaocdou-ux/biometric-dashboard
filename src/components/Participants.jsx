@@ -48,6 +48,12 @@ export default function Participants({ data }) {
     return 'bg-green-100 text-green-700 border-green-300';
   };
 
+  const sortedParticipants = [...data.baseline].sort((a, b) => {
+    const numA = parseInt(a.participant.replace('Participant ', ''));
+    const numB = parseInt(b.participant.replace('Participant ', ''));
+    return numA - numB;
+  });
+
   return (
     <div className="space-y-6">
       <Card className="glass-panel">
@@ -60,7 +66,7 @@ export default function Participants({ data }) {
               <thead>
                 <tr style={{ borderBottom: '2px solid rgba(15, 23, 42, 0.2)', background: 'rgba(168, 200, 218, 0.15)' }}>
                   <th className="text-left p-3 font-semibold" style={{ color: '#0f172a', minWidth: '120px' }}>Category</th>
-                  {data.baseline.map((participant) => (
+                  {sortedParticipants.map((participant) => (
                     <th key={participant.participant} className="text-center p-3 font-semibold" style={{ color: '#0f172a', minWidth: '100px' }}>
                       {participant.participant.replace('Participant ', 'P')}
                     </th>
@@ -70,7 +76,7 @@ export default function Participants({ data }) {
               <tbody>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
                   <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Device</td>
-                  {data.baseline.map((participant) => (
+                  {sortedParticipants.map((participant) => (
                     <td key={participant.participant} className="p-3 text-center" style={{ color: '#1e293b' }}>
                       <div className="flex flex-col items-center gap-1">
                         <span>{getDeviceIcon(participant.device)}</span>
@@ -81,7 +87,7 @@ export default function Participants({ data }) {
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
                   <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Activity</td>
-                  {data.baseline.map((participant) => (
+                  {sortedParticipants.map((participant) => (
                     <td key={participant.participant} className="p-3 text-center">
                       <Badge className={getActivityColor(participant.activity_level)} style={{ fontSize: '10px' }}>
                         {participant.activity_level ? participant.activity_level.split('(')[0].trim() : 'N/A'}
@@ -91,7 +97,7 @@ export default function Participants({ data }) {
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
                   <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Baseline Stress</td>
-                  {data.baseline.map((participant) => (
+                  {sortedParticipants.map((participant) => (
                     <td key={participant.participant} className="p-3 text-center">
                       <Badge className={getStressColor(participant.baseline_stress)} style={{ fontSize: '10px' }}>
                         {participant.baseline_stress || 'N/A'}
@@ -101,7 +107,7 @@ export default function Participants({ data }) {
                 </tr>
                 <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
                   <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Attendance</td>
-                  {data.baseline.map((participant) => {
+                  {sortedParticipants.map((participant) => {
                     const att = attendance[participant.participant];
                     return (
                       <td key={participant.participant} className="p-3 text-center">

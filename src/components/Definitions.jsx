@@ -1,5 +1,4 @@
 import { colors, metricDescriptions } from '../lib/designSystem';
-import Glossary from './ui/Glossary';
 
 export default function Definitions() {
   const measuredMetrics = [
@@ -118,10 +117,6 @@ export default function Definitions() {
 
   return (
     <div className="space-y-8">
-      <section className="glass-card">
-        <Glossary />
-      </section>
-
       <section className="glass-card">
         <h2 className="section-header">Data Collection Notes</h2>
         <div className="space-y-4 text-sm" style={{ color: colors.deepCharcoal }}>

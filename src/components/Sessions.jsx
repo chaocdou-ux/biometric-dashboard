@@ -6,31 +6,27 @@ import { Badge } from './ui/badge';
 const sessionDescriptions = {
   session_1: {
     title: 'Session 1 - Baseline',
-    subtitle: 'Baseline',
-    date: '8/26/25',
-    protocol: 'Breathwork (2 inhales, 1 exhale) + live violin',
-    description: 'Establishes foundational practice.'
+    subtitle: 'Session 1',
+    date: '08/26/25',
+    fullDescription: 'Breathwork + live violin to establish foundational practice.'
   },
   session_2: {
     title: 'Session 2 - Resonance',
-    subtitle: 'Resonance',
-    date: '9/2/25',
-    protocol: 'Breathwork + live violin + quartz sound bowls',
-    description: 'Sound bowls introduced for deeper resonance by Will Webb.'
+    subtitle: 'Session 2',
+    date: '09/02/25',
+    fullDescription: 'Breathwork + live violin + quartz sound bowls for deeper resonance.'
   },
   session_3: {
     title: 'Session 3 - Brainwave Entrainment',
-    subtitle: 'Brainwave Entrainment',
-    date: '9/9/25',
-    protocol: 'Breathwork + live violin + binaural beats (headphones)',
-    description: 'Binaural beats added for brainwave synchronization, created by Nathalie Bonin.'
+    subtitle: 'Session 3',
+    date: '09/09/25',
+    fullDescription: 'Breathwork + live violin + binaural beats (headphones) for brainwave synchronization.'
   },
   session_4: {
     title: 'Session 4 - Movement Integration',
-    subtitle: 'Movement Integration',
-    date: '9/16/25',
-    protocol: 'Movement + breathwork + live violin',
-    description: 'Movement introduced before breathwork to support physical energy release, led by Atasiea Kenneth L. Ferguson.'
+    subtitle: 'Session 4',
+    date: '09/16/25',
+    fullDescription: 'Movement + breathwork + live violin to support physical energy release.'
   }
 };
 
@@ -105,8 +101,9 @@ function SessionView({ sessionKey, sessionData }) {
       </CardHeader>
       <CardContent>
         <div className="mb-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.2)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-          <p className="font-medium mb-2" style={{ color: '#0f172a' }}>Protocol: {desc.protocol}</p>
-          <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>{desc.description}</p>
+          <p className="font-semibold mb-1" style={{ color: '#0f172a' }}>{desc.title}</p>
+          <p className="text-sm mb-2" style={{ color: '#1e293b' }}>{desc.date}</p>
+          <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>{desc.fullDescription}</p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           <div>

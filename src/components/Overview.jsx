@@ -66,24 +66,24 @@ export default function Overview({ data }) {
 
         <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
           <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-            This was a feasibility study designed to assess the practicality and achievability of the proposed therapeutic plan and method before full-scale implementation.
+            This was a feasibility study designed to assess the practicality and achievability of the proposed plan and method before full-scale implementation.
           </p>
         </div>
 
         <div className="space-y-4 leading-relaxed" style={{ color: '#1e293b' }}>
           <p>
-            This study examined how guided breathwork (using a two-inhale, one-exhale pattern) combined with immersive live violin soundscapes influenced emotional state, physical energy, and nervous system function. Participants engaged in sessions blending structured breathwork and sound, aiming to hyper-oxygenate the bloodstream, prompt emotional release, and foster healing. Protocols were designed to stimulate the vagus nerve and heart rate variability, supporting both physiological and emotional resilience.
+            This study examined how guided breathwork combined with live violin soundscapes influenced emotional state, physical energy, and nervous system function. Participants engaged in sessions blending structured breathwork and sound, aiming to hyper-oxygenate the bloodstream, prompt emotional release, and foster healing. Protocols were designed to stimulate the vagus nerve and heart rate variability, supporting both physiological and emotional resilience.
           </p>
 
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
             <div>
               <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Modalities</h3>
               <ul className="space-y-1 text-sm">
-                <li>• Breathwork: Two inhales followed by one exhale per cycle</li>
-                <li>• Sound: Live violin at every session</li>
-                <li>• Sound Bowls: Added in session 2 for resonance and relaxation</li>
-                <li>• Binaural Beats: Introduced via headphones in session 3</li>
-                <li>• Movement: Incorporated before breathwork in session 4 to facilitate energy release</li>
+                <li>• Breathwork: two inhales and one exhale per cycle at every session</li>
+                <li>• Sound: live violin at every session</li>
+                <li>• Sound Bowls: added during session 2</li>
+                <li>• Binaural Beats: played via headphones during session 3</li>
+                <li>• Movement: integrated before breathwork during session 4</li>
               </ul>
             </div>
 
@@ -91,10 +91,10 @@ export default function Overview({ data }) {
               <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Measurement Approach</h3>
               <ul className="space-y-1 text-sm">
                 <li>• Baseline assessment prior to study</li>
-                <li>• Pre- and post-session self-reports for emotional, physical, and mental states</li>
-                <li>• Biometric data from wearable devices</li>
+                <li>• Qualitative Data: pre and post-session self-reports for emotional, physical, and mental states</li>
+                <li>• Quantitative Data: biometric data from wearable devices</li>
                 <li>• Attendance: {uniqueParticipants} participants completed at least 2 sessions</li>
-                <li>• Devices used: Apple Watch, Oura Ring, Muse, Ring Conn</li>
+                <li>• Devices: Apple Watch, Oura Ring, Muse, Ring Conn</li>
               </ul>
             </div>
           </div>
@@ -107,19 +107,19 @@ export default function Overview({ data }) {
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Nathalie Bonin</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Internationally acclaimed violinist, Grammy-winning artist, and inspirational speaker who blends live music and storytelling to ignite transformation.
+              Internationally acclaimed violinist, Grammy-winning artist, inspirational speaker combining live music and storytelling for transformation.
             </p>
           </div>
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Robert Bahedry</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Certified breathwork practitioner and transformational coach, based in Los Angeles. Known for creating safe, welcoming environments since 2010, Robert specializes in conscious breathing for meaningful transformation.
+              Two-time Emmy-winning host and certified breathwork practitioner
             </p>
           </div>
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Chao Dou</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Experience strategist, designer, and artist exploring the intersections of art, wellness, and sensory experimentation to deepen presence and connection.
+              Experience strategist and data innovator blending art, technology, and human insight
             </p>
           </div>
         </div>
