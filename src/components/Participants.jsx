@@ -127,6 +127,50 @@ export default function Participants({ data }) {
                     );
                   })}
                 </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 1</td>
+                  {sortedParticipants.map((participant) => {
+                    const attended = data.sessions.session_1?.some(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
+                        {attended ? '✓' : '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 2</td>
+                  {sortedParticipants.map((participant) => {
+                    const attended = data.sessions.session_2?.some(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
+                        {attended ? '✓' : '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.3)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 3</td>
+                  {sortedParticipants.map((participant) => {
+                    const attended = data.sessions.session_3?.some(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
+                        {attended ? '✓' : '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
+                <tr style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.1)', background: 'rgba(255, 255, 255, 0.1)' }}>
+                  <td className="p-3 font-semibold" style={{ color: '#0f172a' }}>Session 4</td>
+                  {sortedParticipants.map((participant) => {
+                    const attended = data.sessions.session_4?.some(s => s.participant === participant.participant);
+                    return (
+                      <td key={participant.participant} className="p-3 text-center" style={{ color: attended ? '#50604F' : '#cbd5e1', fontSize: '16px' }}>
+                        {attended ? '✓' : '—'}
+                      </td>
+                    );
+                  })}
+                </tr>
               </tbody>
             </table>
           </div>

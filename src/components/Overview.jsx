@@ -113,7 +113,7 @@ export default function Overview({ data }) {
           <div className="space-y-2">
             <h3 className="font-semibold" style={{ color: '#0f172a' }}>Robert Bahedry</h3>
             <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
-              Two-time Emmy-winning host and certified breathwork practitioner
+              Two-time Emmy-winning host, certified breathwork practitioner and transformational coach, specialized in conscious breathing for meaningful transformation.
             </p>
           </div>
           <div className="space-y-2">
