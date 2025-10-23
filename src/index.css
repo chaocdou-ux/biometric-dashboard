@@ -285,11 +285,71 @@
 }
 
 @media (max-width: 640px) {
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
   .glass-panel {
     border-radius: 0.875rem;
+    padding: 0.875rem;
+  }
+
+  .glass-card {
+    padding: 1rem;
+  }
+
+  .metric-card {
+    padding: 1.25rem;
   }
 
   .section-header {
     font-size: 1.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+  }
+
+  .glass-panel {
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .glass-card {
+    padding: 0.875rem;
+  }
+
+  .metric-card {
+    padding: 1rem;
+  }
+
+  .section-header {
+    font-size: 1.125rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
   }
 }

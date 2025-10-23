@@ -86,9 +86,7 @@ export default function App() {
         <header className="mb-6 sm:mb-8 md:mb-12 flex flex-col md:flex-row items-start justify-between gap-4 sm:gap-6">
           <div className="flex-1">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
-              Biometric
-              <br />
-              Study 1
+              Biometric Study
             </h1>
             <p className="text-xs sm:text-sm md:text-base font-medium mt-2 sm:mt-4" style={{ color: '#1e293b' }}>
               Measurement Meets Human Transformation
@@ -105,9 +103,6 @@ export default function App() {
               <circle cx="32" cy="24" r="4" fill="#0f172a" />
               <path d="M 16 24 Q 20 16 24 24 Q 28 32 32 24" stroke="#0f172a" strokeWidth="1.5" fill="none" />
             </svg>
-            <div className="glass-panel px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm" style={{ color: '#0f172a' }}>
-              <p className="font-medium">Sound and Breath Study</p>
-            </div>
           </div>
         </header>
 
