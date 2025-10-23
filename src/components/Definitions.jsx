@@ -22,7 +22,7 @@ export default function Definitions() {
       metric: 'Body Tension',
       description: metricDescriptions.tension,
       scale: '1-4 scale',
-      direction: 'Lower is better',
+      direction: 'Higher is better',
       normalRange: '2-3 typical baseline',
       options: 'Very Tense (1) → Tense (2) → Relaxed (3) → Very Relaxed (4)'
     },
@@ -30,7 +30,7 @@ export default function Definitions() {
       metric: 'Stress Level',
       description: metricDescriptions.stress,
       scale: '1-4 scale',
-      direction: 'Lower is better',
+      direction: 'Higher is better',
       normalRange: '2-3 typical baseline',
       options: 'Extremely Stressed (1) → Stressed (2) → Mild (3) → No Stress (4)'
     },
@@ -191,9 +191,10 @@ export default function Definitions() {
           <ul className="space-y-1 text-xs" style={{ color: colors.deepCharcoal }}>
             <li>• All self-reported metrics use a 4-point scale (1-4)</li>
             <li>• Response options are presented in ascending order from lowest (1) to highest (4)</li>
-            <li>• For Body Tension and Stress Level: lower scores indicate better outcomes (1 = worst, 4 = best)</li>
-            <li>• For all other metrics: higher scores indicate better outcomes (1 = worst, 4 = best)</li>
-            <li>• All averages and calculations reflect this consistent 1-4 scale</li>
+            <li>• Higher scores indicate better outcomes across ALL metrics (1 = worst, 4 = best)</li>
+            <li>• For Stress Level: 1 = Extremely Stressed, 4 = No Stress (higher is better)</li>
+            <li>• For Body Tension: 1 = Very Tense, 4 = Very Relaxed (higher is better)</li>
+            <li>• All averages and calculations reflect this consistent interpretation</li>
           </ul>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
@@ -265,19 +266,21 @@ export default function Definitions() {
               Percent Change Calculation
             </h3>
             <p>
-              For positive metrics (emotional state, energy, clarity, spiritual connection):
+              For all metrics, the change calculation is consistent:
               <br />
               <code className="text-xs bg-gray-100 px-2 py-1 rounded mt-1 inline-block">
                 % Change = ((Post-Value - Pre-Value) / Pre-Value) × 100
               </code>
             </p>
-            <p className="mt-2">
-              For negative metrics (tension, stress):
-              <br />
-              <code className="text-xs bg-gray-100 px-2 py-1 rounded mt-1 inline-block">
-                % Change = ((Pre-Value - Post-Value) / Pre-Value) × 100
-              </code>
+            <p className="mt-3 text-xs" style={{ backgroundColor: 'rgba(168, 200, 218, 0.15)', padding: '8px', borderRadius: '6px' }}>
+              <strong>Important:</strong> Since all metrics use ascending scales where higher values represent better outcomes,
+              a positive percentage change indicates improvement across all categories. For example:
             </p>
+            <ul className="mt-2 space-y-1 text-xs ml-4">
+              <li>• Stress Level increasing from 2 (Stressed) to 3 (Mild) = +50% improvement</li>
+              <li>• Body Tension increasing from 2 (Tense) to 4 (Very Relaxed) = +100% improvement</li>
+              <li>• Emotional State increasing from 3 (Positive) to 4 (Very Positive) = +33% improvement</li>
+            </ul>
           </div>
 
           <div>

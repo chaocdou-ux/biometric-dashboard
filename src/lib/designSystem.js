@@ -39,16 +39,13 @@ export const metricLabels = {
 export const metricDescriptions = {
   emotional: 'Self-reported emotional state (1-4 scale, higher is better)',
   energy: 'Self-reported physical energy level (1-4 scale, higher is better)',
-  tension: 'Self-reported body tension (1-4 scale, lower is better)',
-  stress: 'Self-reported stress level (1-4 scale, lower is better)',
+  tension: 'Self-reported body tension (1-4 scale, higher is better: 1=Very Tense, 4=Very Relaxed)',
+  stress: 'Self-reported stress level (1-4 scale, higher is better: 1=Extremely Stressed, 4=No Stress)',
   clarity: 'Self-reported mental clarity (1-4 scale, higher is better)',
   spiritual: 'Self-reported spiritual connection (1-4 scale, higher is better)'
 };
 
 export const calculateImprovement = (preValue, postValue, metric) => {
-  if (metric === 'tension' || metric === 'stress') {
-    return ((preValue - postValue) / preValue * 100);
-  }
   return ((postValue - preValue) / preValue * 100);
 };
 
@@ -57,7 +54,7 @@ export const getMetricColor = (metric) => {
 };
 
 export const getMetricDirection = (metric) => {
-  return (metric === 'tension' || metric === 'stress') ? 'lower' : 'higher';
+  return 'higher';
 };
 
 export const getMetricIcon = (metric) => {

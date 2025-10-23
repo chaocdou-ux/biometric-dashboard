@@ -1,3 +1,5 @@
+import { calculateImprovement } from '../lib/designSystem';
+
 export default function Overview({ data }) {
   const calculateMetrics = () => {
     const allSessions = data.allSessions || [];
@@ -12,13 +14,7 @@ export default function Overview({ data }) {
       if (validData.length > 0) {
         const preAvg = validData.reduce((sum, s) => sum + s[`pre_${metric}`], 0) / validData.length;
         const postAvg = validData.reduce((sum, s) => sum + s[`post_${metric}`], 0) / validData.length;
-
-        let improvement;
-        if (metric === 'tension' || metric === 'stress') {
-          improvement = ((preAvg - postAvg) / preAvg * 100);
-        } else {
-          improvement = ((postAvg - preAvg) / preAvg * 100);
-        }
+        const improvement = calculateImprovement(preAvg, postAvg, metric);
 
         improvements[metric] = {
           pre: preAvg,
