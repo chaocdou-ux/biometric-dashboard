@@ -9,13 +9,12 @@ const csvDir = join(__dirname, '../Biometric CSVs');
 function parseRating(value) {
   if (!value) return null;
   const mapping = {
-    'Extremely stressed': 5,
-    'Very positive': 5, 'Positive': 4, 'Negative': 2, 'Very negative': 1,
-    'Vibrant': 5, 'Energized': 4, 'Sluggish': 2, 'Depleted': 1,
-    'Very relaxed': 5, 'Relaxed': 4, 'Tense': 2, 'Very tense': 1,
-    'Stressed': 5, 'Mild': 3, 'No stress': 1,
-    'Very sharp': 5, 'Clear': 4, 'Unclear': 2, 'Very unclear': 1,
-    'Deeply Connected': 5, 'Connected': 4, 'Disconnected': 2, 'Very disconnected': 1
+    'Very positive': 4, 'Positive': 3, 'Negative': 2, 'Very negative': 1,
+    'Vibrant': 4, 'Energized': 3, 'Sluggish': 2, 'Depleted': 1,
+    'Very relaxed': 4, 'Relaxed': 3, 'Tense': 2, 'Very tense': 1,
+    'Extremely stressed': 1, 'Stressed': 2, 'Mild': 3, 'No stress': 4,
+    'Very sharp': 4, 'Clear': 3, 'Unclear': 2, 'Very unclear': 1,
+    'Deeply Connected': 4, 'Connected': 3, 'Disconnected': 2, 'Very disconnected': 1
   };
   return mapping[value] || null;
 }
