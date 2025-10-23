@@ -131,12 +131,30 @@ export default function Participants({ data }) {
     ];
 
     return (
-      <div className="p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
+      <div className="p-4 rounded-lg space-y-4" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
         <h4 className="font-semibold mb-3" style={{ color: '#0f172a' }}>Session {sessionNumber}</h4>
+
+        {sessionData.pre_emotional_words && (
+          <div className="p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.2)', border: '1px solid rgba(168, 200, 218, 0.4)' }}>
+            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#0f172a' }}>Emotional Description</h5>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div>
+                <p className="text-xs mb-1" style={{ color: '#64748b' }}>Pre-Session:</p>
+                <p className="text-sm italic" style={{ color: '#1e293b' }}>"{sessionData.pre_emotional_words}"</p>
+              </div>
+              {sessionData.post_emotional_words && (
+                <div>
+                  <p className="text-xs mb-1" style={{ color: '#64748b' }}>Post-Session:</p>
+                  <p className="text-sm italic" style={{ color: '#1e293b' }}>"{sessionData.post_emotional_words}"</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#50604F' }}>Pre-Session</h5>
+            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#50604F' }}>Pre-Session Metrics</h5>
             {metrics.map(metric => (
               <div key={`pre-${metric.key}`} className="flex justify-between items-center p-2 rounded" style={{ background: 'rgba(255, 255, 255, 0.5)' }}>
                 <span className="text-sm" style={{ color: '#1e293b' }}>
@@ -148,7 +166,7 @@ export default function Participants({ data }) {
           </div>
 
           <div className="space-y-2">
-            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#7D8D74' }}>Post-Session</h5>
+            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#7D8D74' }}>Post-Session Metrics</h5>
             {metrics.map(metric => {
               const change = calculateChange(metric.pre, metric.post);
               return (
@@ -170,6 +188,115 @@ export default function Participants({ data }) {
             })}
           </div>
         </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+          <div className="p-3 rounded-lg" style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
+            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#0f172a' }}>Pre-Session Vitals</h5>
+            <div className="space-y-1.5">
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>Heart Rate:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.pre_heart_rate ? `${sessionData.pre_heart_rate} BPM` : '—'}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>SpO2:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.pre_spo2 ? `${sessionData.pre_spo2}%` : '—'}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>O2 Level:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.pre_o2 || '—'}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>Resting HR:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.pre_rhr ? `${sessionData.pre_rhr} BPM` : '—'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-lg" style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
+            <h5 className="text-xs font-semibold uppercase tracking-wide mb-2" style={{ color: '#0f172a' }}>Post-Session Vitals</h5>
+            <div className="space-y-1.5">
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>Heart Rate:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.post_heart_rate ? `${sessionData.post_heart_rate} BPM` : '—'}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>SpO2:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.post_spo2 ? `${sessionData.post_spo2}%` : '—'}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>O2 Level:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.post_o2 || '—'}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span style={{ color: '#64748b' }}>Resting HR:</span>
+                <span className="font-medium" style={{ color: '#0f172a' }}>{sessionData.post_rhr ? `${sessionData.post_rhr} BPM` : '—'}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {(sessionData.sensations || sessionData.experience || sessionData.post_feelings || sessionData.violin_influence || sessionData.comments) && (
+          <div className="p-3 rounded-lg space-y-3" style={{ background: 'rgba(125, 141, 116, 0.1)', border: '1px solid rgba(125, 141, 116, 0.3)' }}>
+            <h5 className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#0f172a' }}>Post-Session Details</h5>
+
+            {sessionData.sensations && sessionData.sensations.length > 0 && (
+              <div>
+                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Physical Sensations:</p>
+                <ul className="list-disc list-inside text-sm space-y-0.5" style={{ color: '#1e293b' }}>
+                  {sessionData.sensations.map((sensation, idx) => (
+                    <li key={idx}>{sensation}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {sessionData.experience && sessionData.experience.length > 0 && (
+              <div>
+                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Experience Description:</p>
+                <div className="flex flex-wrap gap-2">
+                  {sessionData.experience.map((exp, idx) => (
+                    <span key={idx} className="px-2 py-1 rounded text-xs" style={{ background: 'rgba(255, 255, 255, 0.6)', color: '#0f172a' }}>
+                      {exp}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {sessionData.post_feelings && sessionData.post_feelings.length > 0 && (
+              <div>
+                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Post-Session Feelings:</p>
+                <div className="flex flex-wrap gap-2">
+                  {sessionData.post_feelings.map((feeling, idx) => (
+                    <span key={idx} className="px-2 py-1 rounded text-xs" style={{ background: 'rgba(255, 255, 255, 0.6)', color: '#0f172a' }}>
+                      {feeling}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {sessionData.violin_influence && sessionData.violin_influence.length > 0 && (
+              <div>
+                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Violin's Influence:</p>
+                <div className="flex flex-wrap gap-2">
+                  {sessionData.violin_influence.map((influence, idx) => (
+                    <span key={idx} className="px-2 py-1 rounded text-xs" style={{ background: 'rgba(255, 255, 255, 0.6)', color: '#0f172a' }}>
+                      {influence}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {sessionData.comments && (
+              <div>
+                <p className="text-xs font-medium mb-1" style={{ color: '#64748b' }}>Additional Comments:</p>
+                <p className="text-sm italic" style={{ color: '#1e293b' }}>"{sessionData.comments}"</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     );
   };
