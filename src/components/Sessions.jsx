@@ -8,21 +8,21 @@ const sessionDescriptions = {
     date: '08/26/25',
     description: 'Breathwork + live violin to establish foundational practice.',
     protocol: 'Breathwork + live violin',
-    duration: '60 minutes'
+    duration: '90 minutes'
   },
   session_2: {
     title: 'Session 2 - Resonance',
     date: '09/02/25',
     description: 'Breathwork + live violin + quartz sound bowls for deeper resonance.',
     protocol: 'Breathwork + live violin + sound bowls',
-    duration: '75 minutes'
+    duration: '90 minutes'
   },
   session_3: {
     title: 'Session 3 - Brainwave Entrainment',
     date: '09/09/25',
     description: 'Breathwork + live violin + binaural beats (headphones) for brainwave synchronization.',
     protocol: 'Breathwork + live violin + binaural beats',
-    duration: '75 minutes'
+    duration: '90 minutes'
   },
   session_4: {
     title: 'Session 4 - Movement Integration',
