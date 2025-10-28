@@ -5,7 +5,10 @@ export default function LandingPage() {
   const [activeTab, setActiveTab] = useState('sponsorship');
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{
+      background: 'linear-gradient(135deg, #faf7f4 0%, #f5ebe0 20%, #e8e0f0 40%, #fae8dc 60%, #f0ebe8 80%, #faf5f2 100%)',
+      backgroundAttachment: 'fixed'
+    }}>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-200">
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between gap-8">
@@ -27,7 +30,7 @@ export default function LandingPage() {
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
                 }`}
               >
-                Sponsorship
+                Sponsor
               </button>
               <button
                 onClick={() => setActiveTab('phase2')}
@@ -237,39 +240,18 @@ function SponsorshipContent() {
       </div>
 
       <div className="border-t border-gray-200 pt-16 mb-16">
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Past Success</p>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Biometric Study Phase 1</h3>
-            <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
-              Our inaugural study successfully captured comprehensive biometric data across four sessions,
-              demonstrating measurable improvements in emotional state, energy levels, mental clarity,
-              and spiritual connection.
-            </p>
-            <p className="text-sm text-gray-600 font-light leading-relaxed">
-              Published results showing average improvements of 15-25% across all measured metrics,
-              establishing proof of concept for music-breathwork integration.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Contact</p>
-            <div className="space-y-3">
-              <div>
-                <p className="text-sm text-gray-900 font-medium">Nathalie Bonin</p>
-                <p className="text-sm text-gray-500 font-light">Founder & Creative Director</p>
-              </div>
-              <div>
-                <a href="mailto:nathalie@nathaliebonin.com" className="text-sm text-gray-900 hover:text-gray-600 font-light">
-                  nathalie@nathaliebonin.com
-                </a>
-              </div>
-              <div>
-                <a href="tel:818-476-2577" className="text-sm text-gray-900 hover:text-gray-600 font-light">
-                  818-476-2577
-                </a>
-              </div>
-            </div>
-          </div>
+        <div>
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Past Success</p>
+          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Biometric Study Phase 1</h3>
+          <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
+            Our inaugural study successfully captured comprehensive biometric data across four sessions,
+            demonstrating measurable improvements in emotional state, energy levels, mental clarity,
+            and spiritual connection.
+          </p>
+          <p className="text-sm text-gray-600 font-light leading-relaxed">
+            Published results showing average improvements of 15-25% across all measured metrics,
+            establishing proof of concept for music-breathwork integration.
+          </p>
         </div>
       </div>
     </div>
@@ -492,9 +474,5 @@ function Phase2Content() {
 }
 
 function Phase1Content() {
-  return (
-    <div className="max-w-7xl mx-auto">
-      <App />
-    </div>
-  );
+  return <App />;
 }

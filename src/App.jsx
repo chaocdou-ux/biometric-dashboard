@@ -82,20 +82,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative" style={{
-      background: 'linear-gradient(135deg, #f5f7fa 0%, #e8eef5 25%, #faf5f0 50%, #f0f4f8 75%, #faf8f5 100%)',
+      background: 'linear-gradient(135deg, #faf7f4 0%, #f5ebe0 20%, #e8e0f0 40%, #fae8dc 60%, #f0ebe8 80%, #faf5f2 100%)',
       backgroundAttachment: 'fixed'
     }}>
       <div
-        className="absolute inset-0 opacity-[0.15] pointer-events-none"
+        className="absolute inset-0 opacity-[0.35] pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
           mixBlendMode: 'overlay'
         }}
       />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 max-w-7xl">
         <header className="mb-10 sm:mb-12">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">2024</p>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <p className="text-xs uppercase tracking-widest text-gray-500 mb-4 font-medium">2024</p>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6" style={{ fontWeight: '700' }}>
             Phase 1
           </h2>
         </header>
@@ -115,12 +115,13 @@ export default function App() {
                   onClick={() => setActiveTab(tab.id)}
                   className="px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 flex items-center touch-manipulation min-h-[44px]"
                   style={{
-                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.7)',
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.95)',
                     color: isActive ? '#ffffff' : '#0f172a',
-                    border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.2)',
-                    backdropFilter: 'blur(10px)',
+                    border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.25)',
+                    backdropFilter: 'blur(15px)',
                     fontSize: '0.875rem',
-                    letterSpacing: '0.02em'
+                    letterSpacing: '0.02em',
+                    fontWeight: isActive ? '600' : '500'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
@@ -131,7 +132,7 @@ export default function App() {
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.7)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
                       e.currentTarget.style.transform = 'translateY(0) scale(1)';
                       e.currentTarget.style.boxShadow = 'none';
                     }
@@ -155,8 +156,8 @@ export default function App() {
 
         <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-        <div className="text-sm leading-relaxed" style={{ color: '#000000' }}>
-          <p className="mb-2">Study 1: 8/26/25, 9/2/25, 9/9/25, 9/16/25 | 8:00–9:30 AM | The KINN, Venice</p>
+        <div className="text-sm leading-relaxed" style={{ color: '#0f172a', fontWeight: '500' }}>
+          <p className="mb-2">Study 1: August 26 - September 16th, 2025 | 8:00–9:30 AM | The KINN, Venice</p>
           <p className="mb-2">Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
           <p>Contact: biometricstudy@gmail.com | Instagram: @biometric.study</p>
         </div>
