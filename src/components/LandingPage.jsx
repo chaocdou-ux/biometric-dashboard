@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import App from '../App';
 
 export default function LandingPage() {
@@ -7,67 +6,73 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-xl font-light tracking-tight text-gray-900">Biometric Study</h1>
-              <p className="text-xs text-gray-500 font-light">Experimental Laboratory. Next Generation.</p>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-200">
+        <div className="container mx-auto px-6 py-5">
+          <div className="flex items-center justify-between gap-8">
+            <div className="flex-shrink-0">
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
+                Biometric Study
+              </h1>
+              <p className="text-sm md:text-base font-light text-gray-600 mt-0.5">
+                Measurement Meets Human Transformation
+              </p>
             </div>
-            <a
-              href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Inquiry"
-              className="px-6 py-2.5 text-sm font-normal bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors"
-            >
-              Inquire
-            </a>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setActiveTab('sponsorship')}
+                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border-2 transition-all ${
+                  activeTab === 'sponsorship'
+                    ? 'bg-gray-900 text-white border-gray-900'
+                    : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                Sponsorship
+              </button>
+              <button
+                onClick={() => setActiveTab('phase2')}
+                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border-2 transition-all ${
+                  activeTab === 'phase2'
+                    ? 'bg-gray-900 text-white border-gray-900'
+                    : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                Phase 2
+              </button>
+              <button
+                onClick={() => setActiveTab('phase1')}
+                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border-2 transition-all ${
+                  activeTab === 'phase1'
+                    ? 'bg-gray-900 text-white border-gray-900'
+                    : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                Phase 1
+              </button>
+              <a
+                href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Inquiry"
+                className="px-5 py-2 text-sm font-medium tracking-wide bg-white text-gray-900 border-2 border-gray-900 rounded-full hover:bg-gray-50 transition-all"
+              >
+                Inquire
+              </a>
+            </div>
           </div>
         </div>
       </header>
 
-      <div className="pt-24">
-        <div className="container mx-auto px-6 py-16">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="flex justify-center gap-8 mb-16 bg-transparent border-b border-gray-100">
-              <TabsTrigger
-                value="sponsorship"
-                className="px-0 py-4 text-sm font-light tracking-wide uppercase bg-transparent border-b-2 border-transparent data-[state=active]:border-gray-900 data-[state=active]:text-gray-900 text-gray-400 rounded-none"
-              >
-                Sponsorship
-              </TabsTrigger>
-              <TabsTrigger
-                value="study2"
-                className="px-0 py-4 text-sm font-light tracking-wide uppercase bg-transparent border-b-2 border-transparent data-[state=active]:border-gray-900 data-[state=active]:text-gray-900 text-gray-400 rounded-none"
-              >
-                Study 2 Agenda
-              </TabsTrigger>
-              <TabsTrigger
-                value="study1"
-                className="px-0 py-4 text-sm font-light tracking-wide uppercase bg-transparent border-b-2 border-transparent data-[state=active]:border-gray-900 data-[state=active]:text-gray-900 text-gray-400 rounded-none"
-              >
-                Study 1 Archive
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="sponsorship">
-              <SponsorshipContent />
-            </TabsContent>
-
-            <TabsContent value="study2">
-              <Study2Content />
-            </TabsContent>
-
-            <TabsContent value="study1">
-              <Study1Content />
-            </TabsContent>
-          </Tabs>
+      <div className="pt-32">
+        <div className="container mx-auto px-6 py-8">
+          {activeTab === 'sponsorship' && <SponsorshipContent />}
+          {activeTab === 'phase2' && <Phase2Content />}
+          {activeTab === 'phase1' && <Phase1Content />}
         </div>
       </div>
 
-      <footer className="border-t border-gray-100 mt-32">
+      <footer className="border-t border-gray-200 mt-32">
         <div className="container mx-auto px-6 py-12">
           <div className="text-center">
-            <p className="text-sm text-gray-500 font-light">Kinemuse Productions Inc.</p>
-            <p className="text-sm text-gray-400 font-light mt-2">
+            <p className="text-sm text-gray-600 font-medium">Kinemuse Productions Inc.</p>
+            <p className="text-sm text-gray-500 mt-2">
               <a href="mailto:nathalie@nathaliebonin.com" className="hover:text-gray-900">nathalie@nathaliebonin.com</a>
               <span className="mx-2">·</span>
               <a href="tel:818-476-2577" className="hover:text-gray-900">818-476-2577</a>
@@ -101,10 +106,10 @@ function SponsorshipContent() {
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-blue-100 via-purple-50 to-orange-50 rounded-full blur-3xl opacity-30" />
         <div className="relative">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Partnership Opportunity</p>
-          <h2 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
             Sponsor the Future of<br />Wellness & Innovation
           </h2>
-          <p className="text-lg text-gray-500 font-light leading-relaxed max-w-2xl">
+          <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl">
             Position your brand at the forefront of groundbreaking research uniting science, wellness,
             technology, and the arts—with global recognition through UNESCO Week of Sound 2026.
           </p>
@@ -114,35 +119,35 @@ function SponsorshipContent() {
       <div className="grid md:grid-cols-3 gap-16 mb-32">
         <div>
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
-            <span className="text-gray-900">01</span>
+            <span className="text-gray-900 font-medium">01</span>
           </div>
-          <h3 className="text-xl font-normal mb-3 text-gray-900">Innovation Leadership</h3>
-          <p className="text-sm text-gray-500 font-light leading-relaxed">
+          <h3 className="text-xl font-semibold mb-3 text-gray-900">Innovation Leadership</h3>
+          <p className="text-sm text-gray-600 font-light leading-relaxed">
             Align with pioneering research at the intersection of neuroscience, music therapy, and biometric analysis
           </p>
         </div>
         <div>
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
-            <span className="text-gray-900">02</span>
+            <span className="text-gray-900 font-medium">02</span>
           </div>
-          <h3 className="text-xl font-normal mb-3 text-gray-900">Global Platform</h3>
-          <p className="text-sm text-gray-500 font-light leading-relaxed">
+          <h3 className="text-xl font-semibold mb-3 text-gray-900">Global Platform</h3>
+          <p className="text-sm text-gray-600 font-light leading-relaxed">
             Reach forward-thinking audiences through UNESCO Week of Sound and international wellness communities
           </p>
         </div>
         <div>
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
-            <span className="text-gray-900">03</span>
+            <span className="text-gray-900 font-medium">03</span>
           </div>
-          <h3 className="text-xl font-normal mb-3 text-gray-900">Scalable Impact</h3>
-          <p className="text-sm text-gray-500 font-light leading-relaxed">
+          <h3 className="text-xl font-semibold mb-3 text-gray-900">Scalable Impact</h3>
+          <p className="text-sm text-gray-600 font-light leading-relaxed">
             Be part of expanding research into wellness centers, hospitals, and concert halls worldwide
           </p>
         </div>
       </div>
 
       <div className="mb-32">
-        <div className="border-t border-gray-100 pt-16">
+        <div className="border-t border-gray-200 pt-16">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Sponsorship Tiers</p>
           <div className="space-y-px bg-gray-50">
             {[
@@ -210,11 +215,11 @@ function SponsorshipContent() {
               <div key={idx} className="bg-white p-8 hover:bg-gray-50 transition-colors">
                 <div className="flex items-start justify-between mb-6">
                   <div>
-                    <h3 className="text-2xl font-light text-gray-900 mb-1">{item.tier}</h3>
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-1">{item.tier}</h3>
                     <p className="text-xs text-gray-400 font-light">{item.note}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-light text-gray-900">{item.price}</p>
+                    <p className="text-2xl font-semibold text-gray-900">{item.price}</p>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
@@ -232,7 +237,7 @@ function SponsorshipContent() {
       </div>
 
       <div className="mb-32">
-        <div className="border-t border-gray-100 pt-16">
+        <div className="border-t border-gray-200 pt-16">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Audience Insights</p>
           <div className="grid md:grid-cols-4 gap-12">
             {[
@@ -242,8 +247,8 @@ function SponsorshipContent() {
               { metric: '100+', label: 'Prior Participants' }
             ].map((stat, idx) => (
               <div key={idx}>
-                <p className="text-4xl font-light text-gray-900 mb-2">{stat.metric}</p>
-                <p className="text-sm text-gray-500 font-light">{stat.label}</p>
+                <p className="text-4xl font-bold text-gray-900 mb-2">{stat.metric}</p>
+                <p className="text-sm text-gray-600 font-light">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -252,12 +257,12 @@ function SponsorshipContent() {
 
       <div className="relative mb-32">
         <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
-        <div className="relative bg-white border border-gray-100 p-12">
+        <div className="relative bg-white border border-gray-200 p-12">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-8 font-light">Sponsor Inquiry</p>
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm text-gray-700 mb-2 font-light">Name</label>
+                <label className="block text-sm text-gray-700 mb-2 font-medium">Name</label>
                 <input
                   type="text"
                   required
@@ -268,7 +273,7 @@ function SponsorshipContent() {
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-700 mb-2 font-light">Company</label>
+                <label className="block text-sm text-gray-700 mb-2 font-medium">Company</label>
                 <input
                   type="text"
                   required
@@ -281,7 +286,7 @@ function SponsorshipContent() {
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <label className="block text-sm text-gray-700 mb-2 font-light">Email</label>
+                <label className="block text-sm text-gray-700 mb-2 font-medium">Email</label>
                 <input
                   type="email"
                   required
@@ -292,7 +297,7 @@ function SponsorshipContent() {
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-700 mb-2 font-light">Tier Interest</label>
+                <label className="block text-sm text-gray-700 mb-2 font-medium">Tier Interest</label>
                 <select
                   value={formData.tier}
                   onChange={(e) => setFormData({...formData, tier: e.target.value})}
@@ -308,7 +313,7 @@ function SponsorshipContent() {
               </div>
             </div>
             <div>
-              <label className="block text-sm text-gray-700 mb-2 font-light">Message</label>
+              <label className="block text-sm text-gray-700 mb-2 font-medium">Message</label>
               <textarea
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
@@ -320,7 +325,7 @@ function SponsorshipContent() {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="px-8 py-3 bg-gray-900 text-white text-sm font-normal rounded-full hover:bg-gray-800 transition-colors"
+                className="px-8 py-3 bg-gray-900 text-white text-sm font-medium tracking-wide rounded-full hover:bg-gray-800 transition-colors"
               >
                 Submit Inquiry
               </button>
@@ -329,17 +334,17 @@ function SponsorshipContent() {
         </div>
       </div>
 
-      <div className="border-t border-gray-100 pt-16 mb-16">
+      <div className="border-t border-gray-200 pt-16 mb-16">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
             <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Past Success</p>
-            <h3 className="text-2xl font-light text-gray-900 mb-4">Biometric Study Phase 1</h3>
-            <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Biometric Study Phase 1</h3>
+            <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
               Our inaugural study successfully captured comprehensive biometric data across four sessions,
               demonstrating measurable improvements in emotional state, energy levels, mental clarity,
               and spiritual connection.
             </p>
-            <p className="text-sm text-gray-500 font-light leading-relaxed">
+            <p className="text-sm text-gray-600 font-light leading-relaxed">
               Published results showing average improvements of 15-25% across all measured metrics,
               establishing proof of concept for music-breathwork integration.
             </p>
@@ -348,8 +353,8 @@ function SponsorshipContent() {
             <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Contact</p>
             <div className="space-y-3">
               <div>
-                <p className="text-sm text-gray-700 font-light">Nathalie Bonin</p>
-                <p className="text-sm text-gray-400 font-light">Founder & Creative Director</p>
+                <p className="text-sm text-gray-900 font-medium">Nathalie Bonin</p>
+                <p className="text-sm text-gray-500 font-light">Founder & Creative Director</p>
               </div>
               <div>
                 <a href="mailto:nathalie@nathaliebonin.com" className="text-sm text-gray-900 hover:text-gray-600 font-light">
@@ -369,35 +374,35 @@ function SponsorshipContent() {
   );
 }
 
-function Study2Content() {
+function Phase2Content() {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="relative mb-24">
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
         <div className="relative">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">November 21-23, 2025</p>
-          <h2 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
             Biometric Study<br />Phase 2
           </h2>
-          <p className="text-lg text-gray-500 font-light leading-relaxed max-w-2xl mb-8">
+          <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mb-8">
             Expanding the frontier of music, breathwork & biometric data at The KINN, Venice, CA
           </p>
           <div className="inline-block bg-gray-50 px-6 py-3 border border-gray-200">
             <p className="text-xs text-gray-500 font-light">Featured in</p>
-            <p className="text-sm text-gray-900 font-normal">UNESCO Week of Sound 2026 Los Angeles</p>
+            <p className="text-sm text-gray-900 font-medium">UNESCO Week of Sound 2026 Los Angeles</p>
           </div>
         </div>
       </div>
 
       <div className="mb-32">
-        <div className="border-t border-gray-100 pt-16">
+        <div className="border-t border-gray-200 pt-16">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Three-Day Agenda</p>
           <div className="space-y-px bg-gray-50">
             <div className="bg-white p-8">
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <p className="text-xs text-gray-400 mb-2 font-light">Day 1 / Evening</p>
-                  <h3 className="text-2xl font-light text-gray-900">VIP Opening Night</h3>
+                  <h3 className="text-2xl font-semibold text-gray-900">VIP Opening Night</h3>
                 </div>
                 <span className="text-sm text-gray-400 font-light">Nov 21</span>
               </div>
@@ -418,7 +423,7 @@ function Study2Content() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-sm text-gray-500 font-light">{item}</p>
+                    <p className="text-sm text-gray-600 font-light">{item}</p>
                   </div>
                 ))}
               </div>
@@ -428,7 +433,7 @@ function Study2Content() {
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <p className="text-xs text-gray-400 mb-2 font-light">Day 2 / Full Day</p>
-                  <h3 className="text-2xl font-light text-gray-900">Research Sessions</h3>
+                  <h3 className="text-2xl font-semibold text-gray-900">Research Sessions</h3>
                 </div>
                 <span className="text-sm text-gray-400 font-light">Nov 22</span>
               </div>
@@ -449,7 +454,7 @@ function Study2Content() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-sm text-gray-500 font-light">{item}</p>
+                    <p className="text-sm text-gray-600 font-light">{item}</p>
                   </div>
                 ))}
               </div>
@@ -459,7 +464,7 @@ function Study2Content() {
               <div className="flex items-start justify-between mb-6">
                 <div>
                   <p className="text-xs text-gray-400 mb-2 font-light">Day 3 / Full Day</p>
-                  <h3 className="text-2xl font-light text-gray-900">"Breathe with the Symphony" Pilot</h3>
+                  <h3 className="text-2xl font-semibold text-gray-900">"Breathe with the Symphony" Pilot</h3>
                 </div>
                 <span className="text-sm text-gray-400 font-light">Nov 23</span>
               </div>
@@ -480,7 +485,7 @@ function Study2Content() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-sm text-gray-500 font-light">{item}</p>
+                    <p className="text-sm text-gray-600 font-light">{item}</p>
                   </div>
                 ))}
               </div>
@@ -490,7 +495,7 @@ function Study2Content() {
       </div>
 
       <div className="mb-32">
-        <div className="border-t border-gray-100 pt-16">
+        <div className="border-t border-gray-200 pt-16">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Technology Platform</p>
           <div className="grid md:grid-cols-3 gap-12">
             {[
@@ -511,26 +516,26 @@ function Study2Content() {
                 <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
                   <span className="text-xs text-gray-400">0{idx + 1}</span>
                 </div>
-                <h3 className="text-lg font-normal mb-2 text-gray-900">{tech.name}</h3>
-                <p className="text-sm text-gray-500 font-light leading-relaxed">{tech.desc}</p>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">{tech.name}</h3>
+                <p className="text-sm text-gray-600 font-light leading-relaxed">{tech.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="border-t border-gray-100 pt-16">
+      <div className="border-t border-gray-200 pt-16">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
             <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">RADD ART Integration</p>
-            <h3 className="text-2xl font-light text-gray-900 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
               Radiologist Developed Autonomic Rewiring Therapy
             </h3>
-            <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+            <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
               Created by Dr. Mitch Abrams through Stanford University's CCARE program, RADD ART
               captures moments of profound insight and translates them into live artistic expressions.
             </p>
-            <p className="text-sm text-gray-500 font-light leading-relaxed">
+            <p className="text-sm text-gray-600 font-light leading-relaxed">
               Each artwork includes QR codes linking to origin stories, creating lasting legacies for
               sponsors and participants while advancing mental health awareness.
             </p>
@@ -547,7 +552,7 @@ function Study2Content() {
                 { name: 'Attila Kocsis', role: 'I-QRS Founder, CEO & CTO' }
               ].map((person, idx) => (
                 <div key={idx}>
-                  <p className="text-sm text-gray-900 font-normal">{person.name}</p>
+                  <p className="text-sm text-gray-900 font-medium">{person.name}</p>
                   <p className="text-xs text-gray-500 font-light">{person.role}</p>
                 </div>
               ))}
@@ -559,23 +564,21 @@ function Study2Content() {
   );
 }
 
-function Study1Content() {
+function Phase1Content() {
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mb-16">
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Archive</p>
-        <h2 className="text-4xl md:text-5xl font-light tracking-tight text-gray-900 mb-6">
-          Biometric Study Phase 1
+    <div className="max-w-7xl mx-auto">
+      <div className="mb-12">
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">2024</p>
+        <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          Biometric Study<br />Phase 1
         </h2>
-        <p className="text-lg text-gray-500 font-light leading-relaxed max-w-3xl">
+        <p className="text-lg text-gray-600 font-light leading-relaxed max-w-3xl">
           Foundational research exploring the physiological effects of live music combined with breathwork,
           establishing proof of concept and measurable outcomes across multiple wellness metrics.
         </p>
       </div>
-      <div className="bg-gray-50 p-1">
-        <div className="bg-white p-8">
-          <App />
-        </div>
+      <div className="mt-8">
+        <App />
       </div>
     </div>
   );
