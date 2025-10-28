@@ -237,21 +237,19 @@ function SponsorshipContent() {
       </div>
 
       <div className="mb-32">
-        <div className="border-t border-gray-200 pt-16">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Audience Insights</p>
-          <div className="grid md:grid-cols-4 gap-12">
-            {[
-              { metric: '100%', label: 'Sold-Out Rate' },
-              { metric: '25-40', label: 'Core Age Range' },
-              { metric: '55%', label: 'Email Engagement' },
-              { metric: '100+', label: 'Prior Participants' }
-            ].map((stat, idx) => (
-              <div key={idx}>
-                <p className="text-4xl font-bold text-gray-900 mb-2">{stat.metric}</p>
-                <p className="text-sm text-gray-600 font-light">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Audience Insights</p>
+        <div className="grid md:grid-cols-4 gap-12">
+          {[
+            { metric: '100%', label: 'Sold-Out Rate' },
+            { metric: '25-40', label: 'Core Age Range' },
+            { metric: '55%', label: 'Email Engagement' },
+            { metric: '100+', label: 'Prior Participants' }
+          ].map((stat, idx) => (
+            <div key={idx}>
+              <p className="text-4xl font-bold text-gray-900 mb-2">{stat.metric}</p>
+              <p className="text-sm text-gray-600 font-light">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </div>
 
