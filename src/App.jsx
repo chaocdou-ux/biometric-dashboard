@@ -84,10 +84,10 @@ export default function App() {
     <div>
       <div>
         <header className="mb-10 sm:mb-12">
-          <p className="text-xs uppercase tracking-widest text-gray-500 mb-4 font-medium">August 26 - September 16th, 2025</p>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6" style={{ fontWeight: '700' }}>
+          <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>August 26 - September 16th, 2025</p>
+          <h1 className="font-bold tracking-tight mb-6" style={{ fontSize: '3.5rem', fontWeight: '700', color: '#0f172a', letterSpacing: '-0.01em' }}>
             Phase 1
-          </h2>
+          </h1>
         </header>
 
         <nav
@@ -103,27 +103,27 @@ export default function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className="px-4 sm:px-5 md:px-6 py-2.5 sm:py-3 rounded-full font-medium transition-all duration-300 flex items-center touch-manipulation min-h-[44px]"
+                  className="px-5 md:px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center touch-manipulation min-h-[44px]"
                   style={{
-                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.95)',
+                    background: isActive ? '#0f172a' : 'rgba(255, 255, 255, 0.97)',
                     color: isActive ? '#ffffff' : '#0f172a',
-                    border: isActive ? 'none' : '1px solid rgba(15, 23, 42, 0.25)',
-                    backdropFilter: 'blur(15px)',
-                    fontSize: '0.875rem',
-                    letterSpacing: '0.02em',
+                    border: isActive ? 'none' : '1.5px solid rgba(15, 23, 42, 0.2)',
+                    backdropFilter: 'blur(20px)',
+                    fontSize: '1rem',
+                    letterSpacing: '0.01em',
                     fontWeight: isActive ? '600' : '500'
                   }}
                   onMouseEnter={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.8)';
-                      e.currentTarget.style.transform = 'translateY(-2px) scale(1.02)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px rgba(168, 200, 218, 0.3), 0 0 12px rgba(168, 200, 218, 0.2)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.88)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 20px rgba(15, 23, 42, 0.15)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
-                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.97)';
+                      e.currentTarget.style.transform = 'translateY(0)';
                       e.currentTarget.style.boxShadow = 'none';
                     }
                   }}
@@ -146,7 +146,7 @@ export default function App() {
 
         <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
 
-        <div className="text-sm leading-relaxed" style={{ color: '#0f172a', fontWeight: '500' }}>
+        <div className="leading-relaxed" style={{ color: '#0f172a', fontWeight: '500', fontSize: '16px' }}>
           <p className="mb-2">Study 1: August 26 - September 16th, 2025 | 8:00–9:30 AM | The KINN, Venice</p>
           <p className="mb-2">Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
           <p>Contact: biometricstudy@gmail.com | Instagram: @biometric.study</p>

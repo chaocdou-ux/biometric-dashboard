@@ -105,11 +105,11 @@ export default function Metrics({ data }) {
     <div className="space-y-8">
       <section className="glass-card">
         <h2 className="section-header">Pre vs Post Comparison</h2>
-        <p className="text-sm mb-4" style={{ color: '#1e293b' }}>
+        <p className="mb-4" style={{ color: '#0f172a', fontSize: '16px' }}>
           Radial chart showing average pre-session and post-session values across all six metrics.
         </p>
-        <div className="mb-4 p-3 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
-          <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+        <div className="mb-4 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.12)', border: '1px solid rgba(168, 200, 218, 0.2)' }}>
+          <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
             <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
           </p>
         </div>
@@ -118,7 +118,7 @@ export default function Metrics({ data }) {
             <PolarGrid stroke={colors.cloudGrey} strokeWidth={1} />
             <PolarAngleAxis
               dataKey="metric"
-              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 600 }}
+              tick={{ fill: '#0f172a', fontSize: 16, fontWeight: 600 }}
             />
             <PolarRadiusAxis
               angle={90}
@@ -156,7 +156,7 @@ export default function Metrics({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Metric Evolution</h2>
-        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+        <p className="mb-6" style={{ color: '#0f172a', fontSize: '16px' }}>
           Tracks how all six metrics changed across the four sessions: emotional state, physical energy, mental clarity, spiritual connection, body tension, and stress level.
         </p>
         <ResponsiveContainer width="100%" height={400}>
@@ -164,13 +164,13 @@ export default function Metrics({ data }) {
             <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
             <XAxis
               dataKey="session"
-              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
-              stroke={colors.forestMoss}
+              tick={{ fill: '#0f172a', fontSize: 16, fontWeight: 600 }}
+              stroke="#475569"
             />
             <YAxis
-              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
-              stroke={colors.forestMoss}
-              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
+              tick={{ fill: '#0f172a', fontSize: 16, fontWeight: 600 }}
+              stroke="#475569"
+              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: '#0f172a', fontSize: 16, fontWeight: 600 } }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
@@ -234,7 +234,7 @@ export default function Metrics({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Average Change</h2>
-        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+        <p className="mb-6" style={{ color: '#0f172a', fontSize: '16px' }}>
           Average percent change for each metric across all four sessions.
         </p>
         <ResponsiveContainer width="100%" height={400}>
@@ -242,16 +242,16 @@ export default function Metrics({ data }) {
             <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
             <XAxis
               dataKey="name"
-              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
+              tick={{ fill: '#0f172a', fontSize: 15, fontWeight: 600 }}
               angle={-45}
               textAnchor="end"
               height={80}
-              stroke={colors.forestMoss}
+              stroke="#475569"
             />
             <YAxis
-              tick={{ fill: '#0f172a', fontSize: 14, fontWeight: 500 }}
-              stroke={colors.forestMoss}
-              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
+              tick={{ fill: '#0f172a', fontSize: 16, fontWeight: 600 }}
+              stroke="#475569"
+              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: '#0f172a', fontSize: 16, fontWeight: 600 } }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Bar
@@ -280,19 +280,19 @@ export default function Metrics({ data }) {
                   {metricLabels[metric]}
                 </h3>
               </div>
-              <div className="space-y-1 text-sm" style={{ color: colors.deepCharcoal }}>
+              <div className="space-y-1" style={{ color: '#0f172a', fontSize: '16px' }}>
                 <p>Pre-session avg: {values.pre.toFixed(2)}</p>
                 <p>Post-session avg: {values.post.toFixed(2)}</p>
-                <p className="font-semibold" style={{ color: values.change > 0 ? '#16a34a' : '#dc2626' }}>
+                <p className="font-bold" style={{ color: values.change > 0 ? '#16a34a' : '#dc2626', fontSize: '17px' }}>
                   Change: {values.change > 0 ? '+' : ''}{values.change.toFixed(1)}%
                 </p>
-                <p className="text-xs opacity-70">n = {values.count} responses</p>
+                <p className="opacity-70" style={{ fontSize: '14px' }}>n = {values.count} responses</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
-          <p className="text-sm leading-relaxed" style={{ color: '#0f172a' }}>
+        <div className="mt-6 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.12)', border: '1px solid rgba(168, 200, 218, 0.2)' }}>
+          <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
             <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
           </p>
         </div>

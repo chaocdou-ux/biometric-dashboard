@@ -100,7 +100,7 @@ export default function Sessions({ data }) {
     <div className="space-y-8">
       <section className="glass-card">
         <h2 className="section-header">Session Outcomes Summary</h2>
-        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+        <p className="mb-6" style={{ color: '#0f172a', fontSize: '16px' }}>
           Aggregated percent change for all metrics across each session, showing overall session effectiveness.
         </p>
 
@@ -109,14 +109,14 @@ export default function Sessions({ data }) {
             <CartesianGrid strokeDasharray="3 3" stroke={colors.cloudGrey} opacity={0.5} />
             <XAxis
               dataKey="session"
-              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
-              stroke={colors.forestMoss}
+              tick={{ fill: '#0f172a', fontSize: 16, fontWeight: 600 }}
+              stroke="#475569"
               angle={0}
             />
             <YAxis
-              tick={{ fill: '#0f172a', fontSize: 13, fontWeight: 500 }}
-              stroke={colors.forestMoss}
-              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: colors.pineGreen } }}
+              tick={{ fill: '#0f172a', fontSize: 16, fontWeight: 600 }}
+              stroke="#475569"
+              label={{ value: '% Change', angle: -90, position: 'insideLeft', style: { fill: '#0f172a', fontSize: 16, fontWeight: 600 } }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Legend
@@ -143,35 +143,35 @@ export default function Sessions({ data }) {
               style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid rgba(168, 200, 218, 0.3)' }}
             >
               <div className="mb-4">
-                <h3 className="text-lg font-bold mb-1" style={{ color: colors.deepCharcoal }}>
+                <h3 className="font-bold mb-1" style={{ fontSize: '20px', color: '#0f172a' }}>
                   {summary.sessionInfo.title}
                 </h3>
-                <p className="text-sm mb-2" style={{ color: colors.pineGreen }}>
+                <p className="mb-2 font-semibold" style={{ fontSize: '15px', color: '#64748b' }}>
                   {summary.sessionInfo.date}
                 </p>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: colors.deepCharcoal }}>
+                <p className="leading-relaxed mb-3" style={{ fontSize: '16px', color: '#0f172a' }}>
                   {summary.sessionInfo.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(125, 141, 116, 0.2)', color: colors.deepCharcoal }}>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full font-medium" style={{ fontSize: '14px', backgroundColor: 'rgba(125, 141, 116, 0.2)', color: '#0f172a' }}>
                     <Users className="w-3 h-3" />
                     {summary.participantCount} participants
                   </span>
-                  <span className="flex items-center gap-1 text-xs px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(168, 200, 218, 0.2)', color: colors.deepCharcoal }}>
+                  <span className="flex items-center gap-1 px-3 py-1 rounded-full font-medium" style={{ fontSize: '14px', backgroundColor: 'rgba(168, 200, 218, 0.2)', color: '#0f172a' }}>
                     <Activity className="w-3 h-3" />
                     {summary.sessionInfo.duration}
                   </span>
                 </div>
 
-                <div className="p-3 rounded-lg mb-4" style={{ backgroundColor: 'rgba(243, 199, 123, 0.15)', border: '1px solid rgba(243, 199, 123, 0.3)' }}>
-                  <p className="text-xs font-semibold mb-1" style={{ color: colors.deepCharcoal }}>Protocol</p>
-                  <p className="text-sm" style={{ color: colors.deepCharcoal }}>{summary.sessionInfo.protocol}</p>
+                <div className="p-3 rounded-lg mb-4" style={{ backgroundColor: 'rgba(243, 199, 123, 0.12)', border: '1px solid rgba(243, 199, 123, 0.25)' }}>
+                  <p className="font-bold mb-1" style={{ fontSize: '14px', color: '#0f172a' }}>Protocol</p>
+                  <p style={{ fontSize: '16px', color: '#0f172a' }}>{summary.sessionInfo.protocol}</p>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <h4 className="text-sm font-semibold mb-3" style={{ color: colors.pineGreen }}>
+                <h4 className="font-bold mb-3" style={{ fontSize: '16px', color: '#0f172a' }}>
                   Metric Changes
                 </h4>
                 {Object.entries(summary.metrics).map(([metricKey, metricData]) => (
@@ -185,12 +185,12 @@ export default function Sessions({ data }) {
                         className="w-3 h-3 rounded-full"
                         style={{ backgroundColor: colors.metrics[metricKey] }}
                       />
-                      <span className="text-sm font-medium" style={{ color: colors.deepCharcoal }}>
+                      <span className="font-semibold" style={{ fontSize: '15px', color: '#0f172a' }}>
                         {metricLabels[metricKey]}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs" style={{ color: colors.deepCharcoal, opacity: 0.7 }}>
+                      <span style={{ fontSize: '14px', color: '#0f172a', opacity: 0.7 }}>
                         n={metricData.count}
                       </span>
                       <div className="flex items-center gap-1">
@@ -200,8 +200,8 @@ export default function Sessions({ data }) {
                           <TrendingDown className="w-4 h-4 text-red-600" />
                         ) : null}
                         <span
-                          className="text-sm font-bold"
-                          style={{ color: metricData.change > 0 ? '#16a34a' : metricData.change < 0 ? '#dc2626' : colors.deepCharcoal }}
+                          className="font-bold"
+                          style={{ fontSize: '16px', color: metricData.change > 0 ? '#16a34a' : metricData.change < 0 ? '#dc2626' : '#0f172a' }}
                         >
                           {metricData.change > 0 ? '+' : ''}{metricData.change.toFixed(1)}%
                         </span>

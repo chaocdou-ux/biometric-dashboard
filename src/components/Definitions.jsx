@@ -125,16 +125,16 @@ export default function Definitions() {
     <div className="space-y-8">
       <section className="glass-card">
         <h2 className="section-header">Data Collection Notes</h2>
-        <div className="space-y-4 text-sm" style={{ color: colors.deepCharcoal }}>
+        <div className="space-y-4" style={{ color: '#0f172a', fontSize: '16px' }}>
           <p className="leading-relaxed">
             This study combines subjective self-reported measures with objective biometric data from consumer wearable devices. All participants completed baseline assessments before the study and pre/post-session questionnaires for each attended session.
           </p>
 
-          <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(241, 141, 68, 0.1)' }}>
-            <p className="font-semibold mb-2" style={{ color: colors.accentOrange }}>
+          <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(241, 141, 68, 0.08)' }}>
+            <p className="font-bold mb-2" style={{ color: '#ea580c', fontSize: '17px' }}>
               Important Data Notes
             </p>
-            <ul className="space-y-1 text-sm">
+            <ul className="space-y-1" style={{ fontSize: '16px' }}>
               <li>• Consumer wearables (Apple Watch, Oura Ring, Muse, Ring Conn) used for biometric data</li>
               <li>• Device accuracy varies; all biometric results are indicative and should not be considered clinical-grade</li>
               <li>• Participants with 2+ sessions included for longitudinal analysis</li>
@@ -181,14 +181,14 @@ export default function Definitions() {
 
       <section className="glass-card">
         <h2 className="section-header">Self-Reported Metrics</h2>
-        <p className="text-sm mb-4" style={{ color: colors.pineGreen }}>
+        <p className="mb-4" style={{ color: '#0f172a', fontSize: '16px' }}>
           Participants rated these dimensions before and after each session using a consistent 1-4 scale.
         </p>
-        <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'rgba(168, 200, 218, 0.15)', border: '1px solid rgba(168, 200, 218, 0.3)' }}>
-          <p className="font-semibold mb-2 text-sm" style={{ color: colors.deepCharcoal }}>
+        <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'rgba(168, 200, 218, 0.12)', border: '1px solid rgba(168, 200, 218, 0.25)' }}>
+          <p className="font-bold mb-2" style={{ color: '#0f172a', fontSize: '17px' }}>
             Scale Methodology
           </p>
-          <ul className="space-y-1 text-xs" style={{ color: colors.deepCharcoal }}>
+          <ul className="space-y-1" style={{ color: '#0f172a', fontSize: '15px' }}>
             <li>• <strong>Consistent 1-4 Scale:</strong> All self-reported metrics use a 4-point scale where higher numeric values represent better outcomes</li>
             <li>• <strong>Response Ordering:</strong> All options are ordered from worst (1) to best (4) in ascending order</li>
             <li>• <strong>Stress Level Scale:</strong> 1 = Extremely Stressed (worst) → 4 = No Stress (best)</li>
@@ -200,16 +200,16 @@ export default function Definitions() {
         <div className="grid md:grid-cols-2 gap-6">
           {measuredMetrics.map((item, index) => (
             <div key={index} className="p-5 rounded-lg" style={{ backgroundColor: 'rgba(80, 96, 79, 0.05)' }}>
-              <h3 className="font-semibold mb-2 text-lg" style={{ color: colors.deepCharcoal }}>
+              <h3 className="font-bold mb-2" style={{ color: '#0f172a', fontSize: '19px' }}>
                 {item.metric}
               </h3>
-              <div className="space-y-2 text-sm" style={{ color: colors.deepCharcoal }}>
+              <div className="space-y-2" style={{ color: '#0f172a', fontSize: '16px' }}>
                 <p className="leading-relaxed">{item.description}</p>
-                <div className="p-2 rounded text-xs mt-2" style={{ backgroundColor: 'rgba(168, 200, 218, 0.2)' }}>
+                <div className="p-2 rounded mt-2" style={{ backgroundColor: 'rgba(168, 200, 218, 0.15)', fontSize: '15px' }}>
                   <strong>Response Options:</strong><br />
                   {item.options}
                 </div>
-                <div className="flex gap-4 pt-2 text-xs">
+                <div className="flex gap-4 pt-2" style={{ fontSize: '14px' }}>
                   <span className="px-2 py-1 rounded" style={{ backgroundColor: colors.cloudGrey }}>
                     {item.scale}
                   </span>
@@ -217,7 +217,7 @@ export default function Definitions() {
                     {item.direction}
                   </span>
                 </div>
-                <p className="text-xs opacity-70 pt-1">Normal range: {item.normalRange}</p>
+                <p className="opacity-70 pt-1" style={{ fontSize: '14px' }}>Normal range: {item.normalRange}</p>
               </div>
             </div>
           ))}
@@ -226,7 +226,7 @@ export default function Definitions() {
 
       <section className="glass-card">
         <h2 className="section-header">Biometric Metrics</h2>
-        <p className="text-sm mb-6" style={{ color: colors.pineGreen }}>
+        <p className="mb-6" style={{ color: '#0f172a', fontSize: '16px' }}>
           Device-measured physiological data collected before and after sessions.
         </p>
         <div className="space-y-4">
@@ -236,10 +236,10 @@ export default function Definitions() {
               className="p-5 rounded-lg"
               style={{ backgroundColor: 'rgba(125, 141, 116, 0.08)' }}
             >
-              <h3 className="font-semibold mb-2" style={{ color: colors.deepCharcoal }}>
+              <h3 className="font-bold mb-2" style={{ color: '#0f172a', fontSize: '19px' }}>
                 {item.metric}
               </h3>
-              <div className="space-y-2 text-sm" style={{ color: colors.deepCharcoal }}>
+              <div className="space-y-2" style={{ color: '#0f172a', fontSize: '16px' }}>
                 <p className="leading-relaxed">{item.description}</p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <span className="text-xs px-3 py-1 rounded-full" style={{ backgroundColor: colors.warmGold, color: 'white' }}>

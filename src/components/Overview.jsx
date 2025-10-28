@@ -60,21 +60,21 @@ export default function Overview({ data }) {
       <section className="glass-card">
         <h2 className="section-header">Study Overview</h2>
 
-        <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.15)' }}>
-          <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
+        <div className="mb-6 p-4 rounded-lg" style={{ backgroundColor: 'rgba(255, 255, 255, 0.12)' }}>
+          <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
             This was a feasibility study designed to assess the practicality and achievability of the proposed plan and method before full-scale implementation.
           </p>
         </div>
 
-        <div className="space-y-4 leading-relaxed" style={{ color: '#1e293b' }}>
+        <div className="space-y-4 leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
           <p>
             This study examined how guided breathwork combined with live violin soundscapes influenced emotional state, physical energy, and nervous system function. Participants engaged in sessions blending structured breathwork and sound, aiming to hyper-oxygenate the bloodstream, prompt emotional release, and foster healing. Protocols were designed to stimulate the vagus nerve and heart rate variability, supporting both physiological and emotional resilience.
           </p>
 
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-4 sm:mt-6">
             <div>
-              <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Modalities</h3>
-              <ul className="space-y-1 text-sm">
+              <h3 className="font-bold mb-2" style={{ color: '#0f172a', fontSize: '18px' }}>Modalities</h3>
+              <ul className="space-y-1" style={{ fontSize: '16px' }}>
                 <li>• Breathwork: two inhales and one exhale per cycle at every session</li>
                 <li>• Sound: live violin at every session</li>
                 <li>• Sound Bowls: added during session 2</li>
@@ -84,8 +84,8 @@ export default function Overview({ data }) {
             </div>
 
             <div>
-              <h3 className="font-semibold mb-2" style={{ color: '#0f172a' }}>Measurement Approach</h3>
-              <ul className="space-y-1 text-sm">
+              <h3 className="font-bold mb-2" style={{ color: '#0f172a', fontSize: '18px' }}>Measurement Approach</h3>
+              <ul className="space-y-1" style={{ fontSize: '16px' }}>
                 <li>• Baseline assessment prior to study</li>
                 <li>• Qualitative Data: pre and post-session self-reports for emotional, physical, and mental states</li>
                 <li>• Quantitative Data: biometric data from wearable devices</li>
@@ -101,20 +101,20 @@ export default function Overview({ data }) {
         <h2 className="section-header">Key Facilitators</h2>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <div className="space-y-2">
-            <h3 className="font-semibold" style={{ color: '#0f172a' }}>Nathalie Bonin</h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
+            <h3 className="font-bold" style={{ color: '#0f172a', fontSize: '18px' }}>Nathalie Bonin</h3>
+            <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
               Internationally acclaimed violinist, Grammy-winning artist, inspirational speaker combining live music and storytelling for transformation.
             </p>
           </div>
           <div className="space-y-2">
-            <h3 className="font-semibold" style={{ color: '#0f172a' }}>Robert Bahedry</h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
+            <h3 className="font-bold" style={{ color: '#0f172a', fontSize: '18px' }}>Robert Bahedry</h3>
+            <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
               Two-time Emmy-winning host, certified breathwork practitioner and transformational coach, specialized in conscious breathing for meaningful transformation.
             </p>
           </div>
           <div className="space-y-2">
-            <h3 className="font-semibold" style={{ color: '#0f172a' }}>Chao Dou</h3>
-            <p className="text-sm leading-relaxed" style={{ color: '#1e293b' }}>
+            <h3 className="font-bold" style={{ color: '#0f172a', fontSize: '18px' }}>Chao Dou</h3>
+            <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
               Experience strategist, data innovator, and artist exploring the intersections of art, wellness, and sensory experimentation to deepen presence and connection.
             </p>
           </div>
@@ -123,8 +123,8 @@ export default function Overview({ data }) {
 
       <section className="glass-card">
         <h2 className="section-header">Key Findings</h2>
-        <div className="space-y-4 leading-relaxed" style={{ color: '#1e293b' }}>
-          <ul className="space-y-3">
+        <div className="space-y-4 leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
+          <ul className="space-y-3" style={{ fontSize: '16px' }}>
             <li>
               <strong style={{ color: '#0f172a' }}>Emotional Well-Being Consistently Improves:</strong> Breathwork sessions—especially those combined with immersive live music—are linked to measurable improvements in emotional state, physical energy, and mental clarity. Participants frequently report greater calm, vitality, and focus after each session, corroborated by self-reported metrics and biometric feedback.
             </li>
@@ -177,19 +177,19 @@ export default function Overview({ data }) {
                     aria-hidden="true"
                   />
                   <div>
-                    <div className="text-lg font-semibold" style={{ color: '#0f172a' }}>
+                    <div className="font-bold" style={{ color: '#0f172a', fontSize: '19px' }}>
                       {metricLabels[metric]}
                     </div>
-                    <div className="text-sm opacity-70" style={{ color: '#1e293b' }}>
+                    <div className="opacity-70" style={{ color: '#0f172a', fontSize: '15px' }}>
                       n={data.count} responses
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-2xl font-bold" style={{ color: '#0f172a' }}>
+                  <div className="font-bold" style={{ color: '#0f172a', fontSize: '26px' }}>
                     +{data.change.toFixed(1)}%
                   </div>
-                  <div className="text-xs opacity-70" style={{ color: '#1e293b' }}>
+                  <div className="opacity-70" style={{ color: '#0f172a', fontSize: '14px' }}>
                     improved on average
                   </div>
                 </div>
@@ -205,7 +205,7 @@ export default function Overview({ data }) {
                   }}
                 />
                 <div className="absolute inset-0 flex items-center px-4">
-                  <div className="text-xs font-medium" style={{ color: '#0f172a' }}>
+                  <div className="font-semibold" style={{ color: '#0f172a', fontSize: '15px' }}>
                     Pre: {data.pre.toFixed(1)} → Post: {data.post.toFixed(1)}
                   </div>
                 </div>

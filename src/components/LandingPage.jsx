@@ -13,10 +13,10 @@ export default function LandingPage() {
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between gap-8">
             <div className="flex-shrink-0">
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
+              <h1 className="font-bold tracking-tight" style={{ fontSize: '1.875rem', color: '#0f172a', letterSpacing: '-0.01em' }}>
                 Biometric Study
               </h1>
-              <p className="text-xs md:text-sm font-light text-gray-600 mt-0.5">
+              <p className="font-medium mt-1" style={{ fontSize: '15px', color: '#475569' }}>
                 Measurement Meets Human Transformation
               </p>
             </div>
@@ -24,37 +24,41 @@ export default function LandingPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setActiveTab('sponsorship')}
-                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border transition-all ${
+                className={`px-5 py-2.5 font-semibold rounded-full border transition-all ${
                   activeTab === 'sponsorship'
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
                 }`}
+                style={{ fontSize: '16px', letterSpacing: '0.01em' }}
               >
                 Sponsor
               </button>
               <button
                 onClick={() => setActiveTab('phase2')}
-                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border transition-all ${
+                className={`px-5 py-2.5 font-semibold rounded-full border transition-all ${
                   activeTab === 'phase2'
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
                 }`}
+                style={{ fontSize: '16px', letterSpacing: '0.01em' }}
               >
                 Phase 2
               </button>
               <button
                 onClick={() => setActiveTab('phase1')}
-                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border transition-all ${
+                className={`px-5 py-2.5 font-semibold rounded-full border transition-all ${
                   activeTab === 'phase1'
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
                 }`}
+                style={{ fontSize: '16px', letterSpacing: '0.01em' }}
               >
                 Phase 1
               </button>
               <a
                 href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Inquiry"
-                className="px-5 py-2 text-sm font-medium tracking-wide bg-white text-gray-900 border border-gray-900 rounded-full hover:bg-gray-50 transition-all"
+                className="px-5 py-2.5 font-semibold bg-white text-gray-900 border border-gray-900 rounded-full hover:bg-gray-50 transition-all"
+                style={{ fontSize: '16px', letterSpacing: '0.01em' }}
               >
                 Inquire
               </a>
@@ -74,8 +78,8 @@ export default function LandingPage() {
       <footer className="border-t border-gray-200 mt-32">
         <div className="container mx-auto px-6 py-12">
           <div className="text-center">
-            <p className="text-sm text-gray-600 font-medium">Founder, Creative Director & Executive Producer</p>
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-gray-700 font-semibold" style={{ fontSize: '16px' }}>Founder, Creative Director & Executive Producer</p>
+            <p className="text-gray-600 mt-2" style={{ fontSize: '16px' }}>
               <a href="mailto:nathalie@nathaliebonin.com" className="hover:text-gray-900">nathalie@nathaliebonin.com</a>
               <span className="mx-2">·</span>
               <a href="tel:818-476-2577" className="hover:text-gray-900">818-476-2577</a>
@@ -108,11 +112,11 @@ function SponsorshipContent() {
       <div className="relative mb-24">
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-blue-100 via-purple-50 to-orange-50 rounded-full blur-3xl opacity-30" />
         <div className="relative">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Partnership Opportunity</p>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Partnership Opportunity</p>
+          <h2 className="font-bold tracking-tight mb-6" style={{ fontSize: '3.5rem', color: '#0f172a', letterSpacing: '-0.01em' }}>
             Sponsor the Future of<br />Wellness & Innovation
           </h2>
-          <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl">
+          <p className="leading-relaxed max-w-2xl" style={{ fontSize: '18px', color: '#334155', fontWeight: '400' }}>
             Position your brand at the forefront of groundbreaking research uniting science, wellness,
             technology, and the arts—with global recognition through UNESCO Week of Sound 2026.
           </p>
@@ -124,8 +128,8 @@ function SponsorshipContent() {
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
             <span className="text-gray-900 font-medium">01</span>
           </div>
-          <h3 className="text-xl font-semibold mb-3 text-gray-900">Innovation Leadership</h3>
-          <p className="text-sm text-gray-600 font-light leading-relaxed">
+          <h3 className="font-semibold mb-3" style={{ fontSize: '22px', color: '#0f172a' }}>Innovation Leadership</h3>
+          <p className="leading-relaxed" style={{ fontSize: '16px', color: '#475569' }}>
             Align with pioneering research at the intersection of neuroscience, music therapy, and biometric analysis
           </p>
         </div>
@@ -133,8 +137,8 @@ function SponsorshipContent() {
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
             <span className="text-gray-900 font-medium">02</span>
           </div>
-          <h3 className="text-xl font-semibold mb-3 text-gray-900">Global Platform</h3>
-          <p className="text-sm text-gray-600 font-light leading-relaxed">
+          <h3 className="font-semibold mb-3" style={{ fontSize: '22px', color: '#0f172a' }}>Global Platform</h3>
+          <p className="leading-relaxed" style={{ fontSize: '16px', color: '#475569' }}>
             Reach forward-thinking audiences through UNESCO Week of Sound and international wellness communities
           </p>
         </div>
@@ -142,8 +146,8 @@ function SponsorshipContent() {
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
             <span className="text-gray-900 font-medium">03</span>
           </div>
-          <h3 className="text-xl font-semibold mb-3 text-gray-900">Scalable Impact</h3>
-          <p className="text-sm text-gray-600 font-light leading-relaxed">
+          <h3 className="font-semibold mb-3" style={{ fontSize: '22px', color: '#0f172a' }}>Scalable Impact</h3>
+          <p className="leading-relaxed" style={{ fontSize: '16px', color: '#475569' }}>
             Be part of expanding research into wellness centers, hospitals, and concert halls worldwide
           </p>
         </div>
@@ -151,7 +155,7 @@ function SponsorshipContent() {
 
       <div className="mb-32">
         <div className="border-t border-gray-200 pt-16">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Sponsorship Tiers</p>
+          <p className="uppercase tracking-widest mb-12 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Sponsorship Tiers</p>
           <div className="space-y-px bg-gray-50">
             {[
               {
@@ -218,18 +222,18 @@ function SponsorshipContent() {
               <div key={idx} className="bg-white p-8 hover:bg-gray-50 transition-colors">
                 <div className="flex items-start justify-between mb-6">
                   <div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-1">{item.tier}</h3>
-                    <p className="text-xs text-gray-400 font-light">{item.note}</p>
+                    <h3 className="font-bold mb-1" style={{ fontSize: '24px', color: '#0f172a' }}>{item.tier}</h3>
+                    <p className="font-medium" style={{ fontSize: '14px', color: '#94a3b8' }}>{item.note}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-semibold text-gray-900">{item.price}</p>
+                    <p className="font-bold" style={{ fontSize: '24px', color: '#0f172a' }}>{item.price}</p>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
                   {item.benefits.map((benefit, bidx) => (
                     <div key={bidx} className="flex items-start gap-3">
                       <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-sm text-gray-600 font-light">{benefit}</p>
+                      <p style={{ fontSize: '16px', color: '#475569' }}>{benefit}</p>
                     </div>
                   ))}
                 </div>
