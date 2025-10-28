@@ -1,714 +1,582 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { colors } from '../lib/designSystem';
-import { Calendar, MapPin, Users, Award, CheckCircle, TrendingUp, Heart, Music, Activity, Brain } from 'lucide-react';
 import App from '../App';
 
 export default function LandingPage() {
-  const [activeTab, setActiveTab] = useState('study2');
+  const [activeTab, setActiveTab] = useState('sponsorship');
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, rgba(168, 200, 218, 0.1) 0%, rgba(243, 199, 123, 0.1) 100%)' }}>
-      <div className="relative h-[60vh] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(/Background\\ 1.jpg)',
-            filter: 'brightness(0.7)'
-          }}
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg">
-            Biometric Study
-          </h1>
-          <p className="text-xl md:text-2xl text-white max-w-3xl mb-8 drop-shadow">
-            Exploring the frontier of music, breathwork & biometric data
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+    <div className="min-h-screen bg-white">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-xl font-light tracking-tight text-gray-900">Biometric Study</h1>
+              <p className="text-xs text-gray-500 font-light">Experimental Laboratory. Next Generation.</p>
+            </div>
             <a
-              href="#sponsorship"
-              className="px-8 py-4 rounded-full font-semibold text-lg transition-all"
-              style={{
-                backgroundColor: colors.accentRed,
-                color: 'white',
-                boxShadow: '0 4px 20px rgba(245, 59, 87, 0.4)'
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                setActiveTab('sponsorship');
-                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Inquiry"
+              className="px-6 py-2.5 text-sm font-normal bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors"
             >
-              Become a Sponsor
-            </a>
-            <a
-              href="#learn-more"
-              className="px-8 py-4 rounded-full font-semibold text-lg transition-all border-2"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                color: colors.deepCharcoal,
-                borderColor: 'white'
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('tabs-section')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Learn More
+              Inquire
             </a>
           </div>
         </div>
+      </header>
+
+      <div className="pt-24">
+        <div className="container mx-auto px-6 py-16">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <TabsList className="flex justify-center gap-8 mb-16 bg-transparent border-b border-gray-100">
+              <TabsTrigger
+                value="sponsorship"
+                className="px-0 py-4 text-sm font-light tracking-wide uppercase bg-transparent border-b-2 border-transparent data-[state=active]:border-gray-900 data-[state=active]:text-gray-900 text-gray-400 rounded-none"
+              >
+                Sponsorship
+              </TabsTrigger>
+              <TabsTrigger
+                value="study2"
+                className="px-0 py-4 text-sm font-light tracking-wide uppercase bg-transparent border-b-2 border-transparent data-[state=active]:border-gray-900 data-[state=active]:text-gray-900 text-gray-400 rounded-none"
+              >
+                Study 2 Agenda
+              </TabsTrigger>
+              <TabsTrigger
+                value="study1"
+                className="px-0 py-4 text-sm font-light tracking-wide uppercase bg-transparent border-b-2 border-transparent data-[state=active]:border-gray-900 data-[state=active]:text-gray-900 text-gray-400 rounded-none"
+              >
+                Study 1 Archive
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="sponsorship">
+              <SponsorshipContent />
+            </TabsContent>
+
+            <TabsContent value="study2">
+              <Study2Content />
+            </TabsContent>
+
+            <TabsContent value="study1">
+              <Study1Content />
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
 
-      <div id="tabs-section" className="container mx-auto px-4 py-12">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8 h-auto p-2 rounded-xl" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
-            <TabsTrigger
-              value="study1"
-              className="text-base md:text-lg py-4 px-2 rounded-lg data-[state=active]:shadow-lg"
-              style={{
-                color: colors.deepCharcoal,
-                fontWeight: 600
-              }}
-            >
-              Biometric Study 1
-            </TabsTrigger>
-            <TabsTrigger
-              value="study2"
-              className="text-base md:text-lg py-4 px-2 rounded-lg data-[state=active]:shadow-lg"
-              style={{
-                color: colors.deepCharcoal,
-                fontWeight: 600
-              }}
-            >
-              Biometric Study 2
-            </TabsTrigger>
-            <TabsTrigger
-              value="sponsorship"
-              className="text-base md:text-lg py-4 px-2 rounded-lg data-[state=active]:shadow-lg"
-              style={{
-                color: colors.deepCharcoal,
-                fontWeight: 600
-              }}
-            >
-              Sponsorship
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="study1">
-            <div className="glass-card">
-              <h2 className="text-3xl font-bold mb-4" style={{ color: colors.deepCharcoal }}>
-                Biometric Study 1: Foundation & Results
-              </h2>
-              <p className="text-lg mb-8" style={{ color: colors.pineGreen }}>
-                Explore the groundbreaking results from our first biometric study combining live music, breathwork, and advanced biometric tracking.
-              </p>
-            </div>
-            <App />
-          </TabsContent>
-
-          <TabsContent value="study2">
-            <Study2Content />
-          </TabsContent>
-
-          <TabsContent value="sponsorship">
-            <SponsorshipContent setActiveTab={setActiveTab} />
-          </TabsContent>
-        </Tabs>
-      </div>
-
-      <footer className="py-12 px-4 text-center" style={{ backgroundColor: colors.deepCharcoal, color: 'white' }}>
-        <div className="container mx-auto">
-          <p className="text-lg mb-2">Kinemuse Productions Inc.</p>
-          <p className="mb-4">
-            <a href="mailto:nathalie@nathaliebonin.com" className="hover:underline">nathalie@nathaliebonin.com</a> |
-            <a href="tel:818-476-2577" className="ml-2 hover:underline">818-476-2577</a>
-          </p>
-          <p className="text-sm opacity-75">© 2025 Kinemuse Productions Inc. All rights reserved.</p>
+      <footer className="border-t border-gray-100 mt-32">
+        <div className="container mx-auto px-6 py-12">
+          <div className="text-center">
+            <p className="text-sm text-gray-500 font-light">Kinemuse Productions Inc.</p>
+            <p className="text-sm text-gray-400 font-light mt-2">
+              <a href="mailto:nathalie@nathaliebonin.com" className="hover:text-gray-900">nathalie@nathaliebonin.com</a>
+              <span className="mx-2">·</span>
+              <a href="tel:818-476-2577" className="ml-2 hover:text-gray-900">818-476-2577</a>
+            </p>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
 
-function Study2Content() {
-  const agenda = [
-    {
-      day: 'Day 1 - November 21',
-      title: 'VIP Opening Night',
-      time: 'Evening',
-      description: 'Exclusive reception featuring keynote by Dr. Mitch Abrams, live RADD ART by Chao Dou, and musical performance by Grammy-winning violinist Nathalie Bonin.',
-      icon: Award,
-      highlights: [
-        'Keynote presentation on science, wellness, and human connection',
-        'Live RADD ART creation and music improvisation',
-        'Meet the Biometric Study team and I-QRS partners',
-        'Sponsor recognition and mental health fundraising'
-      ]
-    },
-    {
-      day: 'Day 2 - November 22',
-      title: 'Research Sessions',
-      time: 'Full Day',
-      description: 'Intensive biometric capture sessions featuring live music, breathwork, and various modalities with real-time data collection.',
-      icon: Activity,
-      highlights: [
-        'Live musical performance by Nathalie Bonin',
-        'Guided breathwork sessions with Robert Bahedry',
-        'Binaural beats and brainwave entrainment',
-        'Movement integration and LaseRR Protocol',
-        'Real-time biometric visualization (Aurora Borealis effect)'
-      ]
-    },
-    {
-      day: 'Day 3 - November 23',
-      title: '"Breathe with the Symphony" Pilot',
-      time: 'Full Day',
-      description: 'Groundbreaking pilot of orchestral music synced with guided breathwork and live biometric data visualization.',
-      icon: Music,
-      highlights: [
-        'Synchronized music and breathwork experience',
-        'Collective biometric visualization',
-        'EEG and HRV group dynamics capture',
-        'Participant insights and personalized results',
-        'Closing session and data debrief'
-      ]
-    }
-  ];
+function SponsorshipContent() {
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    tier: '',
+    message: ''
+  });
 
-  const technologies = [
-    {
-      name: 'I-QRS Chestbelt',
-      description: 'High-resolution ECG and HRV data with motion and temperature sensing',
-      icon: Heart
-    },
-    {
-      name: 'eMotiv EpocX EEG',
-      description: '14-channel EEG for brainwave monitoring and synchronization',
-      icon: Brain
-    },
-    {
-      name: 'Wearable Devices',
-      description: 'Multiple consumer wearables for comprehensive tracking',
-      icon: Activity
-    }
-  ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const subject = `Sponsorship Inquiry - ${formData.tier || 'General'}`;
+    const body = `Name: ${formData.name}%0D%0ACompany: ${formData.company}%0D%0AEmail: ${formData.email}%0D%0ATier Interest: ${formData.tier}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+    window.location.href = `mailto:nathalie@nathaliebonin.com?subject=${subject}&body=${body}`;
+  };
 
   return (
-    <div className="space-y-8">
-      <section className="glass-card">
-        <div className="flex items-start gap-4 mb-6">
-          <Calendar className="w-8 h-8 flex-shrink-0" style={{ color: colors.accentRed }} />
-          <div>
-            <h2 className="text-3xl font-bold mb-2" style={{ color: colors.deepCharcoal }}>
-              Biometric Study Phase 2
-            </h2>
-            <p className="text-xl mb-4" style={{ color: colors.pineGreen }}>
-              Expanding the Frontier of Music, Breathwork & Biometric Data
-            </p>
-          </div>
+    <div className="max-w-6xl mx-auto">
+      <div className="relative mb-24">
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-blue-100 via-purple-50 to-orange-50 rounded-full blur-3xl opacity-30" />
+        <div className="relative">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Partnership Opportunity</p>
+          <h2 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 mb-6">
+            Sponsor the Future of<br />Wellness & Innovation
+          </h2>
+          <p className="text-lg text-gray-500 font-light leading-relaxed max-w-2xl">
+            Position your brand at the forefront of groundbreaking research uniting science, wellness,
+            technology, and the arts—with global recognition through UNESCO Week of Sound 2026.
+          </p>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="flex items-center gap-3 p-4 rounded-lg" style={{ backgroundColor: 'rgba(168, 200, 218, 0.2)' }}>
-            <Calendar className="w-6 h-6" style={{ color: colors.metrics.emotional }} />
-            <div>
-              <p className="font-semibold" style={{ color: colors.deepCharcoal }}>November 21-23, 2025</p>
-              <p className="text-sm" style={{ color: colors.pineGreen }}>3-Day Immersive Experience</p>
-            </div>
+      <div className="grid md:grid-cols-3 gap-16 mb-32">
+        <div>
+          <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
+            <span className="text-gray-900">01</span>
           </div>
-          <div className="flex items-center gap-3 p-4 rounded-lg" style={{ backgroundColor: 'rgba(243, 199, 123, 0.2)' }}>
-            <MapPin className="w-6 h-6" style={{ color: colors.goldenAmber }} />
-            <div>
-              <p className="font-semibold" style={{ color: colors.deepCharcoal }}>The KINN, Venice, CA</p>
-              <p className="text-sm" style={{ color: colors.pineGreen }}>Conscious Entrepreneur Hub</p>
-            </div>
+          <h3 className="text-xl font-normal mb-3 text-gray-900">Innovation Leadership</h3>
+          <p className="text-sm text-gray-500 font-light leading-relaxed">
+            Align with pioneering research at the intersection of neuroscience, music therapy, and biometric analysis
+          </p>
+        </div>
+        <div>
+          <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
+            <span className="text-gray-900">02</span>
           </div>
+          <h3 className="text-xl font-normal mb-3 text-gray-900">Global Platform</h3>
+          <p className="text-sm text-gray-500 font-light leading-relaxed">
+            Reach forward-thinking audiences through UNESCO Week of Sound and international wellness communities
+          </p>
         </div>
-
-        <div className="p-6 rounded-xl mb-8" style={{ backgroundColor: 'rgba(245, 59, 87, 0.1)', border: '2px solid rgba(245, 59, 87, 0.3)' }}>
-          <div className="flex items-start gap-3 mb-4">
-            <Award className="w-6 h-6 flex-shrink-0" style={{ color: colors.accentRed }} />
-            <div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: colors.deepCharcoal }}>
-                UNESCO Week of Sound 2026
-              </h3>
-              <p className="leading-relaxed" style={{ color: colors.deepCharcoal }}>
-                We are proud to showcase Biometric Study Phase 2 as part of the first edition of <strong>UNESCO Week of Sound 2026 in Los Angeles</strong>. This prestigious platform provides global recognition for our groundbreaking work, offering sponsors the opportunity to be associated with an initiative endorsed and celebrated on the world stage.
-              </p>
-            </div>
+        <div>
+          <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
+            <span className="text-gray-900">03</span>
           </div>
+          <h3 className="text-xl font-normal mb-3 text-gray-900">Scalable Impact</h3>
+          <p className="text-sm text-gray-500 font-light leading-relaxed">
+            Be part of expanding research into wellness centers, hospitals, and concert halls worldwide
+          </p>
         </div>
-      </section>
+      </div>
 
-      <section className="glass-card">
-        <h2 className="section-header">Event Agenda</h2>
-        <p className="text-lg mb-8" style={{ color: colors.pineGreen }}>
-          A carefully curated three-day journey blending scientific rigor with immersive artistry
-        </p>
-        <div className="space-y-6">
-          {agenda.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-xl border-l-4"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                borderColor: colors.metrics[Object.keys(colors.metrics)[idx % 6]]
-              }}
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div
-                  className="p-3 rounded-lg"
-                  style={{ backgroundColor: `${colors.metrics[Object.keys(colors.metrics)[idx % 6]]}20` }}
-                >
-                  <item.icon className="w-6 h-6" style={{ color: colors.metrics[Object.keys(colors.metrics)[idx % 6]] }} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-bold" style={{ color: colors.deepCharcoal }}>
-                      {item.title}
-                    </h3>
-                    <span className="text-sm px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(125, 141, 116, 0.2)', color: colors.pineGreen }}>
-                      {item.time}
-                    </span>
-                  </div>
-                  <p className="text-sm mb-1 font-semibold" style={{ color: colors.pineGreen }}>
-                    {item.day}
-                  </p>
-                  <p className="mb-4" style={{ color: colors.deepCharcoal }}>
-                    {item.description}
-                  </p>
-                  <ul className="space-y-2">
-                    {item.highlights.map((highlight, hidx) => (
-                      <li key={hidx} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.metrics[Object.keys(colors.metrics)[idx % 6]] }} />
-                        <span style={{ color: colors.deepCharcoal }}>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="glass-card">
-        <h2 className="section-header">Advanced Biometric Technology</h2>
-        <p className="text-lg mb-8" style={{ color: colors.pineGreen }}>
-          State-of-the-art hardware and AI-driven platforms capturing comprehensive physiological data
-        </p>
-        <div className="grid md:grid-cols-3 gap-6">
-          {technologies.map((tech, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-xl text-center"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                border: '1px solid rgba(168, 200, 218, 0.3)'
-              }}
-            >
-              <div
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: `${colors.metrics[Object.keys(colors.metrics)[idx % 6]]}20` }}
-              >
-                <tech.icon className="w-8 h-8" style={{ color: colors.metrics[Object.keys(colors.metrics)[idx % 6]] }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: colors.deepCharcoal }}>
-                {tech.name}
-              </h3>
-              <p className="text-sm" style={{ color: colors.pineGreen }}>
-                {tech.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="glass-card">
-        <h2 className="section-header">RADD ART Experience</h2>
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 className="text-2xl font-bold mb-4" style={{ color: colors.deepCharcoal }}>
-              Radiologist Developed Autonomic Rewiring Therapy
-            </h3>
-            <p className="mb-4 leading-relaxed" style={{ color: colors.deepCharcoal }}>
-              A visionary NexGenHealth initiative created by Dr. Mitch Abrams through Stanford University's Center for Compassion, Altruism Research and Education (CCARE).
-            </p>
-            <p className="mb-6 leading-relaxed" style={{ color: colors.deepCharcoal }}>
-              During the VIP Opening Night, certified RADD ARTist <strong>Chao Dou</strong> will create a live painting inspired by the collective emotional and physiological energy, while <strong>Nathalie Bonin</strong> performs an original violin composition—a live art and music improvisation sparked by shared energy.
-            </p>
-            <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(243, 199, 123, 0.2)', border: '1px solid rgba(243, 199, 123, 0.4)' }}>
-              <p className="text-sm font-semibold mb-2" style={{ color: colors.deepCharcoal }}>
-                Platinum Sponsorship Benefit
-              </p>
-              <p className="text-sm" style={{ color: colors.deepCharcoal }}>
-                Includes the option to retain the original RADD ART artwork or have it exhibited in an impactful public space with enduring recognition.
-              </p>
-            </div>
-          </div>
-          <div className="space-y-4">
+      <div className="mb-32">
+        <div className="border-t border-gray-100 pt-16">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Sponsorship Tiers</p>
+          <div className="space-y-px bg-gray-50">
             {[
-              'Live artistic expression capturing profound insights',
-              'QR codes linking to origin stories and sponsors',
-              'Showcased in hospitals, clinics, galleries, and community hubs',
-              'Catalyst for healing, education, and preventative health',
-              'Creates lasting legacy for sponsors and participants'
+              {
+                tier: 'Visionary',
+                price: '$5,000',
+                note: '1 available',
+                benefits: [
+                  'Named Presenter of the event',
+                  'Speaking opportunity at VIP Opening',
+                  'Original RADD ART artwork',
+                  'Largest logo placement across all materials',
+                  'Top-level QR code art story integration',
+                  'Featured press mentions',
+                  'UNESCO Week of Sound recognition'
+                ]
+              },
+              {
+                tier: 'Platinum',
+                price: '$2,500',
+                note: '2 available',
+                benefits: [
+                  'Prominent logo placement',
+                  'Medium banner at VIP Opening',
+                  'QR code art story integration',
+                  'Event photo/video feature',
+                  'Social media campaign inclusion',
+                  'UNESCO Week of Sound recognition'
+                ]
+              },
+              {
+                tier: 'Gold',
+                price: '$1,000',
+                note: '5 available',
+                benefits: [
+                  'Standard logo placement',
+                  'QR code art story acknowledgment',
+                  'Event recognition',
+                  'VIP reception invitation',
+                  'UNESCO Week of Sound recognition'
+                ]
+              },
+              {
+                tier: 'Silver',
+                price: '$500',
+                note: '10 available',
+                benefits: [
+                  'Event credits and video mention',
+                  'QR code art story listing',
+                  'VIP reception invitation',
+                  'UNESCO Week of Sound recognition'
+                ]
+              },
+              {
+                tier: 'Bronze',
+                price: '$250',
+                note: 'Unlimited',
+                benefits: [
+                  'Event credits mention',
+                  'VIP reception invitation',
+                  'UNESCO Week of Sound recognition'
+                ]
+              }
             ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-4 rounded-lg" style={{ backgroundColor: 'rgba(168, 200, 218, 0.15)' }}>
-                <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: colors.accentRed }} />
-                <span style={{ color: colors.deepCharcoal }}>{item}</span>
+              <div key={idx} className="bg-white p-8 hover:bg-gray-50 transition-colors">
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-light text-gray-900 mb-1">{item.tier}</h3>
+                    <p className="text-xs text-gray-400 font-light">{item.note}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-2xl font-light text-gray-900">{item.price}</p>
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
+                  {item.benefits.map((benefit, bidx) => (
+                    <div key={bidx} className="flex items-start gap-3">
+                      <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-sm text-gray-600 font-light">{benefit}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
+
+      <div className="mb-32">
+        <div className="border-t border-gray-100 pt-16">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Audience Insights</p>
+          <div className="grid md:grid-cols-4 gap-12">
+            {[
+              { metric: '100%', label: 'Sold-Out Rate' },
+              { metric: '25-40', label: 'Core Age Range' },
+              { metric: '55%', label: 'Email Engagement' },
+              { metric: '100+', label: 'Prior Participants' }
+            ].map((stat, idx) => (
+              <div key={idx}>
+                <p className="text-4xl font-light text-gray-900 mb-2">{stat.metric}</p>
+                <p className="text-sm text-gray-500 font-light">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mb-32">
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
+        <div className="relative bg-white border border-gray-100 p-12">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-8 font-light">Sponsor Inquiry</p>
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <label className="block text-sm text-gray-700 mb-2 font-light">Name</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-900 focus:ring-0 text-gray-900 font-light placeholder-gray-300"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-700 mb-2 font-light">Company</label>
+                <input
+                  type="text"
+                  required
+                  value={formData.company}
+                  onChange={(e) => setFormData({...formData, company: e.target.value})}
+                  className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-900 focus:ring-0 text-gray-900 font-light placeholder-gray-300"
+                  placeholder="Company name"
+                />
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <label className="block text-sm text-gray-700 mb-2 font-light">Email</label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-900 focus:ring-0 text-gray-900 font-light placeholder-gray-300"
+                  placeholder="your@email.com"
+                />
+              </div>
+              <div>
+                <label className="block text-sm text-gray-700 mb-2 font-light">Tier Interest</label>
+                <select
+                  value={formData.tier}
+                  onChange={(e) => setFormData({...formData, tier: e.target.value})}
+                  className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-900 focus:ring-0 text-gray-900 font-light"
+                >
+                  <option value="">Select tier</option>
+                  <option value="Visionary">Visionary - $5,000</option>
+                  <option value="Platinum">Platinum - $2,500</option>
+                  <option value="Gold">Gold - $1,000</option>
+                  <option value="Silver">Silver - $500</option>
+                  <option value="Bronze">Bronze - $250</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm text-gray-700 mb-2 font-light">Message</label>
+              <textarea
+                value={formData.message}
+                onChange={(e) => setFormData({...formData, message: e.target.value})}
+                rows={4}
+                className="w-full px-0 py-3 border-0 border-b border-gray-200 focus:border-gray-900 focus:ring-0 text-gray-900 font-light placeholder-gray-300 resize-none"
+                placeholder="Tell us about your partnership goals"
+              />
+            </div>
+            <div className="flex justify-end">
+              <button
+                type="submit"
+                className="px-8 py-3 bg-gray-900 text-white text-sm font-normal rounded-full hover:bg-gray-800 transition-colors"
+              >
+                Submit Inquiry
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div className="border-t border-gray-100 pt-16 mb-16">
+        <div className="grid md:grid-cols-2 gap-16">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Past Success</p>
+            <h3 className="text-2xl font-light text-gray-900 mb-4">Biometric Study Phase 1</h3>
+            <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+              Our inaugural study successfully captured comprehensive biometric data across four sessions,
+              demonstrating measurable improvements in emotional state, energy levels, mental clarity,
+              and spiritual connection.
+            </p>
+            <p className="text-sm text-gray-500 font-light leading-relaxed">
+              Published results showing average improvements of 15-25% across all measured metrics,
+              establishing proof of concept for music-breathwork integration.
+            </p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Contact</p>
+            <div className="space-y-3">
+              <div>
+                <p className="text-sm text-gray-700 font-light">Nathalie Bonin</p>
+                <p className="text-sm text-gray-400 font-light">Founder & Creative Director</p>
+              </div>
+              <div>
+                <a href="mailto:nathalie@nathaliebonin.com" className="text-sm text-gray-900 hover:text-gray-600 font-light">
+                  nathalie@nathaliebonin.com
+                </a>
+              </div>
+              <div>
+                <a href="tel:818-476-2577" className="text-sm text-gray-900 hover:text-gray-600 font-light">
+                  818-476-2577
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-function SponsorshipContent({ setActiveTab }) {
-  const sponsorshipTiers = [
-    {
-      tier: 'Visionary',
-      price: '$5,000',
-      icon: '💎',
-      color: colors.accentRed,
-      benefits: [
-        'Officially named Presenter of the event',
-        'Say a few words at the VIP Opening as main sponsor',
-        'Includes the original RADD ART piece*',
-        'Largest Presenter Banner at the VIP Opening Night',
-        'Largest logo on event materials, credits & livestream',
-        'Top level acknowledgement in the RADD ART QR Code Art Story (Logo, link, description paragraph, image)',
-        'Featured mention in press communications + social media',
-        'VIP acknowledgment on stage',
-        'Invitation to VIP Reception',
-        'Recognition in UNESCO Week of Sound 2026 LA'
-      ],
-      availability: '1 Available'
-    },
-    {
-      tier: 'Platinum',
-      price: '$2,500',
-      icon: '💠',
-      color: colors.metrics.emotional,
-      benefits: [
-        'Upsized logo placement on materials and credits',
-        'Medium Banner at the VIP Opening Night',
-        'Second level acknowledgement in the RADD ART QR Code Art Story (Logo, link, name, tag line)',
-        'Recognition during the event and thank-you social posts',
-        'Invitation to VIP Reception',
-        'Featured in event photo/video content',
-        'Recognition in UNESCO Week of Sound 2026 LA'
-      ],
-      availability: '2 Available'
-    },
-    {
-      tier: 'Gold',
-      price: '$1,000',
-      icon: '🥇',
-      color: colors.goldenAmber,
-      benefits: [
-        'Standard logo placement on materials + video credits',
-        'Third level acknowledgment in the RADD ART QR Code Art Story (Logo, link, name, tag line)',
-        'Recognition during the event and thank-you social posts',
-        'Invitation to VIP Reception',
-        'Social media mentions',
-        'Recognition in UNESCO Week of Sound 2026 LA'
-      ],
-      availability: '5 Available'
-    },
-    {
-      tier: 'Silver',
-      price: '$500',
-      icon: '🥈',
-      color: colors.metrics.clarity,
-      benefits: [
-        'Mention in event credits, video credit and social media',
-        'Silver level acknowledgment in the RADD ART QR Code Art Story (Logo, name)',
-        'Invitation to VIP Reception',
-        'Recognition in UNESCO Week of Sound 2026 LA'
-      ],
-      availability: '10 Available'
-    },
-    {
-      tier: 'Bronze',
-      price: '$250',
-      icon: '🥉',
-      color: colors.metrics.tension,
-      benefits: [
-        'Thank-you mention in event credits and social media',
-        'Invitation to VIP Reception',
-        'Recognition in UNESCO Week of Sound 2026 LA'
-      ],
-      availability: 'Unlimited'
-    }
-  ];
-
-  const activationOptions = [
-    {
-      type: 'Product Gifting',
-      price: 'In-Kind Donation',
-      icon: '🧴',
-      description: 'Product in guest goodie bags with organic social mentions',
-      ideal: 'Health + wellness products, supplements, clean beauty'
-    },
-    {
-      type: 'Event Sponsorship',
-      price: '$150',
-      icon: '💡',
-      description: 'Brand featured at Marina Reset-style event with product sampling and branded presence',
-      ideal: 'Fitness apparel, recovery tools, functional nutrition'
-    },
-    {
-      type: 'Product Activation',
-      price: '$250',
-      icon: '🌴',
-      description: 'Brand integrated into event experience with professional content capture',
-      ideal: 'Experiential brands, beverages, wellness tech'
-    },
-    {
-      type: 'Custom Co-Branded Experience',
-      price: '$350',
-      icon: '✨',
-      description: 'Fully co-created pop-up with deep storytelling and long-term collaboration',
-      ideal: 'Premium lifestyle brands, mindfulness companies'
-    }
-  ];
-
+function Study2Content() {
   return (
-    <div className="space-y-8">
-      <section className="glass-card text-center">
-        <h2 className="text-4xl font-bold mb-4" style={{ color: colors.deepCharcoal }}>
-          Sponsor the Future of Wellness & Innovation
-        </h2>
-        <p className="text-xl mb-6 max-w-4xl mx-auto" style={{ color: colors.pineGreen }}>
-          Position your brand at the forefront of a groundbreaking initiative uniting science, wellness, technology, and the arts—with global recognition through UNESCO Week of Sound 2026.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <a
-            href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Inquiry%20-%20Biometric%20Study%202"
-            className="px-8 py-4 rounded-full font-semibold text-lg transition-all"
-            style={{
-              backgroundColor: colors.accentRed,
-              color: 'white',
-              boxShadow: '0 4px 20px rgba(245, 59, 87, 0.4)'
-            }}
-          >
-            Become a Sponsor
-          </a>
-          <a
-            href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Information%20Request"
-            className="px-8 py-4 rounded-full font-semibold text-lg transition-all border-2"
-            style={{
-              backgroundColor: 'white',
-              color: colors.deepCharcoal,
-              borderColor: colors.pineGreen
-            }}
-          >
-            Request Info
-          </a>
+    <div className="max-w-6xl mx-auto">
+      <div className="relative mb-24">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
+        <div className="relative">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">November 21-23, 2025</p>
+          <h2 className="text-5xl md:text-6xl font-light tracking-tight text-gray-900 mb-6">
+            Biometric Study<br />Phase 2
+          </h2>
+          <p className="text-lg text-gray-500 font-light leading-relaxed max-w-2xl mb-8">
+            Expanding the frontier of music, breathwork & biometric data at The KINN, Venice, CA
+          </p>
+          <div className="inline-block bg-gray-50 px-6 py-3 border border-gray-200">
+            <p className="text-xs text-gray-500 font-light">Featured in</p>
+            <p className="text-sm text-gray-900 font-normal">UNESCO Week of Sound 2026 Los Angeles</p>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className="glass-card">
-        <h2 className="section-header">Why Sponsor Biometric Study 2?</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: TrendingUp,
-              title: 'Forefront of Innovation',
-              description: 'Unite your brand with science, wellness, technology, and the arts to shape the future of human experience'
-            },
-            {
-              icon: Users,
-              title: 'High-Value Visibility',
-              description: 'Reach forward-thinking audiences in creative, scientific, and wellness tech communities through UNESCO Week of Sound'
-            },
-            {
-              icon: Award,
-              title: 'Scalable Growth Potential',
-              description: 'Be part of a pioneering project expanding into wellness centers, hospitals, immersive entertainment, and concert halls worldwide'
-            }
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-xl text-center"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                border: '1px solid rgba(168, 200, 218, 0.3)'
-              }}
-            >
-              <div
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: `${colors.accentRed}20` }}
-              >
-                <item.icon className="w-8 h-8" style={{ color: colors.accentRed }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: colors.deepCharcoal }}>
-                {item.title}
-              </h3>
-              <p className="text-sm" style={{ color: colors.pineGreen }}>
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="glass-card">
-        <h2 className="section-header">Sponsorship Tiers</h2>
-        <p className="text-lg mb-2 text-center" style={{ color: colors.pineGreen }}>
-          All sponsors receive:
-        </p>
-        <div className="flex flex-wrap gap-3 justify-center mb-8">
-          {['Invitation to VIP Opening Night Reception', 'Recognition in event communications & social media', 'Exclusive behind-the-scenes updates', 'Association with UNESCO Week of Sound 2026'].map((item, idx) => (
-            <span key={idx} className="px-4 py-2 rounded-full text-sm" style={{ backgroundColor: 'rgba(243, 199, 123, 0.2)', color: colors.deepCharcoal, border: '1px solid rgba(243, 199, 123, 0.4)' }}>
-              ✨ {item}
-            </span>
-          ))}
-        </div>
-
-        <div className="space-y-6">
-          {sponsorshipTiers.map((tier, idx) => (
-            <div
-              key={idx}
-              className="p-8 rounded-xl border-l-4"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                borderColor: tier.color
-              }}
-            >
-              <div className="flex flex-wrap items-center justify-between mb-6 gap-4">
-                <div className="flex items-center gap-4">
-                  <span className="text-4xl">{tier.icon}</span>
-                  <div>
-                    <h3 className="text-2xl font-bold" style={{ color: colors.deepCharcoal }}>
-                      {tier.tier}
-                    </h3>
-                    <p className="text-sm" style={{ color: colors.pineGreen }}>
-                      {tier.availability}
-                    </p>
-                  </div>
+      <div className="mb-32">
+        <div className="border-t border-gray-100 pt-16">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Three-Day Agenda</p>
+          <div className="space-y-px bg-gray-50">
+            <div className="bg-white p-8">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <p className="text-xs text-gray-400 mb-2 font-light">Day 1 / Evening</p>
+                  <h3 className="text-2xl font-light text-gray-900">VIP Opening Night</h3>
                 </div>
-                <div className="text-right">
-                  <p className="text-3xl font-bold" style={{ color: tier.color }}>
-                    {tier.price}
-                  </p>
-                </div>
+                <span className="text-sm text-gray-400 font-light">Nov 21</span>
               </div>
-              <div className="grid md:grid-cols-2 gap-3">
-                {tier.benefits.map((benefit, bidx) => (
-                  <div key={bidx} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: tier.color }} />
-                    <span className="text-sm" style={{ color: colors.deepCharcoal }}>{benefit}</span>
+              <div className="space-y-3 mb-6">
+                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                  Exclusive reception featuring keynote by Dr. Mitch Abrams on the intersection of science,
+                  wellness, and human connection.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
+                {[
+                  'Keynote presentation by Dr. Mitch Abrams',
+                  'Live RADD ART creation by Chao Dou',
+                  'Original violin composition by Nathalie Bonin',
+                  'I-QRS team presentation',
+                  'Sponsor recognition ceremony',
+                  'Mental health fundraising'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-sm text-gray-500 font-light">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
-          ))}
-        </div>
-        <p className="text-sm mt-4 text-center" style={{ color: colors.pineGreen }}>
-          * Permanent ownership of the original painting; Intellectual property rights retained by NexGenHealth Foundation.
-        </p>
-      </section>
 
-      <section className="glass-card">
-        <h2 className="section-header">Brand Activation Options</h2>
-        <p className="text-lg mb-8 text-center" style={{ color: colors.pineGreen }}>
-          Inspired by Marina Reset—Create authentic brand connections through immersive experiences
-        </p>
-        <div className="grid md:grid-cols-2 gap-6">
-          {activationOptions.map((option, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-xl"
-              style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.6)',
-                border: '1px solid rgba(168, 200, 218, 0.3)'
-              }}
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <span className="text-3xl">{option.icon}</span>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold" style={{ color: colors.deepCharcoal }}>
-                      {option.type}
-                    </h3>
-                    <span className="text-lg font-bold" style={{ color: colors.accentRed }}>
-                      {option.price}
-                    </span>
-                  </div>
-                  <p className="mb-3" style={{ color: colors.pineGreen }}>
-                    {option.description}
-                  </p>
-                  <p className="text-sm italic" style={{ color: colors.deepCharcoal, opacity: 0.8 }}>
-                    Ideal for: {option.ideal}
-                  </p>
+            <div className="bg-white p-8">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <p className="text-xs text-gray-400 mb-2 font-light">Day 2 / Full Day</p>
+                  <h3 className="text-2xl font-light text-gray-900">Research Sessions</h3>
                 </div>
+                <span className="text-sm text-gray-400 font-light">Nov 22</span>
+              </div>
+              <div className="space-y-3 mb-6">
+                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                  Intensive biometric capture sessions featuring live music, guided breathwork, and various
+                  modalities with real-time data collection and visualization.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
+                {[
+                  'Live musical performance by Nathalie Bonin',
+                  'Guided breathwork with Robert Bahedry',
+                  'Binaural beats integration',
+                  'Movement protocols',
+                  'LaseRR protocol testing',
+                  'Real-time Aurora Borealis visualization'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-sm text-gray-500 font-light">{item}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="glass-card">
-        <h2 className="section-header">Audience Demographics</h2>
-        <p className="text-lg mb-8 text-center" style={{ color: colors.pineGreen }}>
-          Connect with a curated, high-value wellness community
-        </p>
-        <div className="grid md:grid-cols-4 gap-6">
-          {[
-            { label: '100% Sold-Out Rate', desc: 'Every event sells out with waitlists' },
-            { label: '25-40 Age Range', desc: 'Values wellness & meaningful experiences' },
-            { label: '55% Email Open', desc: 'Highly engaged community' },
-            { label: '100+ Participants', desc: 'Cumulative retreat attendance' }
-          ].map((stat, idx) => (
-            <div key={idx} className="text-center p-6 rounded-xl" style={{ backgroundColor: 'rgba(243, 199, 123, 0.15)' }}>
-              <p className="text-2xl font-bold mb-2" style={{ color: colors.accentRed }}>
-                {stat.label}
-              </p>
-              <p className="text-sm" style={{ color: colors.deepCharcoal }}>
-                {stat.desc}
-              </p>
+            <div className="bg-white p-8">
+              <div className="flex items-start justify-between mb-6">
+                <div>
+                  <p className="text-xs text-gray-400 mb-2 font-light">Day 3 / Full Day</p>
+                  <h3 className="text-2xl font-light text-gray-900">"Breathe with the Symphony" Pilot</h3>
+                </div>
+                <span className="text-sm text-gray-400 font-light">Nov 23</span>
+              </div>
+              <div className="space-y-3 mb-6">
+                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                  Groundbreaking pilot synchronizing orchestral music with guided breathwork and live
+                  biometric data visualization for collective experience.
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-x-8 gap-y-2">
+                {[
+                  'Synchronized music and breathwork',
+                  'Collective biometric visualization',
+                  'EEG group dynamics capture',
+                  'HRV coherence monitoring',
+                  'Personalized participant results',
+                  'Closing session and data debrief'
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-sm text-gray-500 font-light">{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section className="glass-card text-center" style={{ backgroundColor: `${colors.accentRed}10` }}>
-        <h2 className="text-3xl font-bold mb-4" style={{ color: colors.deepCharcoal }}>
-          Ready to Partner With Us?
-        </h2>
-        <p className="text-lg mb-8 max-w-3xl mx-auto" style={{ color: colors.pineGreen }}>
-          Join us in creating a movement where wellness meets innovation, and art becomes a pathway to human potential. Let's forge lasting connections with a high-value, wellness-focused community.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <a
-            href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Partnership%20-%20Biometric%20Study%202"
-            className="px-8 py-4 rounded-full font-semibold text-lg transition-all"
-            style={{
-              backgroundColor: colors.accentRed,
-              color: 'white',
-              boxShadow: '0 4px 20px rgba(245, 59, 87, 0.4)'
-            }}
-          >
-            Contact Us Today
-          </a>
-          <button
-            onClick={() => setActiveTab('study2')}
-            className="px-8 py-4 rounded-full font-semibold text-lg transition-all border-2"
-            style={{
-              backgroundColor: 'white',
-              color: colors.deepCharcoal,
-              borderColor: colors.pineGreen
-            }}
-          >
-            View Event Details
-          </button>
+      <div className="mb-32">
+        <div className="border-t border-gray-100 pt-16">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Technology Platform</p>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                name: 'I-QRS Chestbelt',
+                desc: 'High-resolution ECG, HRV, motion, and temperature sensing'
+              },
+              {
+                name: 'eMotiv EpocX',
+                desc: '14-channel EEG for brainwave monitoring'
+              },
+              {
+                name: 'Consumer Wearables',
+                desc: 'Multi-device comprehensive tracking'
+              }
+            ].map((tech, idx) => (
+              <div key={idx}>
+                <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
+                  <span className="text-xs text-gray-400">0{idx + 1}</span>
+                </div>
+                <h3 className="text-lg font-normal mb-2 text-gray-900">{tech.name}</h3>
+                <p className="text-sm text-gray-500 font-light leading-relaxed">{tech.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
+
+      <div className="border-t border-gray-100 pt-16">
+        <div className="grid md:grid-cols-2 gap-16">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">RADD ART Integration</p>
+            <h3 className="text-2xl font-light text-gray-900 mb-4">
+              Radiologist Developed Autonomic Rewiring Therapy
+            </h3>
+            <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+              Created by Dr. Mitch Abrams through Stanford University's CCARE program, RADD ART
+              captures moments of profound insight and translates them into live artistic expressions.
+            </p>
+            <p className="text-sm text-gray-500 font-light leading-relaxed">
+              Each artwork includes QR codes linking to origin stories, creating lasting legacies for
+              sponsors and participants while advancing mental health awareness.
+            </p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Research Team</p>
+            <div className="space-y-6">
+              {[
+                { name: 'Nathalie Bonin', role: 'Grammy-winning violinist & composer' },
+                { name: 'Dr. Mitch Abrams', role: 'NexGenHealth founder, Stanford CCARE educator' },
+                { name: 'Robert Bahedry', role: '2x Emmy-winning breathwork facilitator' },
+                { name: 'Chao Dou', role: 'RADD ARTist & experience designer' },
+                { name: 'Dr. Gyongyi Szilagyi', role: 'I-QRS Research Director & VP' },
+                { name: 'Attila Kocsis', role: 'I-QRS Founder, CEO & CTO' }
+              ].map((person, idx) => (
+                <div key={idx}>
+                  <p className="text-sm text-gray-900 font-normal">{person.name}</p>
+                  <p className="text-xs text-gray-500 font-light">{person.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Study1Content() {
+  return (
+    <div className="max-w-6xl mx-auto">
+      <div className="mb-16">
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Archive</p>
+        <h2 className="text-4xl md:text-5xl font-light tracking-tight text-gray-900 mb-6">
+          Biometric Study Phase 1
+        </h2>
+        <p className="text-lg text-gray-500 font-light leading-relaxed max-w-3xl">
+          Foundational research exploring the physiological effects of live music combined with breathwork,
+          establishing proof of concept and measurable outcomes across multiple wellness metrics.
+        </p>
+      </div>
+      <div className="bg-gray-50 p-1">
+        <div className="bg-white p-8">
+          <App />
+        </div>
+      </div>
     </div>
   );
 }
