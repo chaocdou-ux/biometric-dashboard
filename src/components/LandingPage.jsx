@@ -64,11 +64,17 @@ export default function LandingPage() {
       </header>
 
       <div className="pt-28">
-        <div className="container mx-auto px-6 py-4">
-          {activeTab === 'sponsorship' && <SponsorshipContent />}
-          {activeTab === 'phase2' && <Phase2Content />}
-          {activeTab === 'phase1' && <Phase1Content />}
-        </div>
+        {activeTab === 'sponsorship' && (
+          <div className="container mx-auto px-6 py-4">
+            <SponsorshipContent />
+          </div>
+        )}
+        {activeTab === 'phase2' && (
+          <div className="container mx-auto px-6 py-4">
+            <Phase2Content />
+          </div>
+        )}
+        {activeTab === 'phase1' && <Phase1Content />}
       </div>
 
       <footer className="border-t border-gray-200 mt-32">
