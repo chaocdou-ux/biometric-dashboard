@@ -92,9 +92,9 @@ export default function App() {
           mixBlendMode: 'overlay'
         }}
       />
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 max-w-7xl">
+      <div className="relative z-10 px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8">
         <header className="mb-10 sm:mb-12">
-          <p className="text-xs uppercase tracking-widest text-gray-500 mb-4 font-medium">2024</p>
+          <p className="text-xs uppercase tracking-widest text-gray-500 mb-4 font-medium">August 26 - September 16th, 2025</p>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6" style={{ fontWeight: '700' }}>
             Phase 1
           </h2>
