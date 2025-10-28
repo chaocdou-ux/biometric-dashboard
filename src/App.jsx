@@ -81,18 +81,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative" style={{
-      background: 'linear-gradient(135deg, #faf7f4 0%, #f5ebe0 20%, #e8e0f0 40%, #fae8dc 60%, #f0ebe8 80%, #faf5f2 100%)',
-      backgroundAttachment: 'fixed'
-    }}>
-      <div
-        className="absolute inset-0 opacity-[0.35] pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          mixBlendMode: 'overlay'
-        }}
-      />
-      <div className="relative z-10 px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8">
+    <div>
+      <div>
         <header className="mb-10 sm:mb-12">
           <p className="text-xs uppercase tracking-widest text-gray-500 mb-4 font-medium">August 26 - September 16th, 2025</p>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6" style={{ fontWeight: '700' }}>
