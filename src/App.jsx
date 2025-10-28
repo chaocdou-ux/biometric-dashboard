@@ -5,6 +5,7 @@ import Metrics from './components/Metrics';
 import Participants from './components/Participants';
 import DeviceComparison from './components/DeviceComparison';
 import Definitions from './components/Definitions';
+import AbstractBackground from './components/AbstractBackground';
 import data from './data/processed-data.json';
 
 const tabs = [
@@ -81,8 +82,9 @@ export default function App() {
   };
 
   return (
-    <div>
-      <div>
+    <div className="min-h-screen" style={{ position: 'relative' }}>
+      <AbstractBackground />
+      <div className="container mx-auto px-6 py-8" style={{ position: 'relative', zIndex: 1 }}>
         <header className="mb-10 sm:mb-12">
           <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>August 26 - September 16th, 2025</p>
           <h1 className="font-bold tracking-tight mb-6" style={{ fontSize: '3.5rem', fontWeight: '700', color: '#0f172a', letterSpacing: '-0.01em' }}>

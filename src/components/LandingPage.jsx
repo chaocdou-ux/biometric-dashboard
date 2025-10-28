@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import App from '../App';
+import AbstractBackground from './AbstractBackground';
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState('sponsorship');
 
   return (
-    <div className="min-h-screen" style={{
-      background: 'linear-gradient(135deg, #faf7f4 0%, #f5ebe0 20%, #e8e0f0 40%, #fae8dc 60%, #f0ebe8 80%, #faf5f2 100%)',
-      backgroundAttachment: 'fixed'
-    }}>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-200">
+    <div className="min-h-screen" style={{ position: 'relative' }}>
+      <AbstractBackground />
+      <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ backgroundColor: 'rgba(255, 255, 255, 0.92)', backdropFilter: 'blur(20px)', borderColor: 'rgba(15, 23, 42, 0.1)' }}>
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between gap-8">
             <div className="flex-shrink-0">
@@ -67,7 +66,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="pt-28">
+      <div className="pt-28" style={{ position: 'relative', zIndex: 1 }}>
         <div className="container mx-auto px-6 py-4">
           {activeTab === 'sponsorship' && <SponsorshipContent />}
           {activeTab === 'phase2' && <Phase2Content />}
@@ -75,7 +74,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <footer className="border-t border-gray-200 mt-32">
+      <footer className="border-t mt-32" style={{ borderColor: 'rgba(15, 23, 42, 0.1)', position: 'relative', zIndex: 1 }}>
         <div className="container mx-auto px-6 py-12">
           <div className="text-center">
             <p className="text-gray-700 font-semibold" style={{ fontSize: '16px' }}>Founder, Creative Director & Executive Producer</p>
@@ -245,14 +244,14 @@ function SponsorshipContent() {
 
       <div className="border-t border-gray-200 pt-16 mb-16">
         <div>
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Past Success</p>
-          <h3 className="text-2xl font-semibold text-gray-900 mb-4">Biometric Study Phase 1</h3>
-          <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
+          <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Past Success</p>
+          <h3 className="font-bold mb-4" style={{ fontSize: '26px', color: '#0f172a' }}>Biometric Study Phase 1</h3>
+          <p className="leading-relaxed mb-4" style={{ fontSize: '17px', color: '#475569' }}>
             Our inaugural study successfully captured comprehensive biometric data across four sessions,
             demonstrating measurable improvements in emotional state, energy levels, mental clarity,
             and spiritual connection.
           </p>
-          <p className="text-sm text-gray-600 font-light leading-relaxed">
+          <p className="leading-relaxed" style={{ fontSize: '17px', color: '#475569' }}>
             Published results showing average improvements of 15-25% across all measured metrics,
             establishing proof of concept for music-breathwork integration.
           </p>
@@ -268,34 +267,34 @@ function Phase2Content() {
       <div className="relative mb-24">
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
         <div className="relative">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">November 21-23, 2025</p>
-          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+          <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>November 21-23, 2025</p>
+          <h2 className="font-bold tracking-tight mb-6" style={{ fontSize: '3.5rem', color: '#0f172a', letterSpacing: '-0.01em' }}>
             Phase 2
           </h2>
-          <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mb-8">
+          <p className="leading-relaxed max-w-2xl mb-8" style={{ fontSize: '18px', color: '#334155', fontWeight: '400' }}>
             Expanding the frontier of music, breathwork & biometric data at The KINN, Venice, CA
           </p>
-          <div className="inline-block bg-gray-50 px-6 py-3 border border-gray-200">
-            <p className="text-xs text-gray-500 font-light">Featured in</p>
-            <p className="text-sm text-gray-900 font-medium">UNESCO Week of Sound 2026 Los Angeles</p>
+          <div className="inline-block px-6 py-3 border" style={{ backgroundColor: 'rgba(248, 250, 252, 0.8)', borderColor: 'rgba(15, 23, 42, 0.15)' }}>
+            <p className="font-medium" style={{ fontSize: '14px', color: '#64748b' }}>Featured in</p>
+            <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>UNESCO Week of Sound 2026 Los Angeles</p>
           </div>
         </div>
       </div>
 
       <div className="mb-32">
         <div className="border-t border-gray-200 pt-16">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Three-Day Agenda</p>
-          <div className="space-y-px bg-gray-50">
-            <div className="bg-white p-8">
+          <p className="uppercase tracking-widest mb-12 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Three-Day Agenda</p>
+          <div className="space-y-px" style={{ backgroundColor: 'rgba(248, 250, 252, 0.5)' }}>
+            <div className="p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-xs text-gray-400 mb-2 font-light">Day 1 / Evening</p>
-                  <h3 className="text-2xl font-semibold text-gray-900">VIP Opening Night</h3>
+                  <p className="mb-2 font-medium" style={{ fontSize: '14px', color: '#94a3b8' }}>Day 1 / Evening</p>
+                  <h3 className="font-bold" style={{ fontSize: '26px', color: '#0f172a' }}>VIP Opening Night</h3>
                 </div>
-                <span className="text-sm text-gray-400 font-light">Nov 21</span>
+                <span className="font-medium" style={{ fontSize: '15px', color: '#94a3b8' }}>Nov 21</span>
               </div>
               <div className="space-y-3 mb-6">
-                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                <p className="leading-relaxed" style={{ fontSize: '17px', color: '#475569' }}>
                   Exclusive reception featuring keynote by Dr. Mitch Abrams on the intersection of science,
                   wellness, and human connection.
                 </p>
@@ -311,22 +310,22 @@ function Phase2Content() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-sm text-gray-600 font-light">{item}</p>
+                    <p style={{ fontSize: '16px', color: '#475569' }}>{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white p-8">
+            <div className="p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-xs text-gray-400 mb-2 font-light">Day 2 / Full Day</p>
-                  <h3 className="text-2xl font-semibold text-gray-900">Research Sessions</h3>
+                  <p className="mb-2 font-medium" style={{ fontSize: '14px', color: '#94a3b8' }}>Day 2 / Full Day</p>
+                  <h3 className="font-bold" style={{ fontSize: '26px', color: '#0f172a' }}>Research Sessions</h3>
                 </div>
-                <span className="text-sm text-gray-400 font-light">Nov 22</span>
+                <span className="font-medium" style={{ fontSize: '15px', color: '#94a3b8' }}>Nov 22</span>
               </div>
               <div className="space-y-3 mb-6">
-                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                <p className="leading-relaxed" style={{ fontSize: '17px', color: '#475569' }}>
                   Intensive biometric capture sessions featuring live music, guided breathwork, and various
                   modalities with real-time data collection and visualization.
                 </p>
@@ -342,22 +341,22 @@ function Phase2Content() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-sm text-gray-600 font-light">{item}</p>
+                    <p style={{ fontSize: '16px', color: '#475569' }}>{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white p-8">
+            <div className="p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-xs text-gray-400 mb-2 font-light">Day 3 / Full Day</p>
-                  <h3 className="text-2xl font-semibold text-gray-900">"Breathe with the Symphony" Pilot</h3>
+                  <p className="mb-2 font-medium" style={{ fontSize: '14px', color: '#94a3b8' }}>Day 3 / Full Day</p>
+                  <h3 className="font-bold" style={{ fontSize: '26px', color: '#0f172a' }}>"Breathe with the Symphony" Pilot</h3>
                 </div>
-                <span className="text-sm text-gray-400 font-light">Nov 23</span>
+                <span className="font-medium" style={{ fontSize: '15px', color: '#94a3b8' }}>Nov 23</span>
               </div>
               <div className="space-y-3 mb-6">
-                <p className="text-sm text-gray-600 font-light leading-relaxed">
+                <p className="leading-relaxed" style={{ fontSize: '17px', color: '#475569' }}>
                   Groundbreaking pilot synchronizing orchestral music with guided breathwork and live
                   biometric data visualization for collective experience.
                 </p>
@@ -373,7 +372,7 @@ function Phase2Content() {
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-sm text-gray-600 font-light">{item}</p>
+                    <p style={{ fontSize: '16px', color: '#475569' }}>{item}</p>
                   </div>
                 ))}
               </div>
@@ -384,7 +383,7 @@ function Phase2Content() {
 
       <div className="mb-32">
         <div className="border-t border-gray-200 pt-16">
-          <p className="text-xs uppercase tracking-widest text-gray-400 mb-12 font-light">Technology Platform</p>
+          <p className="uppercase tracking-widest mb-12 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Technology Platform</p>
           <div className="grid md:grid-cols-3 gap-12">
             {[
               {
@@ -402,10 +401,10 @@ function Phase2Content() {
             ].map((tech, idx) => (
               <div key={idx}>
                 <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-xs text-gray-400">0{idx + 1}</span>
+                  <span className="font-semibold" style={{ fontSize: '14px', color: '#94a3b8' }}>0{idx + 1}</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-gray-900">{tech.name}</h3>
-                <p className="text-sm text-gray-600 font-light leading-relaxed">{tech.desc}</p>
+                <h3 className="font-bold mb-2" style={{ fontSize: '20px', color: '#0f172a' }}>{tech.name}</h3>
+                <p className="leading-relaxed" style={{ fontSize: '17px', color: '#475569' }}>{tech.desc}</p>
               </div>
             ))}
           </div>
@@ -413,11 +412,11 @@ function Phase2Content() {
       </div>
 
       <div className="border-t border-gray-200 pt-16 mb-16">
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">RADD ART Integration</p>
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+        <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>RADD ART Integration</p>
+        <h3 className="font-bold mb-4" style={{ fontSize: '26px', color: '#0f172a' }}>
           Radiologist Developed Autonomic Rewiring Therapy
         </h3>
-        <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
+        <p className="leading-relaxed mb-4" style={{ fontSize: '17px', color: '#475569' }}>
           Created by Dr. Mitch Abrams through Stanford University's CCARE program, RADD ART
           captures moments of profound insight and translates them into live artistic expressions.
         </p>
@@ -426,48 +425,48 @@ function Phase2Content() {
           sponsors and participants while advancing mental health awareness.
         </p>
 
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-8 font-light">Research Team</p>
+        <p className="uppercase tracking-widest mb-8 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Research Team</p>
         <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Biometric Study Team</h4>
+            <h4 className="font-bold mb-4" style={{ fontSize: '20px', color: '#0f172a' }}>Biometric Study Team</h4>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-gray-900 font-medium">Nathalie Bonin</p>
-                <p className="text-xs text-gray-500 font-light">Founder, Creative Director & Executive Producer, Grammy-Winning Artist</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Nathalie Bonin</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Founder, Creative Director & Executive Producer, Grammy-Winning Artist</p>
               </div>
               <div>
-                <p className="text-sm text-gray-900 font-medium">Robert Bahedry</p>
-                <p className="text-xs text-gray-500 font-light">Two-time Emmy-winning host and certified breathwork practitioner</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Robert Bahedry</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Two-time Emmy-winning host and certified breathwork practitioner</p>
               </div>
               <div>
-                <p className="text-sm text-gray-900 font-medium">Chao Dou</p>
-                <p className="text-xs text-gray-500 font-light">Experience strategist, data innovator, and RADD ARTist</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Chao Dou</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Experience strategist, data innovator, and RADD ARTist</p>
               </div>
             </div>
           </div>
           <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">NexGenHealth Team</h4>
+            <h4 className="font-bold mb-4" style={{ fontSize: '20px', color: '#0f172a' }}>NexGenHealth Team</h4>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-gray-900 font-medium">Dr. Mitch Abrams</p>
-                <p className="text-xs text-gray-500 font-light">TEDx Speaker and Stanford-certified compassion educator & Founder of NexGenHealth Foundation</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Dr. Mitch Abrams</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>TEDx Speaker and Stanford-certified compassion educator & Founder of NexGenHealth Foundation</p>
               </div>
               <div>
-                <p className="text-sm text-gray-900 font-medium">Jody Bresgi</p>
-                <p className="text-xs text-gray-500 font-light">CoFounder of NexGenHealth Foundation</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Jody Bresgi</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>CoFounder of NexGenHealth Foundation</p>
               </div>
             </div>
           </div>
           <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">I-QRS Team</h4>
+            <h4 className="font-bold mb-4" style={{ fontSize: '20px', color: '#0f172a' }}>I-QRS Team</h4>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-gray-900 font-medium">Dr. Gyongyi Szilagyi</p>
-                <p className="text-xs text-gray-500 font-light">I-QRS Research Director & VP</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Dr. Gyongyi Szilagyi</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>I-QRS Research Director & VP</p>
               </div>
               <div>
-                <p className="text-sm text-gray-900 font-medium">Attila Kocsis</p>
-                <p className="text-xs text-gray-500 font-light">I-QRS Founder, CEO & CTO</p>
+                <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Attila Kocsis</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>I-QRS Founder, CEO & CTO</p>
               </div>
             </div>
           </div>
