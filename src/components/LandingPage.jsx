@@ -60,8 +60,8 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="pt-32">
-        <div className="container mx-auto px-6 py-8">
+      <div className="pt-28">
+        <div className="container mx-auto px-6 py-4">
           {activeTab === 'sponsorship' && <SponsorshipContent />}
           {activeTab === 'phase2' && <Phase2Content />}
           {activeTab === 'phase1' && <Phase1Content />}
@@ -567,19 +567,7 @@ function Phase2Content() {
 function Phase1Content() {
   return (
     <div className="max-w-7xl mx-auto">
-      <div className="mb-12">
-        <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">2024</p>
-        <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
-          Biometric Study<br />Phase 1
-        </h2>
-        <p className="text-lg text-gray-600 font-light leading-relaxed max-w-3xl">
-          Foundational research exploring the physiological effects of live music combined with breathwork,
-          establishing proof of concept and measurable outcomes across multiple wellness metrics.
-        </p>
-      </div>
-      <div className="mt-8">
-        <App />
-      </div>
+      <App />
     </div>
   );
 }

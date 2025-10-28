@@ -82,13 +82,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative">
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-12 max-w-7xl">
-        <header className="mb-6 sm:mb-8 md:mb-12 flex flex-col md:flex-row items-start justify-between gap-4 sm:gap-6">
-          <div className="flex-1">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 tracking-tight" style={{ color: '#0f172a', lineHeight: '1.1' }}>
-              Biometric Study
-            </h1>
-            <p className="text-xs sm:text-sm md:text-base font-medium mt-2 sm:mt-4" style={{ color: '#1e293b' }}>
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 max-w-7xl">
+        <header className="mb-8 sm:mb-10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide" style={{ color: '#1e293b', letterSpacing: '0.02em' }}>
               Measurement Meets Human Transformation
             </p>
           </div>
