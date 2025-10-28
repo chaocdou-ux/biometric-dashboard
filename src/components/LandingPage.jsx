@@ -13,7 +13,7 @@ export default function LandingPage() {
               <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
                 Biometric Study
               </h1>
-              <p className="text-sm md:text-base font-light text-gray-600 mt-0.5">
+              <p className="text-xs md:text-sm font-light text-gray-600 mt-0.5">
                 Measurement Meets Human Transformation
               </p>
             </div>
@@ -21,7 +21,7 @@ export default function LandingPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setActiveTab('sponsorship')}
-                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border-2 transition-all ${
+                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border transition-all ${
                   activeTab === 'sponsorship'
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
@@ -31,7 +31,7 @@ export default function LandingPage() {
               </button>
               <button
                 onClick={() => setActiveTab('phase2')}
-                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border-2 transition-all ${
+                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border transition-all ${
                   activeTab === 'phase2'
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
@@ -41,7 +41,7 @@ export default function LandingPage() {
               </button>
               <button
                 onClick={() => setActiveTab('phase1')}
-                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border-2 transition-all ${
+                className={`px-5 py-2 text-sm font-medium tracking-wide rounded-full border transition-all ${
                   activeTab === 'phase1'
                     ? 'bg-gray-900 text-white border-gray-900'
                     : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
@@ -51,7 +51,7 @@ export default function LandingPage() {
               </button>
               <a
                 href="mailto:nathalie@nathaliebonin.com?subject=Sponsorship%20Inquiry"
-                className="px-5 py-2 text-sm font-medium tracking-wide bg-white text-gray-900 border-2 border-gray-900 rounded-full hover:bg-gray-50 transition-all"
+                className="px-5 py-2 text-sm font-medium tracking-wide bg-white text-gray-900 border border-gray-900 rounded-full hover:bg-gray-50 transition-all"
               >
                 Inquire
               </a>
@@ -71,7 +71,7 @@ export default function LandingPage() {
       <footer className="border-t border-gray-200 mt-32">
         <div className="container mx-auto px-6 py-12">
           <div className="text-center">
-            <p className="text-sm text-gray-600 font-medium">Kinemuse Productions Inc.</p>
+            <p className="text-sm text-gray-600 font-medium">Founder, Creative Director & Executive Producer</p>
             <p className="text-sm text-gray-500 mt-2">
               <a href="mailto:nathalie@nathaliebonin.com" className="hover:text-gray-900">nathalie@nathaliebonin.com</a>
               <span className="mx-2">·</span>
@@ -257,7 +257,7 @@ function SponsorshipContent() {
 
       <div className="relative mb-32">
         <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-gradient-to-tr from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
-        <div className="relative bg-white border border-gray-200 p-12">
+        <div className="relative">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-8 font-light">Sponsor Inquiry</p>
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid md:grid-cols-2 gap-8">
@@ -382,7 +382,7 @@ function Phase2Content() {
         <div className="relative">
           <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">November 21-23, 2025</p>
           <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
-            Biometric Study<br />Phase 2
+            Phase 2
           </h2>
           <p className="text-lg text-gray-600 font-light leading-relaxed max-w-2xl mb-8">
             Expanding the frontier of music, breathwork & biometric data at The KINN, Venice, CA
@@ -478,7 +478,7 @@ function Phase2Content() {
                 {[
                   'Synchronized music and breathwork',
                   'Collective biometric visualization',
-                  'EEG group dynamics capture',
+                  'ECG and EEG data',
                   'HRV coherence monitoring',
                   'Personalized participant results',
                   'Closing session and data debrief'
@@ -524,38 +524,63 @@ function Phase2Content() {
         </div>
       </div>
 
-      <div className="border-t border-gray-200 pt-16">
-        <div className="grid md:grid-cols-2 gap-16">
+      <div className="border-t border-gray-200 pt-16 mb-16">
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">RADD ART Integration</p>
+        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+          Radiologist Developed Autonomic Rewiring Therapy
+        </h3>
+        <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
+          Created by Dr. Mitch Abrams through Stanford University's CCARE program, RADD ART
+          captures moments of profound insight and translates them into live artistic expressions.
+        </p>
+        <p className="text-sm text-gray-600 font-light leading-relaxed mb-12">
+          Each artwork includes QR codes linking to origin stories, creating lasting legacies for
+          sponsors and participants while advancing mental health awareness.
+        </p>
+
+        <p className="text-xs uppercase tracking-widest text-gray-400 mb-8 font-light">Research Team</p>
+        <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">RADD ART Integration</p>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-              Radiologist Developed Autonomic Rewiring Therapy
-            </h3>
-            <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
-              Created by Dr. Mitch Abrams through Stanford University's CCARE program, RADD ART
-              captures moments of profound insight and translates them into live artistic expressions.
-            </p>
-            <p className="text-sm text-gray-600 font-light leading-relaxed">
-              Each artwork includes QR codes linking to origin stories, creating lasting legacies for
-              sponsors and participants while advancing mental health awareness.
-            </p>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Biometric Study Team</h4>
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Nathalie Bonin</p>
+                <p className="text-xs text-gray-500 font-light">Founder, Creative Director & Executive Producer, Grammy-Winning Artist</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Robert Bahedry</p>
+                <p className="text-xs text-gray-500 font-light">Two-time Emmy-winning host and certified breathwork practitioner</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Chao Dou</p>
+                <p className="text-xs text-gray-500 font-light">Experience strategist, data innovator, and RADD ARTist</p>
+              </div>
+            </div>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">Research Team</p>
-            <div className="space-y-6">
-              {[
-                { name: 'Nathalie Bonin', role: 'Grammy-winning violinist & composer' },
-                { name: 'Dr. Mitch Abrams', role: 'NexGenHealth founder, Stanford CCARE educator' },
-                { name: 'Robert Bahedry', role: '2x Emmy-winning breathwork facilitator' },
-                { name: 'Chao Dou', role: 'RADD ARTist & experience designer' },
-                { name: 'Dr. Gyongyi Szilagyi', role: 'I-QRS Research Director & VP' },
-                { name: 'Attila Kocsis', role: 'I-QRS Founder, CEO & CTO' }
-              ].map((person, idx) => (
-                <div key={idx}>
-                  <p className="text-sm text-gray-900 font-medium">{person.name}</p>
-                  <p className="text-xs text-gray-500 font-light">{person.role}</p>
-                </div>
-              ))}
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">NexGenHealth Team</h4>
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Dr. Mitch Abrams</p>
+                <p className="text-xs text-gray-500 font-light">TEDx Speaker and Stanford-certified compassion educator & Founder of NexGenHealth Foundation</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Jody Bresgi</p>
+                <p className="text-xs text-gray-500 font-light">CoFounder of NexGenHealth Foundation</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">I-QRS Team</h4>
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Dr. Gyongyi Szilagyi</p>
+                <p className="text-xs text-gray-500 font-light">I-QRS Research Director & VP</p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-900 font-medium">Attila Kocsis</p>
+                <p className="text-xs text-gray-500 font-light">I-QRS Founder, CEO & CTO</p>
+              </div>
             </div>
           </div>
         </div>

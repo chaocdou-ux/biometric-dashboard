@@ -81,26 +81,23 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative" style={{
+      background: 'linear-gradient(135deg, #f5f7fa 0%, #e8eef5 25%, #faf5f0 50%, #f0f4f8 75%, #faf8f5 100%)',
+      backgroundAttachment: 'fixed'
+    }}>
+      <div
+        className="absolute inset-0 opacity-[0.15] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          mixBlendMode: 'overlay'
+        }}
+      />
       <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 max-w-7xl">
-        <header className="mb-8 sm:mb-10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide" style={{ color: '#1e293b', letterSpacing: '0.02em' }}>
-              Measurement Meets Human Transformation
-            </p>
-          </div>
-          <div className="flex items-center gap-3 sm:gap-4 md:gap-6 flex-wrap">
-            <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
-              <circle cx="24" cy="24" r="20" stroke="#0f172a" strokeWidth="1.5" fill="none" />
-              <path d="M 12 24 L 36 24 M 24 12 L 24 36" stroke="#0f172a" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-            <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 48 48" fill="none" style={{ opacity: 0.6 }}>
-              <circle cx="16" cy="24" r="4" fill="#0f172a" />
-              <circle cx="24" cy="24" r="4" fill="#0f172a" />
-              <circle cx="32" cy="24" r="4" fill="#0f172a" />
-              <path d="M 16 24 Q 20 16 24 24 Q 28 32 32 24" stroke="#0f172a" strokeWidth="1.5" fill="none" />
-            </svg>
-          </div>
+        <header className="mb-10 sm:mb-12">
+          <p className="text-xs uppercase tracking-widest text-gray-400 mb-4 font-light">2024</p>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6">
+            Phase 1
+          </h2>
         </header>
 
         <nav
