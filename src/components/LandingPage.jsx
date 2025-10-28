@@ -68,7 +68,7 @@ export default function LandingPage() {
       </header>
 
       <div className="pt-28">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-6 py-8">
           {activeTab === 'sponsorship' && <SponsorshipContent />}
           {activeTab === 'phase2' && <Phase2Content />}
           {activeTab === 'phase1' && <Phase1Content />}
@@ -108,8 +108,8 @@ function SponsorshipContent() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="relative mb-24">
+    <div>
+      <div className="relative mb-12">
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-blue-100 via-purple-50 to-orange-50 rounded-full blur-3xl opacity-30" />
         <div className="relative">
           <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Partnership Opportunity</p>
@@ -123,7 +123,7 @@ function SponsorshipContent() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-16 mb-32">
+      <div className="grid md:grid-cols-3 gap-8 mb-12">
         <div>
           <div className="w-12 h-12 border border-gray-200 rounded-full flex items-center justify-center mb-6">
             <span className="text-gray-900 font-medium">01</span>
@@ -153,8 +153,8 @@ function SponsorshipContent() {
         </div>
       </div>
 
-      <div className="mb-32">
-        <div className="border-t border-gray-200 pt-16">
+      <div className="mb-12">
+        <div className="border-t border-gray-200 pt-12">
           <p className="uppercase tracking-widest mb-12 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Sponsorship Tiers</p>
           <div className="space-y-px bg-gray-50">
             {[
@@ -243,7 +243,7 @@ function SponsorshipContent() {
         </div>
       </div>
 
-      <div className="border-t border-gray-200 pt-16 mb-16">
+      <div className="border-t border-gray-200 pt-12 mb-12">
         <div>
           <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Past Success</p>
           <h3 className="font-bold mb-4" style={{ fontSize: '26px', color: '#0f172a' }}>Biometric Study Phase 1</h3>
@@ -264,8 +264,8 @@ function SponsorshipContent() {
 
 function Phase2Content() {
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="relative mb-24">
+    <div>
+      <div className="relative mb-12">
         <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-purple-100 via-blue-50 to-orange-50 rounded-full blur-3xl opacity-30" />
         <div className="relative">
           <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>November 21-23, 2025</p>
@@ -282,8 +282,8 @@ function Phase2Content() {
         </div>
       </div>
 
-      <div className="mb-32">
-        <div className="border-t border-gray-200 pt-16">
+      <div className="mb-12">
+        <div className="border-t border-gray-200 pt-12">
           <p className="uppercase tracking-widest mb-12 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Three-Day Agenda</p>
           <div className="space-y-px" style={{ backgroundColor: 'rgba(248, 250, 252, 0.5)' }}>
             <div className="p-8" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
@@ -382,8 +382,8 @@ function Phase2Content() {
         </div>
       </div>
 
-      <div className="mb-32">
-        <div className="border-t border-gray-200 pt-16">
+      <div className="mb-12">
+        <div className="border-t border-gray-200 pt-12">
           <p className="uppercase tracking-widest mb-12 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>Technology Platform</p>
           <div className="grid md:grid-cols-3 gap-12">
             {[
@@ -412,7 +412,7 @@ function Phase2Content() {
         </div>
       </div>
 
-      <div className="border-t border-gray-200 pt-16 mb-16">
+      <div className="border-t border-gray-200 pt-12 mb-12">
         <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>RADD ART Integration</p>
         <h3 className="font-bold mb-4" style={{ fontSize: '26px', color: '#0f172a' }}>
           Radiologist Developed Autonomic Rewiring Therapy
