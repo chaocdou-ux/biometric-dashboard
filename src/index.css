@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -37,7 +37,7 @@
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
     color: #1e293b;
     min-height: 100vh;
     position: relative;
@@ -139,7 +139,7 @@
 
 @layer components {
   .glass-panel {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.45);
