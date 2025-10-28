@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import App from '../App';
-import AbstractBackground from './AbstractBackground';
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState('sponsorship');
 
   return (
-    <div className="min-h-screen" style={{ position: 'relative' }}>
-      <AbstractBackground />
-      <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ backgroundColor: 'rgba(255, 255, 255, 0.92)', backdropFilter: 'blur(20px)', borderColor: 'rgba(15, 23, 42, 0.1)' }}>
+    <div className="min-h-screen" style={{
+      background: 'linear-gradient(135deg, #faf7f4 0%, #f5ebe0 20%, #e8e0f0 40%, #fae8dc 60%, #f0ebe8 80%, #faf5f2 100%)',
+      backgroundAttachment: 'fixed'
+    }}>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-gray-200">
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between gap-8">
             <div className="flex-shrink-0">
@@ -66,7 +67,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <div className="pt-28" style={{ position: 'relative', zIndex: 1 }}>
+      <div className="pt-28">
         <div className="container mx-auto px-6 py-4">
           {activeTab === 'sponsorship' && <SponsorshipContent />}
           {activeTab === 'phase2' && <Phase2Content />}
@@ -74,7 +75,7 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <footer className="border-t mt-32" style={{ borderColor: 'rgba(15, 23, 42, 0.1)', position: 'relative', zIndex: 1 }}>
+      <footer className="border-t border-gray-200 mt-32">
         <div className="container mx-auto px-6 py-12">
           <div className="text-center">
             <p className="text-gray-700 font-semibold" style={{ fontSize: '16px' }}>Founder, Creative Director & Executive Producer</p>
