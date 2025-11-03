@@ -82,16 +82,19 @@ export default function App() {
 
   return (
     <div>
-      <div className="container mx-auto px-6 py-8">
-        <header className="mb-10 sm:mb-12">
+      <div className="relative mb-12">
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-gradient-to-br from-yellow-100/40 via-blue-100/30 to-amber-100/40 rounded-full blur-3xl" />
+        <div className="relative">
           <p className="uppercase tracking-widest mb-4 font-semibold" style={{ fontSize: '14px', color: '#64748b', letterSpacing: '0.1em' }}>August 26 - September 16th, 2025</p>
-          <h1 className="font-bold tracking-tight mb-6" style={{ fontSize: '3.5rem', fontWeight: '700', color: '#0f172a', letterSpacing: '-0.01em' }}>
+          <h2 className="font-bold tracking-tight mb-6" style={{ fontSize: '3.5rem', color: '#0f172a', letterSpacing: '-0.01em' }}>
             Phase 1
-          </h1>
-        </header>
+          </h2>
+        </div>
+      </div>
 
+      <div className="container mx-auto px-6 py-8">
         <nav
-          className="mb-6 sm:mb-8"
+          className="mb-8"
           role="navigation"
           aria-label="Main navigation"
         >
@@ -138,18 +141,18 @@ export default function App() {
           </div>
         </nav>
 
-        <div className="border-t mb-6 sm:mb-8" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
+        <div className="border-t mb-8" style={{ borderColor: '#d1d5db' }}></div>
 
-        <div className="mb-8 sm:mb-12">
+        <div className="mb-12">
           {renderTabContent()}
         </div>
 
-        <div className="border-t mb-6" style={{ borderColor: 'rgba(15, 23, 42, 0.15)' }}></div>
-
-        <div className="leading-relaxed" style={{ color: '#0f172a', fontWeight: '500', fontSize: '16px' }}>
-          <p className="mb-2">Study 1: August 26 - September 16th, 2025 | 8:00–9:30 AM | The KINN, Venice</p>
-          <p className="mb-2">Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
-          <p>Contact: biometricstudy@gmail.com | Instagram: @biometric.study</p>
+        <div className="border-t pt-12" style={{ borderColor: '#d1d5db' }}>
+          <div className="leading-relaxed max-w-3xl" style={{ fontSize: '17px', color: '#475569', lineHeight: '1.7' }}>
+            <p className="mb-2">Study 1: August 26 - September 16th, 2025 | 8:00–9:30 AM | The KINN, Venice</p>
+            <p className="mb-2">Facilitators: Nathalie Bonin, Robert Bahedry, Chao Dou</p>
+            <p>Contact: biometricstudy@gmail.com | Instagram: @biometric.study</p>
+          </div>
         </div>
       </div>
     </div>
