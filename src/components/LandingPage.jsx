@@ -337,7 +337,7 @@ function Phase2Content() {
                   'Guided breathwork with Robert Bahedry',
                   'Binaural beats integration',
                   'Movement protocols',
-                  'NexGenHealth's LaSeRR Protocol™ testing',
+                  'NexGenHealth LaSeRR Protocol™ testing',
                   'Real-time Aurora Borealis visualization'
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
