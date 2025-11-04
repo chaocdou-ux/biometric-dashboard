@@ -118,7 +118,7 @@ function SponsorshipContent() {
           </h2>
           <p className="leading-relaxed max-w-2xl" style={{ fontSize: '18px', color: '#334155', fontWeight: '400' }}>
             Position your brand at the forefront of groundbreaking research uniting science, wellness,
-            technology, and the arts—with global recognition through UNESCO Week of Sound 2026.
+            technology, and the arts with global recognition through the UNESCO Week of Sound 2026.
           </p>
         </div>
       </div>
@@ -337,7 +337,7 @@ function Phase2Content() {
                   'Guided breathwork with Robert Bahedry',
                   'Binaural beats integration',
                   'Movement protocols',
-                  'LaseRR protocol testing',
+                  'NexGenHealth's LaSeRR Protocol™ testing',
                   'Real-time Aurora Borealis visualization'
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
@@ -433,7 +433,7 @@ function Phase2Content() {
             <div className="space-y-4">
               <div>
                 <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Nathalie Bonin</p>
-                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Founder, Creative Director & Executive Producer, Grammy-Winning Artist</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Founder, Creative Director & Executive Producer, Grammy-winning Artist</p>
               </div>
               <div>
                 <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Robert Bahedry</p>
@@ -441,7 +441,7 @@ function Phase2Content() {
               </div>
               <div>
                 <p className="font-bold" style={{ fontSize: '17px', color: '#0f172a' }}>Chao Dou</p>
-                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Experience strategist, data innovator, and RADD ARTist</p>
+                <p className="font-medium" style={{ fontSize: '15px', color: '#64748b' }}>Experience strategist, data innovator, and artist</p>
               </div>
             </div>
           </div>
