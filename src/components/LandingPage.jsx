@@ -307,7 +307,7 @@ function Phase2Content() {
                   'Original violin composition by Nathalie Bonin',
                   'I-QRS team presentation',
                   'Sponsor recognition ceremony',
-                  'Mental health fundraising'
+                  'Mental health research fundraising'
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <span className="w-1 h-1 bg-gray-300 rounded-full mt-2 flex-shrink-0" />
