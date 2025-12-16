@@ -2,7 +2,7 @@ import { useState } from 'react';
 import App from '../App';
 
 export default function LandingPage() {
-  const [activeTab, setActiveTab] = useState('sponsorship');
+  const [activeTab, setActiveTab] = useState('phase2');
 
   return (
     <div className="min-h-screen" style={{
@@ -22,17 +22,6 @@ export default function LandingPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setActiveTab('sponsorship')}
-                className={`px-5 py-2.5 font-semibold rounded-full border transition-all ${
-                  activeTab === 'sponsorship'
-                    ? 'bg-gray-900 text-white border-gray-900'
-                    : 'bg-white text-gray-900 border-gray-900 hover:bg-gray-50'
-                }`}
-                style={{ fontSize: '16px', letterSpacing: '0.01em' }}
-              >
-                Sponsor
-              </button>
               <button
                 onClick={() => setActiveTab('phase2')}
                 className={`px-5 py-2.5 font-semibold rounded-full border transition-all ${
@@ -69,7 +58,6 @@ export default function LandingPage() {
 
       <div className="pt-28">
         <div className="container mx-auto px-6 py-8">
-          {activeTab === 'sponsorship' && <SponsorshipContent />}
           {activeTab === 'phase2' && <Phase2Content />}
           {activeTab === 'phase1' && <Phase1Content />}
         </div>
