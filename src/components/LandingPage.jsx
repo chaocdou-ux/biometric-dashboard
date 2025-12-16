@@ -1,14 +1,8 @@
 import { useState } from 'react';
 import App from '../App';
-import MobileSite from './mobile/MobileSite';
 
 export default function LandingPage() {
   const [activeTab, setActiveTab] = useState('phase2');
-  const [viewMode, setViewMode] = useState('desktop');
-
-  if (viewMode === 'mobile') {
-    return <MobileSite />;
-  }
 
   return (
     <div className="min-h-screen" style={{
@@ -28,13 +22,6 @@ export default function LandingPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setViewMode('mobile')}
-                className="px-5 py-2.5 font-semibold bg-blue-600 text-white border border-blue-600 rounded-full hover:bg-blue-700 transition-all"
-                style={{ fontSize: '16px', letterSpacing: '0.01em' }}
-              >
-                Mobile Site
-              </button>
               <button
                 onClick={() => setActiveTab('phase2')}
                 className={`px-5 py-2.5 font-semibold rounded-full border transition-all ${
