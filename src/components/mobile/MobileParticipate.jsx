@@ -90,6 +90,10 @@ export default function MobileParticipate({ onNavigate }) {
     setSubmitError(null);
 
     try {
+      if (!supabase) {
+        throw new Error('Database connection not available. Please ensure environment variables are configured.');
+      }
+
       const { data, error } = await supabase
         .from('participation_applications')
         .insert([
