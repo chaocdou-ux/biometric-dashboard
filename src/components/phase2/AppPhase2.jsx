@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OverviewPhase2 from './OverviewPhase2';
 import DaysPhase2 from './DaysPhase2';
+import ActivitiesPhase2 from './ActivitiesPhase2';
 import MetricsPhase2 from './MetricsPhase2';
 import ParticipantsPhase2 from './ParticipantsPhase2';
 import DeviceComparisonPhase2 from './DeviceComparisonPhase2';
@@ -30,6 +31,14 @@ const tabs = [
     label: 'Days',
     icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
       <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  },
+  {
+    id: 'activities',
+    label: 'Activities',
+    icon: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="inline-block mr-2">
+      <path d="M2 8h5M9 8h5M8 3v10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <circle cx="8" cy="8" r="2" stroke="currentColor" strokeWidth="1.5" fill="none"/>
     </svg>
   },
   {
@@ -67,6 +76,8 @@ export default function AppPhase2() {
         return <OverviewPhase2 data={data} />;
       case 'days':
         return <DaysPhase2 data={data} />;
+      case 'activities':
+        return <ActivitiesPhase2 data={data} />;
       case 'metrics':
         return <MetricsPhase2 data={data} />;
       case 'participants':

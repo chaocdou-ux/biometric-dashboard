@@ -50,7 +50,24 @@ function categorizeDevice(device) {
 function parseDayData(filename, day, participantMap) {
   const file = join(csvDir, filename);
   const content = readFileSync(file, 'utf-8');
-  const records = parse(content, { columns: true, skip_empty_lines: true });
+
+  // Parse with custom column handler to handle duplicate column names
+  const records = parse(content, {
+    columns: (header) => {
+      const counts = {};
+      return header.map((col) => {
+        if (!counts[col]) {
+          counts[col] = 1;
+          return col;
+        } else {
+          const name = `${col}_${counts[col]}`;
+          counts[col]++;
+          return name;
+        }
+      });
+    },
+    skip_empty_lines: true
+  });
 
   const measurements = [];
 
@@ -66,10 +83,9 @@ function parseDayData(filename, day, participantMap) {
 
     const participantMeasurements = [];
 
-    // All 6 measurements
-    const suffixes = ['', '.', '..', '...', '....', '.....'];
+    // All 6 measurements - first has no suffix, duplicates have _1, _2, _3, _4, _5
     for (let i = 1; i <= 6; i++) {
-      const suffix = suffixes[i - 1];
+      const suffix = i === 1 ? '' : `_${i - 1}`;
       const emotional_words = row[`Please describe your current emotional state in one to three words (e.g., calm, anxious, joyful)${suffix}`];
       const emotional = parseRating(row[`How would you rate your emotional state right now? ${suffix}`]);
       const energy = parseRating(row[`How would you rate your physical energy right now? ${suffix}`]);
