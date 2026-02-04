@@ -1,3 +1,5 @@
+import { colors, metricLabels } from '../../lib/designSystem';
+
 export default function ParticipantsPhase2({ data }) {
   const participants = data.participants || [];
   const allMeasurements = data.allMeasurements || [];
@@ -38,22 +40,14 @@ export default function ParticipantsPhase2({ data }) {
     };
   };
 
-  const metricLabels = {
+  // Abbreviated labels for compact display
+  const compactLabels = {
     emotional: 'Emotional',
     energy: 'Energy',
     tension: 'Tension',
     stress: 'Stress',
     clarity: 'Clarity',
     spiritual: 'Spiritual'
-  };
-
-  const metricColors = {
-    emotional: '#A8C8DA',
-    energy: '#F3C77B',
-    tension: '#7D8D74',
-    stress: '#C96F4E',
-    clarity: '#50604F',
-    spiritual: '#B8A389'
   };
 
   return (
@@ -80,12 +74,12 @@ export default function ParticipantsPhase2({ data }) {
                 </div>
 
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
-                  {Object.entries(metricLabels).map(([metric, label]) => (
+                  {Object.entries(compactLabels).map(([metric, label]) => (
                     participantData.averages[metric] !== undefined && (
                       <div key={metric} className="text-center p-3 rounded-lg bg-white/40">
                         <div
                           className="w-2 h-2 rounded-full mx-auto mb-1"
-                          style={{ backgroundColor: metricColors[metric] }}
+                          style={{ backgroundColor: colors.metrics[metric] }}
                         />
                         <div className="text-xs mb-1" style={{ color: '#64748b' }}>{label}</div>
                         <div className="font-bold" style={{ fontSize: '18px', color: '#0f172a' }}>

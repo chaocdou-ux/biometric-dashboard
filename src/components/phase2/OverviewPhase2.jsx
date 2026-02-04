@@ -1,4 +1,4 @@
-import { calculateImprovement } from '../../lib/designSystem';
+import { colors, metricLabels } from '../../lib/designSystem';
 
 export default function OverviewPhase2({ data }) {
   const calculateMetrics = () => {
@@ -44,25 +44,7 @@ export default function OverviewPhase2({ data }) {
 
   const topMetrics = Object.entries(improvements)
     .sort((a, b) => b[1].avg - a[1].avg)
-    .slice(0, 5);
-
-  const metricColors = {
-    emotional: '#A8C8DA',
-    energy: '#F3C77B',
-    tension: '#7D8D74',
-    stress: '#C96F4E',
-    clarity: '#50604F',
-    spiritual: '#B8A389'
-  };
-
-  const metricLabels = {
-    emotional: 'Emotional State',
-    energy: 'Physical Energy',
-    tension: 'Body Tension',
-    stress: 'Stress Level',
-    clarity: 'Mental Clarity',
-    spiritual: 'Spiritual Connection'
-  };
+    .slice(0, 6);
 
   const totalMeasurements = data.allMeasurements?.length || 0;
   const uniqueParticipants = data.participants?.length || 0;
@@ -141,7 +123,7 @@ export default function OverviewPhase2({ data }) {
               <div className="flex items-center gap-2 mb-2">
                 <div
                   className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: metricColors[metric] }}
+                  style={{ backgroundColor: colors.metrics[metric] }}
                 />
                 <span className="font-medium text-sm" style={{ color: '#64748b' }}>
                   {metricLabels[metric]}

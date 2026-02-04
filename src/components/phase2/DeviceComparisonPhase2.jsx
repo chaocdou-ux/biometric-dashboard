@@ -1,3 +1,5 @@
+import { colors, metricLabels } from '../../lib/designSystem';
+
 export default function DeviceComparisonPhase2({ data }) {
   const allMeasurements = data.allMeasurements || [];
 
@@ -33,24 +35,6 @@ export default function DeviceComparisonPhase2({ data }) {
     };
   };
 
-  const metricLabels = {
-    emotional: 'Emotional State',
-    energy: 'Physical Energy',
-    tension: 'Body Tension',
-    stress: 'Stress Level',
-    clarity: 'Mental Clarity',
-    spiritual: 'Spiritual Connection'
-  };
-
-  const metricColors = {
-    emotional: '#A8C8DA',
-    energy: '#F3C77B',
-    tension: '#7D8D74',
-    stress: '#C96F4E',
-    clarity: '#50604F',
-    spiritual: '#B8A389'
-  };
-
   return (
     <div className="space-y-8">
       <section className="glass-card">
@@ -79,7 +63,7 @@ export default function DeviceComparisonPhase2({ data }) {
                         <div className="flex items-center gap-2 mb-2">
                           <div
                             className="w-3 h-3 rounded-full"
-                            style={{ backgroundColor: metricColors[metric] }}
+                            style={{ backgroundColor: colors.metrics[metric] }}
                           />
                           <span className="text-xs font-medium" style={{ color: '#64748b' }}>
                             {label}

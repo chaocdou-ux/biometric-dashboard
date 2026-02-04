@@ -1,25 +1,8 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { colors, metricLabels } from '../../lib/designSystem';
 
 export default function MetricsPhase2({ data }) {
   const allMeasurements = data.allMeasurements || [];
-
-  const metricLabels = {
-    emotional: 'Emotional State',
-    energy: 'Physical Energy',
-    tension: 'Body Tension',
-    stress: 'Stress Level',
-    clarity: 'Mental Clarity',
-    spiritual: 'Spiritual Connection'
-  };
-
-  const metricColors = {
-    emotional: '#A8C8DA',
-    energy: '#F3C77B',
-    tension: '#7D8D74',
-    stress: '#C96F4E',
-    clarity: '#50604F',
-    spiritual: '#B8A389'
-  };
 
   const calculateAverageByDay = () => {
     const dayGroups = {};
@@ -82,13 +65,18 @@ export default function MetricsPhase2({ data }) {
     <div className="space-y-8">
       <section className="glass-card">
         <h3 className="font-bold mb-6" style={{ fontSize: '28px', color: '#0f172a' }}>Metrics Overview</h3>
+        <div className="mb-4 p-4 rounded-lg" style={{ background: 'rgba(168, 200, 218, 0.12)', border: '1px solid rgba(168, 200, 218, 0.2)' }}>
+          <p className="leading-relaxed" style={{ color: '#0f172a', fontSize: '16px' }}>
+            <strong>Note:</strong> All metrics are calculated on a 1 to 5 scale, with 5 representing the most positive outcome.
+          </p>
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {Object.entries(stats).map(([metric, data]) => (
             <div key={metric} className="p-4 rounded-lg bg-white/60 backdrop-blur-sm border border-gray-200/50">
               <div className="flex items-center gap-2 mb-2">
                 <div
                   className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: metricColors[metric] }}
+                  style={{ backgroundColor: colors.metrics[metric] }}
                 />
                 <span className="font-medium text-sm" style={{ color: '#64748b' }}>
                   {metricLabels[metric]}
@@ -136,9 +124,9 @@ export default function MetricsPhase2({ data }) {
                   <Line
                     type="monotone"
                     dataKey={metric}
-                    stroke={metricColors[metric]}
+                    stroke={colors.metrics[metric]}
                     strokeWidth={3}
-                    dot={{ fill: metricColors[metric], r: 5 }}
+                    dot={{ fill: colors.metrics[metric], r: 5 }}
                     name={label}
                   />
                 </LineChart>
