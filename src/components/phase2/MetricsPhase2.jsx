@@ -12,8 +12,9 @@ export default function MetricsPhase2({ data }) {
     // Group by day
     const dayGroups = { day_1: [], day_2: [] };
     allMeasurements.forEach(m => {
-      if (dayGroups[m.day]) {
-        dayGroups[m.day].push(m);
+      const dayKey = m.day === "Day 1" ? "day_1" : m.day === "Day 2" ? "day_2" : null;
+      if (dayKey && dayGroups[dayKey]) {
+        dayGroups[dayKey].push(m);
       }
     });
 
